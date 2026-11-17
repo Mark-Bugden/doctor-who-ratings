@@ -1,0 +1,13 @@
+{
+  "slug": "doctor-who-ratings",
+  "title": "Directing the Doctor",
+  "tagline": "Who is the best Doctor? An analysis of Doctor Who's IMDb episode ratings.",
+  "summary": "An analysis of IMDb ratings for Doctor Who episodes from 1963 to 2025. It compares the Doctors, finds the best and worst episodes, follows how ratings have changed over time, and asks how much of an episode's rating comes down to its writer and director rather than its Doctor.",
+  "tags": ["data analysis", "statistics", "Doctor Who"],
+  "status": "stub",
+  "repo": "https://github.com/Mark-Bugden/doctor-who-ratings",
+  "kitVersion": "0.1.0",
+  "built": "2026-11-17",
+  "demo": { "entry": "demo.js", "height": 560, "needsWebGL": false },
+  "writeup": "/projects/doctor-who-ratings/"
+}
