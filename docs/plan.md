@@ -147,10 +147,17 @@ LICENSE                      MIT
   - The Python tests run in a new `tests.yml` workflow. The JS tests join it when the demo has some.
 
 ### 3. Timeline and heatmap: release this repo's `v0.2.0`, status `in-progress`
-- [ ] The frame, the View select, the Doctor selector, title search, the era toggle and the rating / votes switch.
-- [ ] The timeline and heatmap views: hover and tap, linked highlights, and sideways scrolling on narrow screens. Set the heatmap scale's local colours, and check their contrast on the surface in both themes.
-- [ ] Rewrite the manifest: title, tagline, summary, tags, and `about`, with the attribution and snapshot date. Update `built`.
-- [ ] Render the stills from the opening state.
+- [x] The frame, the View select, the Doctor selector, title search, the era toggle and the rating / votes switch.
+  - The search is a control of the demo's own, with the kit's `{ el, value, disabled, onChange }` shape. Picking a Doctor, or finding something in the other era, switches the heatmap to that era, so nothing is found off screen.
+- [x] The timeline and heatmap views: hover and tap, linked highlights, and sideways scrolling on narrow screens. Set the heatmap scale's local colours, and check their contrast on the surface in both themes.
+  - Both views are hand-drawn: SVG for the timeline and a CSS grid for the heatmap, with no Plot. Highlights only toggle classes, so hovering doesn't redraw.
+  - The bands are labelled with the Doctors' numbers, because most runs are too narrow for a name. Labels that would overlap are hidden, except the lit one.
+  - On phones the stage is 24rem tall rather than the kit's 16:9, so the heatmap's 26 seasons fit.
+  - The scale's ends: `#5d6d86` to sodium on dark, `#7a8db0` to H-alpha on light. `demo/test/colour.test.js` checks them (see "Open questions").
+- [x] Rewrite the manifest: title, tagline, summary, tags, and `about`, with the attribution and snapshot date. Update `built`.
+  - A JS test checks that `about` gives the data file's snapshot date, so a refresh can't leave it stale.
+- [x] Render the stills from the opening state.
+  - `scripts/stills.py` renders them, so each release can redo them.
 - [ ] Tell Mark the tag and the new title, so he can update the site.
 
 ### 4. Leaderboard and write-up: release `v1.0.0`, status `live`
@@ -167,7 +174,7 @@ LICENSE                      MIT
 ## Open questions
 
 - **Banner and Tennant photo.** Mark checks whether he may use them: the banner imitates the show's logo, and the photo looks like a BBC promotional still.
-- **The heatmap's light scale.** A pale low end disappears on the white surface. A scale from a 3:1 grey up to H-alpha red keeps both ends visible, but leaves little difference in lightness between them. Choose the light endpoints with a contrast and colour-vision check when building the heatmap.
-- **Season labels from 2024 onwards.** The BBC calls them Season 1 and Season 2, while Wikipedia numbers them Series 14 and 15. Choose the heatmap's labels when building it.
+- ~~**The heatmap's light scale.**~~ Settled in step 3: blue-slate `#7a8db0` (3.35:1 on white) to H-alpha. Every step clears 3:1, and lightness runs one way with and without simulated colour-vision deficiencies. The bluer low end separates the steps a little better under deuteranopia than a neutral grey. It's still the tighter of the two scales: six steps sit at least 0.037 apart in OKLab (deuteranopia), against 0.053 on dark.
+- ~~**Season labels from 2024 onwards.**~~ Settled in step 3: Wikipedia's Series 14 and 15, so the numbering runs on. "How this works" says the BBC calls them Season 1 and Season 2.
 - **New episodes.** Whatever regular episodes are on IMDb at snapshot time are included. Check that the seasons from 2024 onwards are complete and not duplicated across IMDb's parents. (Checked for the 2026-11-18 snapshot: both are complete, with no duplicates.) Episodes after *The Reality War* would need adding to `reference/` by hand.
 - **The leader doesn't move.** In the 2026-11-18 snapshot, Tennant leads the Doctors and Moffat the writers under all 18 settings in the fixtures, and Whittaker is last. What moves is the middle: Tom Baker and Capaldi each range from 2nd to 5th. Only the directors' leader changes. The status line and copy should say what moves, rather than promise a new winner. Decide the framing before step 4.

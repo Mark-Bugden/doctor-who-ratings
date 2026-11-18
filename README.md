@@ -4,9 +4,9 @@ An interactive look at the IMDb ratings of every regular *Doctor Who* episode si
 
 The project is descriptive: it shows how episodes were rated, not why.
 
-**Status:** being rebuilt. The demo bundle currently released for the site is a stub. The plan, design decisions and milestones are in [docs/plan.md](docs/plan.md). The write-up and the demo will live together at [mark-bugden.github.io/projects/doctor-who-ratings](https://mark-bugden.github.io/projects/doctor-who-ratings/), which is published once the demo is past the stub.
+**Status:** in progress. The timeline and the heatmap work, and the leaderboard is next. The plan, design decisions and milestones are in [docs/plan.md](docs/plan.md). The write-up and the demo will live together at [mark-bugden.github.io/projects/doctor-who-ratings](https://mark-bugden.github.io/projects/doctor-who-ratings/).
 
-![IMDb ratings of Doctor Who episodes from 1963 to 2025, one dot per episode, coloured by Doctor.](demo/public/static.webp)
+![Timeline of IMDb ratings for every regular Doctor Who episode from 1963 to 2025, one dot per episode, with each Doctor's run banded and the years off air between 1989 and 2005 left empty.](demo/public/static.webp)
 
 ## Repository layout
 
@@ -16,6 +16,7 @@ The project is descriptive: it shows how episodes were rated, not why.
 | [`src/doctor_who_ratings/`](src/doctor_who_ratings/) | Python: the data pipeline and the leaderboard's reference maths. |
 | [`reference/`](reference/) | The hand-checked tables of stories and parts, from Wikipedia. Its README explains how they're made and checked. |
 | [`tests/`](tests/) | Python tests: the reference tables, the demo's data file and the rankings. |
+| [`scripts/`](scripts/) | Renders the demo's stills from its opening state. |
 | [`docs/`](docs/) | The plan, and later the write-up. |
 | [`legacy/`](legacy/) | The original 2025 notebook, kept for reference. Its README explains why its variance analysis doesn't hold. |
 
@@ -25,6 +26,7 @@ The project is descriptive: it shows how episodes were rated, not why.
 cd demo
 npm install
 npm run dev
+npm test          # unit tests
 ```
 
 ## Rebuilding the data
@@ -39,6 +41,13 @@ uv run pytest
 ```
 
 The export joins IMDb's ratings to the hand-checked tables in [`reference/`](reference/), which hold every regular story and part with its IMDb id. Rebuilding those tables from Wikipedia is a separate, rarer step that its README describes. `uv run pre-commit install` installs the hook that strips notebook outputs before each commit.
+
+After a refresh, update the snapshot date in "How this works" (`about` in `demo/public/manifest.json`; the JS tests check it), rebuild the demo, and render the stills again from its opening state:
+
+```sh
+cd demo && npm run build && cd ..
+uv run --with playwright --with pillow python scripts/stills.py   # drives Microsoft Edge; --channel chrome for Chrome
+```
 
 ## Data
 
