@@ -4,7 +4,7 @@ content/projects/doctor-who-ratings.md in the site repo (the old post), under th
 
 Suggested front matter:
   title: "Rating the Regenerations"
-  summary: "Who is the best Doctor? IMDb ratings for every regular Doctor Who episode since 1963, and a leaderboard whose assumptions you can change."
+  summary: "Who is the best Doctor? IMDb ratings for every regular Doctor Who episode since 1963."
   description: "IMDb ratings for every regular Doctor Who episode since 1963, on a timeline, in a heatmap and on a leaderboard of Doctors, writers and directors."
 
 Every figure below comes from the 18 November 2026 snapshot. If the data is refreshed, check
@@ -13,17 +13,19 @@ them again: the ranks, the 126 settings, the vote medians (587 and 8,101) and th
 
 ## Who is the best Doctor?
 
-Doctor Who has been on television, on and off, since 1963, and every incarnation of the Doctor has fans who'll argue that theirs is the best. In 2025 I tried to settle the question with data instead of opinion, using IMDb's ratings for every episode. This is a rebuild of that project, and the demo above is the result.
+This is a question often debated by nerds. Perhaps unsurprisingly, I have decided to settle it with mathematics and statistics. 
 
-The demo shows the rating of every regular episode on a timeline and in a season-by-episode heatmap, and ranks the Doctors, writers and directors on a leaderboard. A ranking like this rests on a few choices, such as which average to use, and the leaderboard lets you change them and watch the order move.
+Doctor Who has been running, off and on, since 1963. Every regeneration of the Doctor has fans who will swear that theirs is the best. In 2025 I tried to answer the question with data instead of opinion, using IMDb's ratings for every episode. With the help of agentic coding I have now created a little demo to showcase the results.
 
-The short answer: David Tennant comes first however you count. What the choices change is everyone in between.
+The demo shows the rating of every regular episode on a timeline and in a season-by-episode heatmap. It also ranks the Doctors, writers and directors on a leaderboard, although this is perhaps more complex than you might initially think. Do you weight each episode by how many people rated it? Do you trust an average over ten episodes as much as one over forty? Do you compare classic stories with modern ones directly, even though modern episodes tend to score higher than the classics?
+
+The short answer: no matter how you count, David Tennant comes out as the best Doctor, and Steven Moffat as the best writer. Most of the other positions depend on how you define your rating. 
 
 ## The data
 
-Ratings and vote counts come from IMDb's [non-commercial datasets](https://developer.imdb.com/non-commercial-datasets/), as of 18 November 2026. Information courtesy of IMDb (https://www.imdb.com). Used with permission.
+Ratings and vote counts come from IMDb's [non-commercial datasets](https://developer.imdb.com/non-commercial-datasets/), as of 18 November 2026. 
 
-Everything else comes from Wikipedia's lists of *Doctor Who* episodes, under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/): which episodes make up each story, when they aired, and who wrote and directed them.
+Everything else comes from Wikipedia's lists of *Doctor Who* episodes for the [classic](https://en.wikipedia.org/wiki/List_of_Doctor_Who_episodes_(1963%E2%80%931989)) and [revived](https://en.wikipedia.org/wiki/List_of_Doctor_Who_episodes_(2005%E2%80%932025)) series: which episodes make up each story, when they aired, and who wrote and directed them.
 
 That gives 863 episodes in 291 stories, from *An Unearthly Child* in 1963 to *The Reality War* in 2025. Only regular episodes are included. Specials, as Wikipedia lists them, are left out: the Christmas and New Year episodes, the anniversary specials and the 1996 TV film. That leaves out the Eighth, War and Fourteenth Doctors, so 13 Doctors remain.
 
@@ -31,62 +33,46 @@ That gives 863 episodes in 291 stories, from *An Unearthly Child* in 1963 to *Th
 
 The classic series told its stories as serials, most of them four or six episodes long, while the revived series mostly tells a story in one episode, sometimes two. Counting episodes would weight each classic Doctor by how long their serials were. So the unit here is the story, as Wikipedia numbers it. A story's rating is the mean of its episodes' ratings, and its weight is the mean number of votes per episode, so a six-part serial counts once, the same as a single episode.
 
-## What changed from the first version
+## How we assign scores
 
-If you read the first version of this post, a few things are different.
+Each Doctor, writer or director gets a score from the ratings of their stories. The rating is determined by three factors:
 
-- **Doctors are assigned by story.** The first version assigned each season to a Doctor. That credited *The Smugglers* and *The Tenth Planet* to Patrick Troughton instead of William Hartnell, and *The Twin Dilemma* to Peter Davison instead of Colin Baker.
-- **The credits come from Wikipedia.** IMDb's writer credits include the show's creators on most classic stories, the creators of recurring characters (Terry Nation for the Daleks) and the showrunners. They agree with Wikipedia's on only 22 of the 291 stories.
-- **The variance analysis is gone.** The first version said that directors explain about 40% of the variation in ratings. That doesn't hold up, for several reasons:
-  - A filter meant to keep only people with at least three episodes never took effect.
-  - Splitting each episode into writer–director pairs turned 863 episodes into about 2,660 rows.
-  - The model fitted about 245 parameters to 863 episodes.
-  - In the classic era, one director usually directed every part of a serial, so "director" mostly measured how alike a serial's parts were.
+**The average.** One of three different averages: mean of the story ratings, mean weighted by votes per episode, or the median.
 
-  I haven't tried to redo it.
-- **The data came from IMDb's datasets.** The first version said the data was scraped and cleaned by hand. In fact it came from IMDb's official datasets, as it does now.
-- **The latest episodes are complete.** The first version was written while the 2025 series was airing. This one runs to the end of it.
+**Shrinkage.** Christopher Eccleston has 10 stories, while Tom Baker has 41. This means that Christopher Eccleston's average is less reliable than Tom Baker's. Shrinkage accounts for this by giving everyone extra episodes, all rated at the global average. This pulls everyone's ratings closer to the average, but has a bigger effect on Christopher Eccleston than Tom Baker. The result is that a handful of great episodes isn't enough on its own. A high score needs a high average across many episodes.
 
-## How the leaderboard scores
-
-Each Doctor, writer or director gets a score from the ratings of their stories. Three choices go into it, and each is a control in the demo.
-
-**The average.** The plain mean of their story ratings, the mean weighted by each story's votes per episode, or the median.
-
-**Shrinkage.** An average over a few stories moves more by chance than one over many. Christopher Eccleston has 10 stories, and Tom Baker has 41. Shrinkage pulls every average towards the average over all stories, m, as if everyone's record had k extra stories at m:
+More concretely, with k extra episodes at the global average m, a Doctor that averages x̄ over n episodes gets a score of:
 
 score = (k·m + n·x̄) / (k + n)
 
-Here x̄ is someone's average over their n stories. At k = 5, two-thirds of Eccleston's score is his own average and one-third is the overall average, while 89% of Tom Baker's is his own. At k = 0 there's no shrinkage, and the slider goes up to 20. How much to shrink is a judgement call, which is why it's a slider.
+The value k is a judgement call, which is why it's a slider on the demo. 
 
-**Era adjustment.** The two eras don't rate the same on IMDb: revived stories average 7.65, against 7.29 for classic ones (vote-weighted). With the adjustment on, each story is compared with the average story of its own era, and scores read as rating points above or below that average.
+**Era adjustment.** The two eras don't rate the same on IMDb: the new era stories average 7.65, and the classic ones average 7.29 (vote-weighted). Comparing episodes across eras therefore gives a head start to the new era stories. The era adjustment removes it by scoring each episode against the average for its own era. A classic episode rated 7.8 scores +0.5, because it beats the classic average by half a point. A revived episode with the same 7.8 scores only +0.15. Scores then read as points above or below a typical episode of the same era.
 
 Writers and directors need at least three stories to be ranked, and a co-written story counts in full for each writer.
 
-The defaults are the vote-weighted mean, k = 5 and no era adjustment. That's the method of the first version, applied to stories instead of episodes.
+The defaults are the vote-weighted mean, k = 5 and no era adjustment.
 
-## What holds, and what moves
+## Some things change, some stay the same
 
-I ranked everyone under every combination of the controls: three averages, shrinkage from 0 to 20, and era adjustment on or off. That makes 126 combinations.
+I ranked everyone under every combination of the controls: three averages, shrinkage from 0 to 20, and era adjustment on or off. This gives 3 x 21 x 2 = 126 combinations.
 
-Some places never change. David Tennant is first in all 126, Peter Davison eighth and Jodie Whittaker thirteenth. Among the writers, Steven Moffat is first in all 126.
+Under all combinations, David Tennant comes out as the best Doctor, and Jodie Whittaker as the worst. Among the writers, Steven Moffat is first in all 126.
 
-The middle moves:
-
-- Tom Baker ranges from 2nd to 7th, Christopher Eccleston from 3rd to 7th, Peter Capaldi from 2nd to 6th, and Matt Smith from 2nd to 4th.
-- At the defaults, turning on the era adjustment moves Tom Baker from 5th to 3rd and Jon Pertwee from 6th to 4th. Eccleston drops from 3rd to 5th, and Capaldi from 4th to 6th.
-- The median with no shrinkage puts Capaldi second.
-- Among the writers, Russell T Davies moves furthest, from 2nd to 24th of 37.
-- The directors are the only list whose leader changes. Rachel Talalay is first in 97 of the 126 combinations, Graeme Harper in 26 and David Maloney in 3.
-
-These describe how the ratings fall under each choice. They don't say why.
+Most of the other positions depend on how you define the rating: Tom Baker ranges from 2nd to 7th, Christopher Eccleston from 3rd to 7th, Peter Capaldi from 2nd to 6th, and Matt Smith from 2nd to 4th.
 
 ## Caveats
 
 - The ratings are IMDb's, from whoever chose to rate each episode. Classic episodes have far fewer votes: a median of 587 per episode, against 8,101 for revived ones.
-- The data is a snapshot from 18 November 2026. Ratings drift as votes come in, so the numbers will change a little over time.
+- The data is a snapshot from 18 November 2026. Ratings drift over time, so the numbers may change a little.
 - Specials are left out, so stories like *The Day of the Doctor* don't count towards anyone's score.
 
 ## The code
 
 The code is on [GitHub](https://github.com/Mark-Bugden/doctor-who-ratings). A Python pipeline joins IMDb's datasets with Wikipedia's tables, checks the result and computes the leaderboard's rankings. The demo computes them again in JavaScript, and its tests check that the two agree exactly.
+
+
+
+Information courtesy of IMDb (https://www.imdb.com). Used with permission.
+
+Wikipedia information under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
