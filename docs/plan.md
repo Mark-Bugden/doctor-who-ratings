@@ -59,7 +59,7 @@ The project is descriptive. It makes no claims about what causes a rating.
 - **Average.** The plain mean, the vote-weighted mean or the median of story ratings.
 - **Shrinkage strength.** k runs from 0 to about 20 stories. A subject's score is (k·m + n·x̄) / (k + n), where x̄ is the subject's average over its n stories and m is the same average over all stories.
 - **Era adjustment.** When on, each story's rating is replaced by its difference from its era's average, computed the same way. Scores then read as "+0.4 above its era".
-- **Defaults.** Vote-weighted, k = 5, era adjustment off. This is the old post's method, now applied to stories. The status line names the leader under the current assumptions.
+- **Defaults.** Vote-weighted, k = 5, era adjustment off. This is the old post's method, now applied to stories. The status line gives the top three under the current assumptions.
 - **Small samples.** Writers and directors need at least 3 stories to be ranked, and a note says so. A co-written story counts in full for each writer.
 - **Display.** A ranked dot plot with one row per subject. The default ranking is drawn faintly behind it, so the visitor sees what moved. Rows re-sort with a short transition, with none under `prefers-reduced-motion`.
 - **Reference.** `src/doctor_who_ratings/rankings.py` computes the same rankings. The export writes fixtures from it, and node:test checks that the JS matches.
@@ -75,7 +75,7 @@ The project is descriptive. It makes no claims about what causes a rating.
 | Title search | Finds an episode or story and jumps to it in the current view. This is also the keyboard path into the charts. |
 | Era toggle | Classic / revived, for the heatmap. |
 | Rating / votes | Recolours the heatmap and rescales the timeline by votes (log scale). Disabled on the leaderboard. |
-| Status line | What's highlighted or found; on the leaderboard, the current leader. |
+| Status line | What's highlighted or found; on the leaderboard, the top three. |
 | How this works | Sources and snapshot date, IMDb's attribution, what a "story" is, why specials are left out, and what each assumption does. |
 | Copy | Plain, with no claims about why ratings differ. |
 
@@ -161,9 +161,18 @@ LICENSE                      MIT
 - [ ] Tell Mark the tag and the new title, so he can update the site.
 
 ### 4. Leaderboard and write-up: release `v1.0.0`, status `live`
-- [ ] The leaderboard view: the subject switch, the three assumption controls, the faint default ranking and the status line. Test the JS against the Python fixtures.
-- [ ] Draft the write-up in `docs/writeup.md`, in the site's voice, for Mark to edit and move to the site.
-- [ ] Refresh the data snapshot, rebuild, and update `built`.
+- [x] The leaderboard view: the subject switch, the three assumption controls, the faint default ranking and the status line. Test the JS against the Python fixtures.
+  - The status line gives the top three and their scores (decided with Mark on 2026-11-18; see "Open questions").
+  - The default ranking shows as faint lines beside the rank numbers, from each row's default place to its current one. The lit Doctor's line takes the accent.
+  - The score axis spans the scores with no shrinkage, which shrinkage only pulls inwards, so moving the slider moves the dots and not the axis. A vertical line marks the overall average.
+  - Rows slide over the kit's `--duration-slow` (360 ms), which is zero under `prefers-reduced-motion`.
+  - `rankings.js` adds numbers the way Python's `sum()` does (Neumaier's compensated summation, since Python 3.12), so all 54 fixture cases match to the last bit.
+  - Search rings the found story's Doctor, writers or directors, where they're ranked. Phones get tighter columns, so everything fits at 360 px.
+  - The rail has nine controls now; those that don't apply to the current view are disabled.
+  - The demo skips drawing while the stage has no size, such as when it's hidden for a moment, and redraws once it has one. Before, the timeline drew its bands with negative widths then, which logged console errors. Playwright's element screenshots trigger this once the page is taller than the viewport.
+- [x] Draft the write-up in `docs/writeup.md`, in the site's voice, for Mark to edit and move to the site.
+- [x] Refresh the data snapshot, rebuild, and update `built`.
+  - IMDb's dumps on 2026-11-18 were still the ones step 2 used (the same Last-Modified date and size), so the export, the fixtures and the stills came out byte for byte the same. The snapshot and `built` stay 2026-11-18. A HEAD request shows a dump's Last-Modified date, so a refresh can check first instead of downloading 1.5 GB.
 - [ ] Mark bumps the tag in the site's `data/projects.yaml` and takes the write-up out of draft.
 
 ## For Mark, on the site
@@ -177,4 +186,4 @@ LICENSE                      MIT
 - ~~**The heatmap's light scale.**~~ Settled in step 3: blue-slate `#7a8db0` (3.35:1 on white) to H-alpha. Every step clears 3:1, and lightness runs one way with and without simulated colour-vision deficiencies. The bluer low end separates the steps a little better under deuteranopia than a neutral grey. It's still the tighter of the two scales: six steps sit at least 0.037 apart in OKLab (deuteranopia), against 0.053 on dark.
 - ~~**Season labels from 2024 onwards.**~~ Settled in step 3: Wikipedia's Series 14 and 15, so the numbering runs on. "How this works" says the BBC calls them Season 1 and Season 2.
 - **New episodes.** Whatever regular episodes are on IMDb at snapshot time are included. Check that the seasons from 2024 onwards are complete and not duplicated across IMDb's parents. (Checked for the 2026-11-18 snapshot: both are complete, with no duplicates.) Episodes after *The Reality War* would need adding to `reference/` by hand.
-- **The leader doesn't move.** In the 2026-11-18 snapshot, Tennant leads the Doctors and Moffat the writers under all 18 settings in the fixtures, and Whittaker is last. What moves is the middle: Tom Baker and Capaldi each range from 2nd to 5th. Only the directors' leader changes. The status line and copy should say what moves, rather than promise a new winner. Decide the framing before step 4.
+- ~~**The leader doesn't move.**~~ Settled in step 4. Over every setting of the controls (three averages, k from 0 to 20, era adjustment on or off: 126 in all), Tennant is first, Davison eighth and Whittaker last, and Moffat leads the writers. Tom Baker ranges from 2nd to 7th, Eccleston 3rd to 7th and Capaldi 2nd to 6th, and only the directors' leader changes. So the status line gives the top three rather than the leader. The write-up says what holds and what moves, while the demo's own copy stays general, so a refresh can't make it stale.
