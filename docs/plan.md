@@ -121,11 +121,11 @@ LICENSE                      MIT
 
 ## Milestones
 
-### 0. Rewrite history
+### 0. Rewrite history (done 2026-11-18)
 - [x] Use `git filter-repo` in a scratch clone to remove `.venv/` from every commit. It was added in the initial commit (2025-03-24) and removed in the next. It is 89.4 MiB of the 93.5 MiB pack, and about 4 MiB remains, mostly past versions of the notebook.
   - Result (2026-11-18): the pack went from 93.6 MiB to 3.5 MiB. Of what remains, `Assets/banner.png` is 1.8 MiB and past versions of the notebook most of the rest. The commit that removed `.venv/` became empty and was dropped, leaving 26 commits. Every other commit keeps its tree (minus `.venv/`), author, dates and message, and the trees of `main`, `v0.1.0` and `demo-stub` are unchanged.
-- [ ] Mark reviews the result.
-- [ ] With Mark's explicit go-ahead: force-push `main` and the `v0.1.0` tag (the stub release and its zip keep working), and delete the merged `demo-stub` branch. GitHub keeps PR #1's commits, so the old blobs stay on its servers, but fresh clones shrink.
+- [x] Mark reviews the result. He kept `Assets/banner.png` in the history.
+- [x] With Mark's explicit go-ahead: force-push `main` and the `v0.1.0` tag (the stub release and its zip keep working), and delete the merged `demo-stub` branch. GitHub keeps PR #1's commits, so the old blobs stay on its servers, but fresh clones shrink.
 
 ### 1. Clean up the repo (PR)
 - [x] Move the notebook, `utils.py` and `requirements.txt` to `legacy/`, with the notebook's outputs stripped. Add a note saying why its variance analysis doesn't hold.
