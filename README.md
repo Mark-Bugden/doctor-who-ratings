@@ -4,7 +4,7 @@ An interactive look at the IMDb ratings of every regular *Doctor Who* episode si
 
 The project is descriptive: it shows how episodes were rated, not why.
 
-**Status:** in progress. The timeline and the heatmap work, and the leaderboard is next. The plan, design decisions and milestones are in [docs/plan.md](docs/plan.md). The write-up and the demo will live together at [mark-bugden.github.io/projects/doctor-who-ratings](https://mark-bugden.github.io/projects/doctor-who-ratings/).
+**Status:** live. The timeline, the heatmap and the leaderboard all work. The plan, design decisions and milestones are in [docs/plan.md](docs/plan.md), and the draft write-up is in [docs/writeup.md](docs/writeup.md). The write-up and the demo live together at [mark-bugden.github.io/projects/doctor-who-ratings](https://mark-bugden.github.io/projects/doctor-who-ratings/).
 
 ![Timeline of IMDb ratings for every regular Doctor Who episode from 1963 to 2025, one dot per episode, with each Doctor's run banded and the years off air between 1989 and 2005 left empty.](demo/public/static.webp)
 
@@ -17,7 +17,7 @@ The project is descriptive: it shows how episodes were rated, not why.
 | [`reference/`](reference/) | The hand-checked tables of stories and parts, from Wikipedia. Its README explains how they're made and checked. |
 | [`tests/`](tests/) | Python tests: the reference tables, the demo's data file and the rankings. |
 | [`scripts/`](scripts/) | Renders the demo's stills from its opening state. |
-| [`docs/`](docs/) | The plan, and later the write-up. |
+| [`docs/`](docs/) | The plan, and the draft write-up for the site. |
 | [`legacy/`](legacy/) | The original 2025 notebook, kept for reference. Its README explains why its variance analysis doesn't hold. |
 
 ## Running the demo

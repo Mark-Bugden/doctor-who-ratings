@@ -12,11 +12,16 @@ export function log([d0, d1], [r0, r1]) {
   return (value) => scale(Math.log10(value));
 }
 
-/** Round ticks from min to max: steps of 1, 2 or 5 times a power of ten, about `count` of them. */
-export function ticks(min, max, count = 5) {
+/** The step between round ticks from min to max: 1, 2 or 5 times a power of ten, for about `count` of them. */
+export function tickStep(min, max, count = 5) {
   const raw = (max - min) / Math.max(1, count);
   const power = 10 ** Math.floor(Math.log10(raw));
-  const step = [1, 2, 5, 10].map((m) => m * power).find((s) => s >= raw);
+  return [1, 2, 5, 10].map((m) => m * power).find((s) => s >= raw);
+}
+
+/** Round ticks from min to max: steps of 1, 2 or 5 times a power of ten, about `count` of them. */
+export function ticks(min, max, count = 5) {
+  const step = tickStep(min, max, count);
   const result = [];
   for (let value = Math.ceil(min / step) * step; value <= max + step * 1e-9; value += step) {
     result.push(Number(value.toPrecision(12)));
