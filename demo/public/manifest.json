@@ -1,13 +1,14 @@
 {
   "slug": "doctor-who-ratings",
-  "title": "Directing the Doctor",
-  "tagline": "Who is the best Doctor? An analysis of Doctor Who's IMDb episode ratings.",
-  "summary": "An analysis of IMDb ratings for Doctor Who episodes from 1963 to 2025. It compares the Doctors, finds the best and worst episodes, follows how ratings have changed over time, and asks how much of an episode's rating comes down to its writer and director rather than its Doctor.",
-  "tags": ["data analysis", "statistics", "Doctor Who"],
-  "status": "stub",
+  "title": "Rating the Regenerations",
+  "tagline": "Every regular Doctor Who episode since 1963, as rated on IMDb.",
+  "summary": "IMDb ratings for every regular Doctor Who episode from 1963 to 2025, on a timeline and in a season-by-episode heatmap. Pick a Doctor to light up their run, or find any story or episode by name. A leaderboard of Doctors, writers and directors, with the assumptions behind it open to change, is on the way.",
+  "tags": ["data visualisation", "statistics", "Doctor Who"],
+  "status": "in-progress",
   "repo": "https://github.com/Mark-Bugden/doctor-who-ratings",
   "kitVersion": "0.2.0",
-  "built": "2026-11-17",
+  "built": "2026-11-18",
   "demo": { "entry": "demo.js", "height": 560, "needsWebGL": false },
-  "writeup": "/projects/doctor-who-ratings/"
+  "writeup": "/projects/doctor-who-ratings/",
+  "about": "**What you're seeing.** The timeline has one dot per episode, at its UK air date and its IMDb rating. Bigger dots have more votes. Each short bar is a story's rating, the mean of its episodes, and the numbered bands are the Doctors' runs. The heatmap shows one era at a time, with a row per season and a cell per episode. Pick a Doctor to light up their run, find a story or an episode by name, or point at one for details.\n\n**Stories.** A story is a story as Wikipedia numbers it: a classic serial, or a modern episode or multi-parter. *The Trial of a Time Lord* and *Flux* each count as one story.\n\n**What's left out.** Only regular episodes are included. Specials, as Wikipedia lists them, are left out, including every Christmas and New Year episode, the anniversary specials and the 1996 TV film. So the Eighth, War and Fourteenth Doctors don't appear, and 13 Doctors remain.\n\n**Seasons.** Seasons and series are numbered as on Wikipedia. The BBC calls the 2024 and 2025 series Season 1 and Season 2; here they're Series 14 and 15.\n\n**Data.** Ratings and votes come from IMDb's [non-commercial datasets](https://developer.imdb.com/non-commercial-datasets/), as of 18 November 2026. Information courtesy of IMDb (https://www.imdb.com). Used with permission. Stories, air dates, writers and directors come from Wikipedia's lists of *Doctor Who* episodes, under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).\n\n**Still to come:** a leaderboard that ranks the Doctors, writers and directors, with the assumptions behind the ranking open to change."
 }
