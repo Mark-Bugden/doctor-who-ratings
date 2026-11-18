@@ -1,62 +1,48 @@
-<p align="center">
-  <img src="Assets/banner.png" alt="Doctor Who IMDb Analysis Banner" width="100%", height="60%">
-</p>
+# Rating the Regenerations
 
-# Doctor Who IMDb Analysis
+An interactive look at the IMDb ratings of every regular *Doctor Who* episode since 1963. Visitors follow the ratings across the show's history, find any episode in a season-by-episode heatmap, and rank the Doctors, writers or directors. They can then change the assumptions behind the ranking and watch the order move: how stories are averaged, how far small samples are pulled towards the overall mean, and whether each era is judged against its own average. The answer to "Who is the best Doctor?" depends on how you count.
 
-Ever wondered which *Doctor Who* seasons were most loved by fans?  
-This data science project dives deep into IMDb data to uncover the highs, lows, and hidden gems of the longest-running sci-fi series in TV history. 
-We use a data-driven analysis to answer the question: **Who is the best Doctor?**
+The project is descriptive: it shows how episodes were rated, not why.
 
-**Highlights:**
-- Rating trends across Doctors and showrunners  
-- Statistical analysis of season quality  
-- Visual storytelling with clear, intuitive plots  
+**Status:** being rebuilt. The demo bundle currently released for the site is a stub. The plan, design decisions and milestones are in [docs/plan.md](docs/plan.md). The write-up and the demo will live together at [mark-bugden.github.io/projects/doctor-who-ratings](https://mark-bugden.github.io/projects/doctor-who-ratings/), which is published once the demo is past the stub.
 
-If you're not into the technical details, check out the non-technical [blog post](https://mark-bugden.github.io./portfolio/doctorwho.html).
-Curious to explore the analysis? Simply open the `doctor-who-imdb-analysis.ipynb` notebook to read through it.
-Comfortable with Python and want to run it yourself? Just follow the setup instructions in the "Getting Started" section below.
+![IMDb ratings of Doctor Who episodes from 1963 to 2025, one dot per episode, coloured by Doctor.](demo/public/static.webp)
 
-## Project Structure
+## Repository layout
 
-```
-.
-├── data/                               # Contains raw and processed IMDb data (not tracked in version control)
-├── doctor-who-imdb-analysis.ipynb      # The main analysis notebook
-├── utils.py                            # Helper functions for loading and processing data
-├── README.md
-└── requirements.txt                    # Python dependencies
+| Path | What it is |
+| --- | --- |
+| [`demo/`](demo/) | The interactive demo for [mark-bugden.github.io](https://mark-bugden.github.io/), built with [demo-kit](https://github.com/Mark-Bugden/demo-kit). Its README explains how to run and build it. |
+| [`src/doctor_who_ratings/`](src/doctor_who_ratings/) | Python: the data pipeline and the leaderboard's reference maths, from step 2 of the plan. |
+| [`docs/`](docs/) | The plan, and later the write-up. |
+| [`legacy/`](legacy/) | The original 2025 notebook, kept for reference. Its README explains why its variance analysis doesn't hold. |
+
+## Running the demo
+
+```sh
+cd demo
+npm install
+npm run dev
 ```
 
+## Python
 
-## Getting Started
+The Python side is a [uv](https://docs.astral.sh/uv/) project. The data pipeline arrives with step 2 of the plan. For now, `uv sync` sets up the environment, and `uv run pre-commit install` installs the hook that strips notebook outputs before each commit.
 
-1. **Clone the repo**
+## Data
 
-```bash
-git clone https://github.com/Mark-Bugden/doctor-who-imdb-analysis.git
-cd doctor-who-imdb-analysis
-```
+The demo combines two sources:
 
-2. **Create a virtual environment**
+- **Ratings** come from IMDb's [non-commercial datasets](https://developer.imdb.com/non-commercial-datasets/), used under their terms for personal and non-commercial use. The raw dumps are never committed, and the demo carries only the fields its views need.
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
+  > Information courtesy of IMDb (https://www.imdb.com). Used with permission.
 
-3. **Install dependencies**
+- **Stories, air dates, writers and directors** come from Wikipedia's [List of Doctor Who episodes (1963–1989)](https://en.wikipedia.org/wiki/List_of_Doctor_Who_episodes_(1963%E2%80%931989)) and [List of Doctor Who episodes (2005–2025)](https://en.wikipedia.org/wiki/List_of_Doctor_Who_episodes_(2005%E2%80%932025)), under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
-```bash
-pip install -r requirements.txt
-```
+## Licence
 
-4. **Open the notebook**
+The code is under the [MIT License](LICENSE). The data is not covered by it: IMDb's data stays under IMDb's terms, and data taken from Wikipedia stays under CC BY-SA 4.0.
 
-```bash
-jupyter notebook doctor-who-imdb-analysis.ipynb
-```
+## History
 
-> The notebook will guide you through the full analysis step-by-step.
-
-
+The project started in March 2025 as a Jupyter notebook, written up as the blog post "Directing the Doctor". In November 2026 it was rebuilt as an interactive browser demo and renamed "Rating the Regenerations". The repository history was rewritten at the same time to remove a committed Python virtual environment. The notebook remains in [`legacy/`](legacy/).
