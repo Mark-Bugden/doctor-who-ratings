@@ -1,0 +1,16 @@
+[project]
+name = "doctor-who-ratings"
+version = "0.1.0"
+description = "Data pipeline and reference rankings for the Rating the Regenerations demo."
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Mark Bugden" }]
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = ["pre-commit>=4.0"]
+
+[build-system]
+requires = ["uv_build>=0.13.7,<0.14.0"]
+build-backend = "uv_build"
