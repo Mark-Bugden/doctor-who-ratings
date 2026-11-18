@@ -1,0 +1,864 @@
+story,part,era,season,episode,title,air_date,imdb_id
+1,1,classic,1,1,An Unearthly Child,1963-11-23,tt0562828
+1,2,classic,1,2,The Cave of Skulls,1963-11-30,tt0782279
+1,3,classic,1,3,The Forest of Fear,1963-12-07,tt0805109
+1,4,classic,1,4,The Firemaker,1963-12-14,tt0813250
+2,1,classic,1,5,The Dead Planet,1963-12-21,tt0562905
+2,2,classic,1,6,The Survivors,1963-12-28,tt0819441
+2,3,classic,1,7,The Escape,1964-01-04,tt0777345
+2,4,classic,1,8,The Ambush,1964-01-11,tt0819440
+2,5,classic,1,9,The Expedition,1964-01-18,tt0769064
+2,6,classic,1,10,The Ordeal,1964-01-25,tt0769065
+2,7,classic,1,11,The Rescue,1964-02-01,tt0777344
+3,1,classic,1,12,The Edge of Destruction,1964-02-08,tt0756850
+3,2,classic,1,13,The Brink of Disaster,1964-02-15,tt0769062
+4,1,classic,1,14,The Roof of the World,1964-02-22,tt0562858
+4,2,classic,1,15,The Singing Sands,1964-02-29,tt0769067
+4,3,classic,1,16,Five Hundred Eyes,1964-03-07,tt0809982
+4,4,classic,1,17,The Wall of Lies,1964-03-14,tt0769068
+4,5,classic,1,18,Rider from Shang-Tu,1964-03-21,tt0805214
+4,6,classic,1,19,Mighty Kublai Khan,1964-03-28,tt0769059
+4,7,classic,1,20,Assassin at Peking,1964-04-04,tt0809981
+5,1,classic,1,21,The Sea of Death,1964-04-11,tt0562926
+5,2,classic,1,22,The Velvet Web,1964-04-18,tt0809986
+5,3,classic,1,23,The Screaming Jungle,1964-04-25,tt0769066
+5,4,classic,1,24,The Snows of Terror,1964-05-02,tt0809984
+5,5,classic,1,25,Sentence of Death,1964-05-09,tt0809983
+5,6,classic,1,26,The Keys of Marinus,1964-05-16,tt0829417
+6,1,classic,1,27,The Temple of Evil,1964-05-23,tt0562894
+6,2,classic,1,28,The Warriors of Death,1964-05-30,tt0805215
+6,3,classic,1,29,The Bride of Sacrifice,1964-06-06,tt0769061
+6,4,classic,1,30,The Day of Darkness,1964-06-13,tt0830292
+7,1,classic,1,31,Strangers in Space,1964-06-20,tt0562953
+7,2,classic,1,32,The Unwilling Warriors,1964-06-27,tt0809985
+7,3,classic,1,33,Hidden Danger,1964-07-11,tt0769057
+7,4,classic,1,34,A Race Against Death,1964-07-18,tt0809980
+7,5,classic,1,35,Kidnap,1964-07-25,tt0769058
+7,6,classic,1,36,A Desperate Venture,1964-08-01,tt0769055
+8,1,classic,1,37,A Land of Fear,1964-08-08,tt0562944
+8,2,classic,1,38,Guests of Madame Guillotine,1964-08-15,tt0769056
+8,3,classic,1,39,A Change of Identity,1964-08-22,tt0785282
+8,4,classic,1,40,The Tyrant of France,1964-08-29,tt0785310
+8,5,classic,1,41,A Bargain of Necessity,1964-09-05,tt0769054
+8,6,classic,1,42,Prisoners of Conciergerie,1964-09-12,tt0769060
+9,1,classic,2,1,Planet of Giants,1964-10-31,tt0562867
+9,2,classic,2,2,Dangerous Journey,1964-11-07,tt0776941
+9,3,classic,2,3,Crisis,1964-11-14,tt0776940
+10,1,classic,2,4,World's End,1964-11-21,tt0562904
+10,2,classic,2,5,The Daleks,1964-11-28,tt0776951
+10,3,classic,2,6,Day of Reckoning,1964-12-05,tt0776942
+10,4,classic,2,7,The End of Tomorrow,1964-12-12,tt0776955
+10,5,classic,2,8,The Waking Ally,1964-12-19,tt0776961
+10,6,classic,2,9,Flashpoint,1964-12-26,tt0776945
+11,1,classic,2,10,The Powerful Enemy,1965-01-02,tt0562945
+11,2,classic,2,11,Desperate Measures,1965-01-09,tt0776943
+12,1,classic,2,12,The Slave Traders,1965-01-16,tt0562948
+12,2,classic,2,13,All Roads Lead to Rome,1965-01-23,tt0776936
+12,3,classic,2,14,Conspiracy,1965-01-30,tt0776938
+12,4,classic,2,15,Inferno,1965-02-06,tt0776947
+13,1,classic,2,16,The Web Planet,1965-02-13,tt0562975
+13,2,classic,2,17,The Zarbi,1965-02-20,tt0776964
+13,3,classic,2,18,Escape to Danger,1965-02-27,tt0776944
+13,4,classic,2,19,Crater of Needles,1965-03-06,tt0776939
+13,5,classic,2,20,Invasion,1965-03-13,tt0776948
+13,6,classic,2,21,The Centre,1965-03-20,tt0776950
+14,1,classic,2,22,The Lion,1965-03-27,tt0562901
+14,2,classic,2,23,The Knight of Jaffa,1965-04-03,tt0776957
+14,3,classic,2,24,The Wheel of Fortune,1965-04-10,tt0776963
+14,4,classic,2,25,The Warlords,1965-04-17,tt0776962
+15,1,classic,2,26,The Space Museum,1965-04-24,tt0562957
+15,2,classic,2,27,The Dimensions of Time,1965-05-01,tt0776954
+15,3,classic,2,28,The Search,1965-05-08,tt0776960
+15,4,classic,2,29,The Final Phase,1965-05-15,tt0776956
+16,1,classic,2,30,The Executioners,1965-05-22,tt0562898
+16,2,classic,2,31,The Death of Time,1965-05-29,tt0776953
+16,3,classic,2,32,Flight Through Eternity,1965-06-05,tt0776946
+16,4,classic,2,33,Journey into Terror,1965-06-12,tt0776949
+16,5,classic,2,34,The Death of Doctor Who,1965-06-19,tt0776952
+16,6,classic,2,35,The Planet of Decision,1965-06-26,tt0776959
+17,1,classic,2,36,The Watcher,1965-07-03,tt0562964
+17,2,classic,2,37,The Meddling Monk,1965-07-10,tt0776958
+17,3,classic,2,38,A Battle of Wits,1965-07-17,tt0776935
+17,4,classic,2,39,Checkmate,1965-07-24,tt0776937
+18,1,classic,3,1,Four Hundred Dawns,1965-09-11,tt0562849
+18,2,classic,3,2,Trap of Steel,1965-09-18,tt0785311
+18,3,classic,3,3,Air Lock,1965-09-25,tt0785283
+18,4,classic,3,4,The Exploding Planet,1965-10-02,tt0785301
+19,1,classic,3,5,Mission to the Unknown,1965-10-09,tt0562862
+20,1,classic,3,6,Temple of Secrets,1965-10-16,tt0562940
+20,2,classic,3,7,"Small Prophet, Quick Return",1965-10-23,tt0785297
+20,3,classic,3,8,Death of a Spy,1965-10-30,tt0785288
+20,4,classic,3,9,Horse of Destruction,1965-11-06,tt0785294
+21,1,classic,3,10,The Nightmare Begins,1965-11-13,tt0562906
+21,2,classic,3,11,Day of Armageddon,1965-11-20,tt0785287
+21,3,classic,3,12,Devil's Planet,1965-11-27,tt0785290
+21,4,classic,3,13,The Traitors,1965-12-04,tt0785309
+21,5,classic,3,14,Counter Plot,1965-12-11,tt0785286
+21,6,classic,3,15,Coronas of the Sun,1965-12-18,tt0785285
+21,7,classic,3,16,The Feast of Steven,1965-12-25,tt0785302
+21,8,classic,3,17,Volcano,1966-01-01,tt0785312
+21,9,classic,3,18,Golden Death,1966-01-08,tt0785293
+21,10,classic,3,19,Escape Switch,1966-01-15,tt0785292
+21,11,classic,3,20,The Abandoned Planet,1966-01-22,tt0785298
+21,12,classic,3,21,Destruction of Time,1966-01-29,tt0785289
+22,1,classic,3,22,War of God,1966-02-05,tt0562933
+22,2,classic,3,23,The Sea Beggar,1966-02-12,tt0785308
+22,3,classic,3,24,Priest of Death,1966-02-19,tt0785296
+22,4,classic,3,25,Bell of Doom,1966-02-26,tt0785284
+23,1,classic,3,26,The Steel Sky,1966-03-05,tt0562890
+23,2,classic,3,27,The Plague,1966-03-12,tt0785306
+23,3,classic,3,28,The Return,1966-03-19,tt0785307
+23,4,classic,3,29,The Bomb,1966-03-26,tt0785299
+24,1,classic,3,30,The Celestial Toyroom,1966-04-02,tt0562897
+24,2,classic,3,31,The Hall of Dolls,1966-04-09,tt0785304
+24,3,classic,3,32,The Dancing Floor,1966-04-16,tt0785300
+24,4,classic,3,33,The Final Test,1966-04-23,tt0785303
+25,1,classic,3,34,A Holiday for the Doctor,1966-04-30,tt0562916
+25,2,classic,3,35,Don't Shoot the Pianist,1966-05-07,tt0785291
+25,3,classic,3,36,Johnny Ringo,1966-05-14,tt0785295
+25,4,classic,3,37,The O.K. Corral,1966-05-21,tt0785305
+26,1,classic,3,38,Episode 1,1966-05-28,tt0562949
+26,2,classic,3,39,Episode 2,1966-06-04,tt0807265
+26,3,classic,3,40,Episode 3,1966-06-11,tt0807266
+26,4,classic,3,41,Episode 4,1966-06-18,tt0807267
+27,1,classic,3,42,Episode 1,1966-06-25,tt0562974
+27,2,classic,3,43,Episode 2,1966-07-02,tt0807268
+27,3,classic,3,44,Episode 3,1966-07-09,tt0807269
+27,4,classic,3,45,Episode 4,1966-07-16,tt0807270
+28,1,classic,4,1,Episode 1,1966-09-10,tt0562955
+28,2,classic,4,2,Episode 2,1966-09-17,tt0810587
+28,3,classic,4,3,Episode 3,1966-09-24,tt0810588
+28,4,classic,4,4,Episode 4,1966-10-01,tt0810589
+29,1,classic,4,5,Episode 1,1966-10-08,tt0562962
+29,2,classic,4,6,Episode 2,1966-10-15,tt0810590
+29,3,classic,4,7,Episode 3,1966-10-22,tt0810591
+29,4,classic,4,8,Episode 4,1966-10-29,tt0810592
+30,1,classic,4,9,Episode One,1966-11-05,tt0562943
+30,2,classic,4,10,Episode Two,1966-11-12,tt0810582
+30,3,classic,4,11,Episode Three,1966-11-19,tt0810583
+30,4,classic,4,12,Episode Four,1966-11-26,tt0810584
+30,5,classic,4,13,Episode Five,1966-12-03,tt0810585
+30,6,classic,4,14,Episode Six,1966-12-10,tt0810586
+31,1,classic,4,15,Episode 1,1966-12-17,tt0562919
+31,2,classic,4,16,Episode 2,1966-12-24,tt0810573
+31,3,classic,4,17,Episode 3,1966-12-31,tt0810574
+31,4,classic,4,18,Episode 4,1967-01-07,tt0810575
+32,1,classic,4,19,Episode 1,1967-01-14,tt0562971
+32,2,classic,4,20,Episode 2,1967-01-21,tt0810593
+32,3,classic,4,21,Episode 3,1967-01-28,tt0810594
+32,4,classic,4,22,Episode 4,1967-02-04,tt0810595
+33,1,classic,4,23,Episode 1,1967-02-11,tt0562937
+33,2,classic,4,24,Episode 2,1967-02-18,tt0810579
+33,3,classic,4,25,Episode 3,1967-02-25,tt0810580
+33,4,classic,4,26,Episode 4,1967-03-04,tt0810581
+34,1,classic,4,27,Episode 1,1967-03-11,tt0562930
+34,2,classic,4,28,Episode 2,1967-03-18,tt0810576
+34,3,classic,4,29,Episode 3,1967-03-25,tt0810577
+34,4,classic,4,30,Episode 4,1967-04-01,tt0810578
+35,1,classic,4,31,Episode 1,1967-04-08,tt0562913
+35,2,classic,4,32,Episode 2,1967-04-15,tt0810568
+35,3,classic,4,33,Episode 3,1967-04-22,tt0810569
+35,4,classic,4,34,Episode 4,1967-04-29,tt0810570
+35,5,classic,4,35,Episode 5,1967-05-06,tt0810571
+35,6,classic,4,36,Episode 6,1967-05-13,tt0810572
+36,1,classic,4,37,Episode 1,1967-05-20,tt0562911
+36,2,classic,4,38,Episode 2,1967-05-27,tt0810562
+36,3,classic,4,39,Episode 3,1967-06-03,tt0810563
+36,4,classic,4,40,Episode 4,1967-06-10,tt0810564
+36,5,classic,4,41,Episode 5,1967-06-17,tt0810565
+36,6,classic,4,42,Episode 6,1967-06-24,tt0810566
+36,7,classic,4,43,Episode 7,1967-07-01,tt0810567
+37,1,classic,5,1,Episode 1,1967-09-02,tt0562967
+37,2,classic,5,2,Episode 2,1967-09-09,tt0811466
+37,3,classic,5,3,Episode 3,1967-09-16,tt0811467
+37,4,classic,5,4,Episode 4,1967-09-23,tt0811468
+38,1,classic,5,5,Episode One,1967-09-30,tt0562886
+38,2,classic,5,6,Episode Two,1967-10-07,tt0811447
+38,3,classic,5,7,Episode Three,1967-10-14,tt0811448
+38,4,classic,5,8,Episode Four,1967-10-21,tt0811449
+38,5,classic,5,9,Episode Five,1967-10-28,tt0811450
+38,6,classic,5,10,Episode Six,1967-11-04,tt0811451
+39,1,classic,5,11,One,1967-11-11,tt0562921
+39,2,classic,5,12,Two,1967-11-18,tt0811305
+39,3,classic,5,13,Three,1967-11-25,tt0811306
+39,4,classic,5,14,Four,1967-12-02,tt0811307
+39,5,classic,5,15,Five,1967-12-09,tt0811308
+39,6,classic,5,16,Six,1967-12-16,tt0811309
+40,1,classic,5,17,Episode 1,1967-12-23,tt0562910
+40,2,classic,5,18,Episode 2,1967-12-30,tt0811295
+40,3,classic,5,19,Episode 3,1968-01-06,tt0811296
+40,4,classic,5,20,Episode 4,1968-01-13,tt0811297
+40,5,classic,5,21,Episode 5,1968-01-20,tt0811298
+40,6,classic,5,22,Episode 6,1968-01-27,tt0811299
+41,1,classic,5,23,Episode 1,1968-02-03,tt0562976
+41,2,classic,5,24,Episode 2,1968-02-10,tt0811365
+41,3,classic,5,25,Episode 3,1968-02-17,tt0811366
+41,4,classic,5,26,Episode 4,1968-02-24,tt0811367
+41,5,classic,5,27,Episode 5,1968-03-02,tt0811368
+41,6,classic,5,28,Episode 6,1968-03-09,tt0811369
+42,1,classic,5,29,Episode 1,1968-03-16,tt0562848
+42,2,classic,5,30,Episode 2,1968-03-23,tt0811242
+42,3,classic,5,31,Episode 3,1968-03-30,tt0811243
+42,4,classic,5,32,Episode 4,1968-04-06,tt0811244
+42,5,classic,5,33,Episode 5,1968-04-13,tt0811245
+42,6,classic,5,34,Episode 6,1968-04-20,tt0811246
+43,1,classic,5,35,Episode 1,1968-04-27,tt0562977
+43,2,classic,5,36,Episode 2,1968-05-04,tt0811370
+43,3,classic,5,37,Episode 3,1968-05-11,tt0811371
+43,4,classic,5,38,Episode 4,1968-05-18,tt0811372
+43,5,classic,5,39,Episode 5,1968-05-25,tt0811373
+43,6,classic,5,40,Episode 6,1968-06-01,tt0811374
+44,1,classic,6,1,Episode 1,1968-08-10,tt0562908
+44,2,classic,6,2,Episode 2,1968-08-17,tt0811452
+44,3,classic,6,3,[Episode 3],1968-08-24,tt0811453
+44,4,classic,6,4,Episode 4,1968-08-31,tt0811454
+44,5,classic,6,5,Episode 5,1968-09-07,tt0811455
+45,1,classic,6,6,Episode 1,1968-09-14,tt0562934
+45,2,classic,6,7,Episode 2,1968-09-21,tt0811456
+45,3,classic,6,8,Episode 3,1968-09-28,tt0811457
+45,4,classic,6,9,Episode 4,1968-10-05,tt0811458
+45,5,classic,6,10,Episode 5,1968-10-12,tt0811459
+46,1,classic,6,11,Episode One,1968-11-02,tt0562922
+46,2,classic,6,12,Episode Two,1968-11-09,tt0811310
+46,3,classic,6,13,Episode Three,1968-11-16,tt0811311
+46,4,classic,6,14,Episode Four,1968-11-23,tt0811312
+46,5,classic,6,15,Episode Five,1968-11-30,tt0811313
+46,6,classic,6,16,Episode Six,1968-12-07,tt0811314
+46,7,classic,6,17,Episode Seven,1968-12-14,tt0811315
+46,8,classic,6,18,Episode Eight,1968-12-21,tt0811316
+47,1,classic,6,19,Episode One,1968-12-28,tt0562928
+47,2,classic,6,20,Episode Two,1969-01-04,tt0811317
+47,3,classic,6,21,Episode Three,1969-01-11,tt0811318
+47,4,classic,6,22,Episode Four,1969-01-18,tt0811319
+48,1,classic,6,23,Episode One,1969-01-25,tt0562951
+48,2,classic,6,24,Episode Two,1969-02-01,tt0811340
+48,3,classic,6,25,Episode Three,1969-02-08,tt0811341
+48,4,classic,6,26,Episode Four,1969-02-15,tt0811342
+48,5,classic,6,27,Episode Five,1969-02-22,tt0811343
+48,6,classic,6,28,Episode Six,1969-03-01,tt0811344
+49,1,classic,6,29,Episode One,1969-03-08,tt0562958
+49,2,classic,6,30,Episode Two,1969-03-15,tt0811346
+49,3,classic,6,31,Episode Three,1969-03-22,tt0811347
+49,4,classic,6,32,Episode Four,1969-03-29,tt0811348
+49,5,classic,6,33,Episode Five,1969-04-05,tt0811349
+49,6,classic,6,34,Episode Six,1969-04-12,tt0811350
+50,1,classic,6,35,Episode One,1969-04-19,tt0562973
+50,2,classic,6,36,Episode Two,1969-04-26,tt0811357
+50,3,classic,6,37,Episode Three,1969-05-03,tt0811358
+50,4,classic,6,38,Episode Four,1969-05-10,tt0811359
+50,5,classic,6,39,Episode Five,1969-05-17,tt0811360
+50,6,classic,6,40,Episode Six,1969-05-24,tt0811361
+50,7,classic,6,41,Episode Seven,1969-05-31,tt0811362
+50,8,classic,6,42,Episode Eight,1969-06-07,tt0811363
+50,9,classic,6,43,Episode Nine,1969-06-14,tt0811364
+50,10,classic,6,44,Episode Ten,1969-06-21,tt0811356
+51,1,classic,7,1,Episode 1,1970-01-03,tt0562879
+51,2,classic,7,2,Episode 2,1970-01-10,tt0811440
+51,3,classic,7,3,Episode 3,1970-01-17,tt0811442
+51,4,classic,7,4,Episode 4,1970-01-24,tt0811443
+52,1,classic,7,5,Episode 1,1970-01-31,tt0562954
+52,2,classic,7,6,Episode 2,1970-02-07,tt0811231
+52,3,classic,7,7,Episode 3,1970-02-14,tt0811232
+52,4,classic,7,8,Episode 4,1970-02-21,tt0811233
+52,5,classic,7,9,Episode 5,1970-02-28,tt0811234
+52,6,classic,7,10,Episode 6,1970-03-07,tt0811235
+52,7,classic,7,11,Episode 7,1970-03-14,tt0811236
+53,1,classic,7,12,Episode 1,1970-03-21,tt0562887
+53,2,classic,7,13,Episode 2,1970-03-28,tt0811276
+53,3,classic,7,14,Episode 3,1970-04-04,tt0811277
+53,4,classic,7,15,Episode 4,1970-04-11,tt0811278
+53,5,classic,7,16,Episode 5,1970-04-18,tt0811279
+53,6,classic,7,17,Episode 6,1970-04-25,tt0811280
+53,7,classic,7,18,Episode 7,1970-05-02,tt0811281
+54,1,classic,7,19,Episode 1,1970-05-09,tt0562854
+54,2,classic,7,20,Episode 2,1970-05-16,tt0811252
+54,3,classic,7,21,Episode 3,1970-05-23,tt0811253
+54,4,classic,7,22,Episode 4,1970-05-30,tt0811254
+54,5,classic,7,23,Episode 5,1970-06-06,tt0811255
+54,6,classic,7,24,Episode 6,1970-06-13,tt0811256
+54,7,classic,7,25,Episode 7,1970-06-20,tt0811257
+55,1,classic,8,1,Episode One,1971-01-02,tt0562883
+55,2,classic,8,2,Episode Two,1971-01-09,tt0811444
+55,3,classic,8,3,Episode Three,1971-01-16,tt0811445
+55,4,classic,8,4,Episode Four,1971-01-23,tt0811446
+56,1,classic,8,5,Episode One,1971-01-30,tt0562935
+56,2,classic,8,6,Episode Two,1971-02-06,tt0811320
+56,3,classic,8,7,Episode Three,1971-02-13,tt0811321
+56,4,classic,8,8,Episode Four,1971-02-20,tt0811322
+56,5,classic,8,9,Episode Five,1971-02-27,tt0811323
+56,6,classic,8,10,Episode Six,1971-03-06,tt0811324
+57,1,classic,8,11,Episode One,1971-03-13,tt0562899
+57,2,classic,8,12,Episode Two,1971-03-20,tt0811285
+57,3,classic,8,13,Episode Three,1971-03-27,tt0811286
+57,4,classic,8,14,Episode Four,1971-04-03,tt0811287
+58,1,classic,8,15,Episode One,1971-04-10,tt0562836
+58,2,classic,8,16,Episode Two,1971-04-17,tt0811223
+58,3,classic,8,17,Episode Three,1971-04-24,tt0811224
+58,4,classic,8,18,Episode Four,1971-05-01,tt0811225
+58,5,classic,8,19,Episode Five,1971-05-08,tt0811226
+58,6,classic,8,20,Episode Six,1971-05-15,tt0811227
+59,1,classic,8,21,Episode One,1971-05-22,tt0562909
+59,2,classic,8,22,Episode Two,1971-05-29,tt0811291
+59,3,classic,8,23,Episode Three,1971-06-05,tt0811292
+59,4,classic,8,24,Episode Four,1971-06-12,tt0811293
+59,5,classic,8,25,Episode Five,1971-06-19,tt0811294
+60,1,classic,9,1,Episode One,1972-01-01,tt0562837
+60,2,classic,9,2,Episode Two,1972-01-08,tt0811433
+60,3,classic,9,3,Episode Three,1972-01-15,tt0811434
+60,4,classic,9,4,Episode Four,1972-01-22,tt0811435
+61,1,classic,9,5,Episode One,1972-01-29,tt0562903
+61,2,classic,9,6,Episode Two,1972-02-05,tt0811288
+61,3,classic,9,7,Episode Three,1972-02-12,tt0811289
+61,4,classic,9,8,Episode Four,1972-02-19,tt0811290
+62,1,classic,9,9,Episode One,1972-02-26,tt0562950
+62,2,classic,9,10,Episode Two,1972-03-04,tt0811335
+62,3,classic,9,11,Episode Three,1972-03-11,tt0811336
+62,4,classic,9,12,Episode Four,1972-03-18,tt0811337
+62,5,classic,9,13,Episode Five,1972-03-25,tt0811338
+62,6,classic,9,14,Episode Six,1972-04-01,tt0811339
+63,1,classic,9,15,Episode One,1972-04-08,tt0562938
+63,2,classic,9,16,Episode Two,1972-04-15,tt0811330
+63,3,classic,9,17,Episode Three,1972-04-22,tt0811331
+63,4,classic,9,18,Episode Four,1972-04-29,tt0811332
+63,5,classic,9,19,Episode Five,1972-05-06,tt0811333
+63,6,classic,9,20,Episode Six,1972-05-13,tt0811334
+64,1,classic,9,21,Episode One,1972-05-20,tt0562965
+64,2,classic,9,22,Episode Two,1972-05-27,tt0811351
+64,3,classic,9,23,Episode Three,1972-06-03,tt0811352
+64,4,classic,9,24,Episode Four,1972-06-10,tt0811353
+64,5,classic,9,25,Episode Five,1972-06-17,tt0811354
+64,6,classic,9,26,Episode Six,1972-06-24,tt0811355
+65,1,classic,10,1,Episode One,1972-12-30,tt0562963
+65,2,classic,10,2,Episode Two,1973-01-06,tt0811460
+65,3,classic,10,3,Episode Three,1973-01-13,tt0811461
+65,4,classic,10,4,Episode Four,1973-01-20,tt0811462
+66,1,classic,10,5,Episode One,1973-01-27,tt0562833
+66,2,classic,10,6,Episode Two,1973-02-03,tt0811220
+66,3,classic,10,7,Episode Three,1973-02-10,tt0811221
+66,4,classic,10,8,Episode Four,1973-02-17,tt0811222
+67,1,classic,10,9,Episode One,1973-02-24,tt0562845
+67,2,classic,10,10,Episode Two,1973-03-03,tt0811237
+67,3,classic,10,11,Episode Three,1973-03-10,tt0811238
+67,4,classic,10,12,Episode Four,1973-03-17,tt0811239
+67,5,classic,10,13,Episode Five,1973-03-24,tt0811240
+67,6,classic,10,14,Episode Six,1973-03-31,tt0811241
+68,1,classic,10,15,Episode One,1973-04-07,tt0562868
+68,2,classic,10,16,Episode Two,1973-04-14,tt0811263
+68,3,classic,10,17,Episode Three,1973-04-21,tt0811264
+68,4,classic,10,18,Episode Four,1973-04-28,tt0811265
+68,5,classic,10,19,Episode Five,1973-05-05,tt0811266
+68,6,classic,10,20,Episode Six,1973-05-12,tt0811267
+69,1,classic,10,21,Episode One,1973-05-19,tt0562915
+69,2,classic,10,22,Episode Two,1973-05-26,tt0811300
+69,3,classic,10,23,Episode Three,1973-06-02,tt0811301
+69,4,classic,10,24,Episode Four,1973-06-09,tt0811302
+69,5,classic,10,25,Episode Five,1973-06-16,tt0811303
+69,6,classic,10,26,Episode Six,1973-06-23,tt0811304
+70,1,classic,11,1,Part One,1973-12-15,tt0562966
+70,2,classic,11,2,Part Two,1973-12-22,tt0811463
+70,3,classic,11,3,Part Three,1973-12-29,tt0811464
+70,4,classic,11,4,Part Four,1974-01-05,tt0811465
+71,1,classic,11,5,Part One,1974-01-12,tt0562855
+71,2,classic,11,6,Part Two,1974-01-19,tt0811258
+71,3,classic,11,7,Part Three,1974-01-26,tt0811259
+71,4,classic,11,8,Part Four,1974-02-02,tt0811260
+71,5,classic,11,9,Part Five,1974-02-09,tt0811261
+71,6,classic,11,10,Part Six,1974-02-16,tt0811262
+72,1,classic,11,11,Part One,1974-02-23,tt0562838
+72,2,classic,11,12,Part Two,1974-03-02,tt0811228
+72,3,classic,11,13,Part Three,1974-03-09,tt0811229
+72,4,classic,11,14,Part Four,1974-03-16,tt0811230
+73,1,classic,11,15,Part One,1974-03-23,tt0562936
+73,2,classic,11,16,Part Two,1974-03-30,tt0811325
+73,3,classic,11,17,Part Three,1974-04-06,tt0811326
+73,4,classic,11,18,Part Four,1974-04-13,tt0811327
+73,5,classic,11,19,Part Five,1974-04-20,tt0811328
+73,6,classic,11,20,Part Six,1974-04-27,tt0811329
+74,1,classic,11,21,Part One,1974-05-04,tt0562869
+74,2,classic,11,22,Part Two,1974-05-11,tt0811268
+74,3,classic,11,23,Part Three,1974-05-18,tt0811269
+74,4,classic,11,24,Part Four,1974-05-25,tt0811270
+74,5,classic,11,25,Part Five,1974-06-01,tt0811271
+74,6,classic,11,26,Part Six,1974-06-08,tt0811272
+75,1,classic,12,1,Part One,1974-12-28,tt0562875
+75,2,classic,12,2,Part Two,1975-01-04,tt0811436
+75,3,classic,12,3,Part Three,1975-01-11,tt0811437
+75,4,classic,12,4,Part Four,1975-01-18,tt0811438
+76,1,classic,12,5,Part One,1975-01-25,tt0562891
+76,2,classic,12,6,Part Two,1975-02-01,tt0811282
+76,3,classic,12,7,Part Three,1975-02-08,tt0811283
+76,4,classic,12,8,Part Four,1975-02-15,tt0811284
+77,1,classic,12,9,Part One,1975-02-22,tt0562956
+77,2,classic,12,10,Part Two,1975-03-01,tt0811345
+78,1,classic,12,11,Part One,1975-03-08,tt0562850
+78,2,classic,12,12,Part Two,1975-03-15,tt0811247
+78,3,classic,12,13,Part Three,1975-03-22,tt0811248
+78,4,classic,12,14,Part Four,1975-03-29,tt0811249
+78,5,classic,12,15,Part Five,1975-04-05,tt0811250
+78,6,classic,12,16,Part Six,1975-04-12,tt0811251
+79,1,classic,12,17,Part One,1975-04-19,tt0562874
+79,2,classic,12,18,Part Two,1975-04-26,tt0811273
+79,3,classic,12,19,Part Three,1975-05-03,tt0811274
+79,4,classic,12,20,Part Four,1975-05-10,tt0811275
+80,1,classic,13,1,Part One,1975-08-30,tt0562885
+80,2,classic,13,2,Part Two,1975-09-06,tt0811853
+80,3,classic,13,3,Part Three,1975-09-13,tt0811854
+80,4,classic,13,4,Part Four,1975-09-20,tt0811855
+81,1,classic,13,5,Part One,1975-09-27,tt0562865
+81,2,classic,13,6,Part Two,1975-10-04,tt0811823
+81,3,classic,13,7,Part Three,1975-10-11,tt0811824
+81,4,classic,13,8,Part Four,1975-10-18,tt0811825
+82,1,classic,13,9,Part One,1975-10-25,tt0562870
+82,2,classic,13,10,Part Two,1975-11-01,tt0811829
+82,3,classic,13,11,Part Three,1975-11-08,tt0811830
+82,4,classic,13,12,Part Four,1975-11-15,tt0811831
+83,1,classic,13,13,Part One,1975-11-22,tt0562888
+83,2,classic,13,14,Part Two,1975-11-29,tt0811856
+83,3,classic,13,15,Part Three,1975-12-06,tt0811857
+83,4,classic,13,16,Part Four,1975-12-13,tt0811858
+84,1,classic,13,17,Part One,1976-01-03,tt0144171
+84,2,classic,13,18,Part Two,1976-01-10,tt0811868
+84,3,classic,13,19,Part Three,1976-01-17,tt0811869
+84,4,classic,13,20,Part Four,1976-01-24,tt0811870
+85,1,classic,13,21,Part One,1976-01-31,tt0562952
+85,2,classic,13,22,Part Two,1976-02-07,tt0811731
+85,3,classic,13,23,Part Three,1976-02-14,tt0811732
+85,4,classic,13,24,Part Four,1976-02-21,tt0811733
+85,5,classic,13,25,Part Five,1976-02-28,tt0811734
+85,6,classic,13,26,Part Six,1976-03-06,tt0811735
+86,1,classic,14,1,Part One,1976-09-04,tt0562932
+86,2,classic,14,2,Part Two,1976-09-11,tt0811713
+86,3,classic,14,3,Part Three,1976-09-18,tt0811714
+86,4,classic,14,4,Part Four,1976-09-25,tt0811715
+87,1,classic,14,5,Part One,1976-10-02,tt0562917
+87,2,classic,14,6,Part Two,1976-10-09,tt0811689
+87,3,classic,14,7,Part Three,1976-10-16,tt0811690
+87,4,classic,14,8,Part Four,1976-10-23,tt0811691
+88,1,classic,14,9,Part One,1976-10-30,tt0562907
+88,2,classic,14,10,Part Two,1976-11-06,tt0811880
+88,3,classic,14,11,Part Three,1976-11-13,tt0811881
+88,4,classic,14,12,Part Four,1976-11-20,tt0811882
+89,1,classic,14,13,Part One,1977-01-01,tt0562912
+89,2,classic,14,14,Part Two,1977-01-08,tt0811883
+89,3,classic,14,15,Part Three,1977-01-15,tt0811884
+89,4,classic,14,16,Part Four,1977-01-22,tt0811885
+90,1,classic,14,17,Part One,1977-01-29,tt0302492
+90,2,classic,14,18,Part Two,1977-02-05,tt0811728
+90,3,classic,14,19,Part Three,1977-02-12,tt0811729
+90,4,classic,14,20,Part Four,1977-02-19,tt0811730
+91,1,classic,14,21,Part One,1977-02-26,tt0562961
+91,2,classic,14,22,Part Two,1977-03-05,tt0811742
+91,3,classic,14,23,Part Three,1977-03-12,tt0811743
+91,4,classic,14,24,Part Four,1977-03-19,tt0811744
+91,5,classic,14,25,Part Five,1977-03-26,tt0811745
+91,6,classic,14,26,Part Six,1977-04-02,tt0811746
+92,1,classic,15,1,Part One,1977-09-03,tt0562852
+92,2,classic,15,2,Part Two,1977-09-10,tt0811796
+92,3,classic,15,3,Part Three,1977-09-17,tt0811797
+92,4,classic,15,4,Part Four,1977-09-24,tt0811798
+93,1,classic,15,5,Part One,1977-10-01,tt0562924
+93,2,classic,15,6,Part Two,1977-10-08,tt0811702
+93,3,classic,15,7,Part Three,1977-10-15,tt0811703
+93,4,classic,15,8,Part Four,1977-10-22,tt0811704
+94,1,classic,15,9,Part One,1977-10-29,tt0562853
+94,2,classic,15,10,Part Two,1977-11-05,tt0811799
+94,3,classic,15,11,Part Three,1977-11-12,tt0811800
+94,4,classic,15,12,Part Four,1977-11-19,tt0811801
+95,1,classic,15,13,Part One,1977-11-26,tt0562960
+95,2,classic,15,14,Part Two,1977-12-03,tt0811739
+95,3,classic,15,15,Part Three,1977-12-10,tt0811740
+95,4,classic,15,16,Part Four,1977-12-17,tt0811741
+96,1,classic,15,17,Part One,1978-01-07,tt0562981
+96,2,classic,15,18,Part Two,1978-01-14,tt0811763
+96,3,classic,15,19,Part Three,1978-01-21,tt0811764
+96,4,classic,15,20,Part Four,1978-01-28,tt0811765
+97,1,classic,15,21,Part One,1978-02-04,tt0562923
+97,2,classic,15,22,Part Two,1978-02-11,tt0811697
+97,3,classic,15,23,Part Three,1978-02-18,tt0811698
+97,4,classic,15,24,Part Four,1978-02-25,tt0811699
+97,5,classic,15,25,Part Five,1978-03-04,tt0811700
+97,6,classic,15,26,Part Six,1978-03-11,tt0811701
+98,1,classic,16,1,Part One,1978-09-02,tt0562946
+98,2,classic,16,2,Part Two,1978-09-09,tt0811725
+98,3,classic,16,3,Part Three,1978-09-16,tt0811726
+98,4,classic,16,4,Part Four,1978-09-23,tt0811727
+99,1,classic,16,5,Part One,1978-09-30,tt0562941
+99,2,classic,16,6,Part Two,1978-10-07,tt0811719
+99,3,classic,16,7,Part Three,1978-10-14,tt0811720
+99,4,classic,16,8,Part Four,1978-10-21,tt0811721
+100,1,classic,16,9,Part One,1978-10-28,tt0562959
+100,2,classic,16,10,Part Two,1978-11-04,tt0811736
+100,3,classic,16,11,Part Three,1978-11-11,tt0811737
+100,4,classic,16,12,Part Four,1978-11-18,tt0811738
+101,1,classic,16,13,Part One,1978-11-25,tt0562889
+101,2,classic,16,14,Part Two,1978-12-02,tt0811859
+101,3,classic,16,15,Part Three,1978-12-09,tt0811860
+101,4,classic,16,16,Part Four,1978-12-16,tt0811861
+102,1,classic,16,17,Part One,1978-12-23,tt0562942
+102,2,classic,16,18,Part Two,1978-12-30,tt0811722
+102,3,classic,16,19,Part Three,1979-01-06,tt0811723
+102,4,classic,16,20,Part Four,1979-01-13,tt0811724
+103,1,classic,16,21,Part One,1979-01-20,tt0562892
+103,2,classic,16,22,Part Two,1979-01-27,tt0811862
+103,3,classic,16,23,Part Three,1979-02-03,tt0811863
+103,4,classic,16,24,Part Four,1979-02-10,tt0811864
+103,5,classic,16,25,Part Five,1979-02-17,tt0811865
+103,6,classic,16,26,Part Six,1979-02-24,tt0811866
+104,1,classic,17,1,Episode One,1979-09-01,tt0562840
+104,2,classic,17,2,Episode Two,1979-09-08,tt0811667
+104,3,classic,17,3,Episode Three,1979-09-15,tt0811668
+104,4,classic,17,4,Episode Four,1979-09-22,tt0811669
+105,1,classic,17,5,Part One,1979-09-29,tt0562835
+105,2,classic,17,6,Part Two,1979-10-06,tt0811662
+105,3,classic,17,7,Part Three,1979-10-13,tt0811663
+105,4,classic,17,8,Part Four,1979-10-20,tt0811664
+106,1,classic,17,9,Part One,1979-10-27,tt0562900
+106,2,classic,17,10,Part Two,1979-11-03,tt0811874
+106,3,classic,17,11,Part Three,1979-11-10,tt0811875
+106,4,classic,17,12,Part Four,1979-11-17,tt0811876
+107,1,classic,17,13,Part One,1979-11-24,tt0562863
+107,2,classic,17,14,Part Two,1979-12-01,tt0811817
+107,3,classic,17,15,Part Three,1979-12-08,tt0811818
+107,4,classic,17,16,Part Four,1979-12-15,tt0811819
+108,1,classic,17,17,Part One,1979-12-22,tt0562920
+108,2,classic,17,18,Part Two,1979-12-29,tt0811694
+108,3,classic,17,19,Part Three,1980-01-05,tt0811695
+108,4,classic,17,20,Part Four,1980-01-12,tt0811696
+109,1,classic,18,1,Part One,1980-08-30,tt0562929
+109,2,classic,18,2,Part Two,1980-09-06,tt0811709
+109,3,classic,18,3,Part Three,1980-09-13,tt0811710
+109,4,classic,18,4,Part Four,1980-09-20,tt0811711
+110,1,classic,18,5,Part One,1980-09-27,tt0562860
+110,2,classic,18,6,Part Two,1980-10-04,tt0811811
+110,3,classic,18,7,Part Three,1980-10-11,tt0811812
+110,4,classic,18,8,Part Four,1980-10-18,tt0811813
+111,1,classic,18,9,Part One,1980-10-25,tt0562847
+111,2,classic,18,10,Part Two,1980-11-01,tt0811684
+111,3,classic,18,11,Part Three,1980-11-08,tt0811685
+111,4,classic,18,12,Part Four,1980-11-15,tt0811686
+112,1,classic,18,13,Part One,1980-11-22,tt0562880
+112,2,classic,18,14,Part Two,1980-11-29,tt0811842
+112,3,classic,18,15,Part Three,1980-12-06,tt0811843
+112,4,classic,18,16,Part Four,1980-12-13,tt0811844
+113,1,classic,18,17,Part One,1981-01-03,tt0562984
+113,2,classic,18,18,Part Two,1981-01-10,tt0811770
+113,3,classic,18,19,Part Three,1981-01-17,tt0811771
+113,4,classic,18,20,Part Four,1981-01-24,tt0811772
+114,1,classic,18,21,Part One,1981-01-31,tt0562925
+114,2,classic,18,22,Part Two,1981-02-07,tt0811705
+114,3,classic,18,23,Part Three,1981-02-14,tt0811706
+114,4,classic,18,24,Part Four,1981-02-21,tt0811707
+115,1,classic,18,25,Part One,1981-02-28,tt0562857
+115,2,classic,18,26,Part Two,1981-03-07,tt0811805
+115,3,classic,18,27,Part Three,1981-03-14,tt0811806
+115,4,classic,18,28,Part Four,1981-03-21,tt0811807
+116,1,classic,19,1,Part One,1982-01-04,tt0562834
+116,2,classic,19,2,Part Two,1982-01-05,tt0811659
+116,3,classic,19,3,Part Three,1982-01-11,tt0811660
+116,4,classic,19,4,Part Four,1982-01-12,tt0811661
+117,1,classic,19,5,Part One,1982-01-18,tt0562844
+117,2,classic,19,6,Part Two,1982-01-19,tt0811678
+117,3,classic,19,7,Part Three,1982-01-25,tt0811679
+117,4,classic,19,8,Part Four,1982-01-26,tt0811680
+118,1,classic,19,9,Part One,1982-02-01,tt0562856
+118,2,classic,19,10,Part Two,1982-02-02,tt0811802
+118,3,classic,19,11,Part Three,1982-02-08,tt0811803
+118,4,classic,19,12,Part Four,1982-02-09,tt0811804
+119,1,classic,19,13,Part One,1982-02-15,tt0562972
+119,2,classic,19,14,Part Two,1982-02-16,tt0811753
+119,3,classic,19,15,Part Three,1982-02-22,tt0811754
+119,4,classic,19,16,Part Four,1982-02-23,tt0811755
+120,1,classic,19,17,Part One,1982-03-01,tt0562832
+120,2,classic,19,18,Part Two,1982-03-02,tt0811658
+121,1,classic,19,19,Part One,1982-03-08,tt0562842
+121,2,classic,19,20,Part Two,1982-03-09,tt0811672
+121,3,classic,19,21,Part Three,1982-03-15,tt0811673
+121,4,classic,19,22,Part Four,1982-03-16,tt0811674
+122,1,classic,19,23,Part One,1982-03-22,tt0562979
+122,2,classic,19,24,Part Two,1982-03-23,tt0811759
+122,3,classic,19,25,Part Three,1982-03-29,tt0811760
+122,4,classic,19,26,Part Four,1982-03-30,tt0811761
+123,1,classic,20,1,Part One,1983-01-03,tt0562829
+123,2,classic,20,2,Part Two,1983-01-05,tt0811651
+123,3,classic,20,3,Part Three,1983-01-11,tt0811652
+123,4,classic,20,4,Part Four,1983-01-12,tt0811653
+124,1,classic,20,5,Part One,1983-01-18,tt0562878
+124,2,classic,20,6,Part Two,1983-01-19,tt0811839
+124,3,classic,20,7,Part Three,1983-01-25,tt0811840
+124,4,classic,20,8,Part Four,1983-01-26,tt0811841
+125,1,classic,20,9,Part One,1983-02-01,tt0562859
+125,2,classic,20,10,Part Two,1983-02-02,tt0811808
+125,3,classic,20,11,Part Three,1983-02-08,tt0811809
+125,4,classic,20,12,Part Four,1983-02-09,tt0811810
+126,1,classic,20,13,Part One,1983-02-15,tt0562882
+126,2,classic,20,14,Part Two,1983-02-16,tt0811847
+126,3,classic,20,15,Part Three,1983-02-22,tt0811848
+126,4,classic,20,16,Part Four,1983-02-23,tt0811849
+127,1,classic,20,17,Part One,1983-03-01,tt0562843
+127,2,classic,20,18,Part Two,1983-03-02,tt0811675
+127,3,classic,20,19,Part Three,1983-03-08,tt0811676
+127,4,classic,20,20,Part Four,1983-03-09,tt0811677
+128,1,classic,20,21,Part One,1983-03-15,tt0562927
+128,2,classic,20,22,Part Two,1983-03-16,tt0811708
+130,1,classic,21,1,Part One,1984-01-05,tt0562983
+130,2,classic,21,2,Part Two,1984-01-06,tt0811767
+130,3,classic,21,3,Part Three,1984-01-12,tt0811768
+130,4,classic,21,4,Part Four,1984-01-13,tt0811769
+131,1,classic,21,5,Part One,1984-01-19,tt0562893
+131,2,classic,21,6,Part Two,1984-01-20,tt0811867
+132,1,classic,21,7,Part One,1984-01-26,tt0562846
+132,2,classic,21,8,Part Two,1984-01-27,tt0811681
+132,3,classic,21,9,Part Three,1984-02-02,tt0811682
+132,4,classic,21,10,Part Four,1984-02-03,tt0811683
+133,1,classic,21,11,Part One,1984-02-08,tt0562872
+133,2,classic,21,12,Part Two,1984-02-15,tt0811835
+134,1,classic,21,13,Part One,1984-02-23,tt0562866
+134,2,classic,21,14,Part Two,1984-02-24,tt0811826
+134,3,classic,21,15,Part Three,1984-03-01,tt0811827
+134,4,classic,21,16,Part Four,1984-03-02,tt0811828
+135,1,classic,21,17,Part One,1984-03-08,tt0562896
+135,2,classic,21,18,Part Two,1984-03-09,tt0811871
+135,3,classic,21,19,Part Three,1984-03-15,tt0811872
+135,4,classic,21,20,Part Four,1984-03-16,tt0811873
+136,1,classic,21,21,Part One,1984-03-22,tt0562968
+136,2,classic,21,22,Part Two,1984-03-23,tt0811747
+136,3,classic,21,23,Part Three,1984-03-29,tt0811748
+136,4,classic,21,24,Part Four,1984-03-30,tt0811749
+137,1,classic,22,1,Part One,1985-01-05,tt0562830
+137,2,classic,22,2,Part Two,1985-01-12,tt0811654
+138,1,classic,22,3,Part One,1985-01-19,tt0562982
+138,2,classic,22,4,Part Two,1985-01-26,tt0811766
+139,1,classic,22,5,Part One,1985-02-02,tt0562931
+139,2,classic,22,6,Part Two,1985-02-09,tt0811712
+140,1,classic,22,7,Part One,1985-02-16,tt0562969
+140,2,classic,22,8,Part Two,1985-02-23,tt0811750
+140,3,classic,22,9,Part Three,1985-03-02,tt0811751
+141,1,classic,22,10,Part One,1985-03-09,tt0562980
+141,2,classic,22,11,Part Two,1985-03-16,tt0811762
+142,1,classic,22,12,Part One,1985-03-23,tt0562873
+142,2,classic,22,13,Part Two,1985-03-30,tt0811836
+143,1,classic,23,1,Part One,1986-09-06,tt0562939
+143,2,classic,23,2,Part Two,1986-09-13,tt0811716
+143,3,classic,23,3,Part Three,1986-09-20,tt0811717
+143,4,classic,23,4,Part Four,1986-09-27,tt0811718
+143,5,classic,23,5,Part Five,1986-10-04,tt0562861
+143,6,classic,23,6,Part Six,1986-10-11,tt0811814
+143,7,classic,23,7,Part Seven,1986-10-18,tt0811815
+143,8,classic,23,8,Part Eight,1986-10-25,tt0811816
+143,9,classic,23,9,Part Nine,1986-11-01,tt0562884
+143,10,classic,23,10,Part Ten,1986-11-08,tt0811850
+143,11,classic,23,11,Part Eleven,1986-11-15,tt0811851
+143,12,classic,23,12,Part Twelve,1986-11-22,tt0811852
+143,13,classic,23,13,Part Thirteen,1986-11-29,tt0562970
+143,14,classic,23,14,Part Fourteen,1986-12-06,tt0811752
+144,1,classic,24,1,Part One,1987-09-07,tt0562978
+144,2,classic,24,2,Part Two,1987-09-14,tt0811756
+144,3,classic,24,3,Part Three,1987-09-21,tt0811757
+144,4,classic,24,4,Part Four,1987-09-28,tt0811758
+145,1,classic,24,5,Part One,1987-10-05,tt0562864
+145,2,classic,24,6,Part Two,1987-10-12,tt0811820
+145,3,classic,24,7,Part Three,1987-10-19,tt0811821
+145,4,classic,24,8,Part Four,1987-10-26,tt0811822
+146,1,classic,24,9,Part One,1987-11-02,tt0562839
+146,2,classic,24,10,Part Two,1987-11-09,tt0811665
+146,3,classic,24,11,Part Three,1987-11-16,tt0811666
+147,1,classic,24,12,Part One,1987-11-23,tt0562841
+147,2,classic,24,13,Part Two,1987-11-30,tt0811670
+147,3,classic,24,14,Part Three,1987-12-07,tt0811671
+148,1,classic,25,1,Part One,1988-10-05,tt0562871
+148,2,classic,25,2,Part Two,1988-10-12,tt0811832
+148,3,classic,25,3,Part Three,1988-10-19,tt0811833
+148,4,classic,25,4,Part Four,1988-10-26,tt0811834
+149,1,classic,25,5,Part One,1988-11-02,tt0562918
+149,2,classic,25,6,Part Two,1988-11-09,tt0811692
+149,3,classic,25,7,Part Three,1988-11-16,tt0811693
+150,1,classic,25,8,Part One,1988-11-23,tt0562877
+150,2,classic,25,9,Part Two,1988-11-30,tt0811837
+150,3,classic,25,10,Part Three,1988-12-07,tt0811838
+151,1,classic,25,11,Part One,1988-12-14,tt0562914
+151,2,classic,25,12,Part Two,1988-12-21,tt0811886
+151,3,classic,25,13,Part Three,1988-12-28,tt0811887
+151,4,classic,25,14,Part Four,1989-01-04,tt0811888
+152,1,classic,26,1,Part One,1989-09-06,tt0562831
+152,2,classic,26,2,Part Two,1989-09-13,tt0811655
+152,3,classic,26,3,Part Three,1989-09-20,tt0811656
+152,4,classic,26,4,Part Four,1989-09-27,tt0811657
+153,1,classic,26,5,Part One,1989-10-04,tt0562851
+153,2,classic,26,6,Part Two,1989-10-11,tt0811687
+153,3,classic,26,7,Part Three,1989-10-18,tt0811688
+154,1,classic,26,8,Part One,1989-10-25,tt0562902
+154,2,classic,26,9,Part Two,1989-11-01,tt0811877
+154,3,classic,26,10,Part Three,1989-11-08,tt0811878
+154,4,classic,26,11,Part Four,1989-11-15,tt0811879
+155,1,classic,26,12,Part One,1989-11-22,tt0562881
+155,2,classic,26,13,Part Two,1989-11-29,tt0811845
+155,3,classic,26,14,Part Three,1989-12-06,tt0811846
+157,1,revived,1,1,Rose,2005-03-26,tt0562992
+158,1,revived,1,2,The End of the World,2005-04-02,tt0562997
+159,1,revived,1,3,The Unquiet Dead,2005-04-09,tt0563001
+160,1,revived,1,4,Aliens of London,2005-04-16,tt0562985
+160,2,revived,1,5,World War Three,2005-04-23,tt0563003
+161,1,revived,1,6,Dalek,2005-04-30,tt0562988
+162,1,revived,1,7,The Long Game,2005-05-07,tt0562999
+163,1,revived,1,8,Father's Day,2005-05-14,tt0562989
+164,1,revived,1,9,The Empty Child,2005-05-21,tt0562996
+164,2,revived,1,10,The Doctor Dances,2005-05-28,tt0562995
+165,1,revived,1,11,Boom Town,2005-06-04,tt0562987
+166,1,revived,1,12,Bad Wolf,2005-06-11,tt0562986
+166,2,revived,1,13,The Parting of the Ways,2005-06-18,tt0563000
+168,1,revived,2,1,New Earth,2006-04-15,tt0562990
+169,1,revived,2,2,Tooth and Claw,2006-04-22,tt0563002
+170,1,revived,2,3,School Reunion,2006-04-29,tt0562993
+171,1,revived,2,4,The Girl in the Fireplace,2006-05-06,tt0562998
+172,1,revived,2,5,Rise of the Cybermen,2006-05-13,tt0562991
+172,2,revived,2,6,The Age of Steel,2006-05-20,tt0756447
+173,1,revived,2,7,The Idiot's Lantern,2006-05-27,tt0756451
+174,1,revived,2,8,The Impossible Planet,2006-06-03,tt0772457
+174,2,revived,2,9,The Satan Pit,2006-06-10,tt0756448
+175,1,revived,2,10,Love & Monsters,2006-06-17,tt0766171
+176,1,revived,2,11,Fear Her,2006-06-24,tt0756446
+177,1,revived,2,12,Army of Ghosts,2006-07-01,tt0756449
+177,2,revived,2,13,Doomsday,2006-07-08,tt0756450
+179,1,revived,3,1,Smith and Jones,2007-03-31,tt0974728
+180,1,revived,3,2,The Shakespeare Code,2007-04-07,tt0974729
+181,1,revived,3,3,Gridlock,2007-04-14,tt1000253
+182,1,revived,3,4,Daleks in Manhattan,2007-04-21,tt0993186
+182,2,revived,3,5,Evolution of the Daleks,2007-04-28,tt0996572
+183,1,revived,3,6,The Lazarus Experiment,2007-05-05,tt1000257
+184,1,revived,3,7,42,2007-05-19,tt1000251
+185,1,revived,3,8,Human Nature,2007-05-26,tt1000254
+185,2,revived,3,9,The Family of Blood,2007-06-02,tt1000256
+186,1,revived,3,10,Blink,2007-06-09,tt1000252
+187,1,revived,3,11,Utopia,2007-06-16,tt1000259
+187,2,revived,3,12,The Sound of Drums,2007-06-23,tt1000258
+187,3,revived,3,13,Last of the Time Lords,2007-06-30,tt1000255
+189,1,revived,4,1,Partners in Crime,2008-04-05,tt1159991
+190,1,revived,4,2,The Fires of Pompeii,2008-04-12,tt1173173
+191,1,revived,4,3,Planet of the Ood,2008-04-19,tt1173174
+192,1,revived,4,4,The Sontaran Stratagem,2008-04-26,tt1159992
+192,2,revived,4,5,The Poison Sky,2008-05-03,tt1208127
+193,1,revived,4,6,The Doctor's Daughter,2008-05-10,tt1205439
+194,1,revived,4,7,The Unicorn and the Wasp,2008-05-17,tt1208130
+195,1,revived,4,8,Silence in the Library,2008-05-31,tt1208129
+195,2,revived,4,9,Forest of the Dead,2008-06-07,tt1205440
+196,1,revived,4,10,Midnight,2008-06-14,tt1208128
+197,1,revived,4,11,Turn Left,2008-06-21,tt1205436
+198,1,revived,4,12,The Stolen Earth,2008-06-28,tt1205437
+198,2,revived,4,13,Journey's End,2008-07-05,tt1205438
+203,1,revived,5,1,The Eleventh Hour,2010-04-03,tt1577256
+204,1,revived,5,2,The Beast Below,2010-04-10,tt1577257
+205,1,revived,5,3,Victory of the Daleks,2010-04-17,tt1577258
+206,1,revived,5,4,The Time of Angels,2010-04-24,tt1577259
+206,2,revived,5,5,Flesh and Stone,2010-05-01,tt1589021
+207,1,revived,5,6,The Vampires of Venice,2010-05-08,tt1591787
+208,1,revived,5,7,Amy's Choice,2010-05-15,tt1591788
+209,1,revived,5,8,The Hungry Earth,2010-05-22,tt1591789
+209,2,revived,5,9,Cold Blood,2010-05-29,tt1591790
+210,1,revived,5,10,Vincent and the Doctor,2010-06-05,tt1591786
+211,1,revived,5,11,The Lodger,2010-06-12,tt1607757
+212,1,revived,5,12,The Pandorica Opens,2010-06-19,tt1607758
+212,2,revived,5,13,The Big Bang,2010-06-26,tt1607759
+214,1,revived,6,1,The Impossible Astronaut,2011-04-23,tt1723888
+214,2,revived,6,2,Day of the Moon,2011-04-30,tt1723889
+215,1,revived,6,3,The Curse of the Black Spot,2011-05-07,tt1721225
+216,1,revived,6,4,The Doctor's Wife,2011-05-14,tt1721226
+217,1,revived,6,5,The Rebel Flesh,2011-05-21,tt1777783
+217,2,revived,6,6,The Almost People,2011-05-28,tt1777782
+218,1,revived,6,7,A Good Man Goes to War,2011-06-04,tt1777781
+219,1,revived,6,8,Let's Kill Hitler,2011-08-27,tt1795142
+220,1,revived,6,9,Night Terrors,2011-09-03,tt1795143
+221,1,revived,6,10,The Girl Who Waited,2011-09-10,tt1795139
+222,1,revived,6,11,The God Complex,2011-09-17,tt1795140
+223,1,revived,6,12,Closing Time,2011-09-24,tt1795141
+224,1,revived,6,13,The Wedding of River Song,2011-10-01,tt1824359
+226,1,revived,7,1,Asylum of the Daleks,2012-09-01,tt2402301
+227,1,revived,7,2,Dinosaurs on a Spaceship,2012-09-08,tt2317659
+228,1,revived,7,3,A Town Called Mercy,2012-09-15,tt2340501
+229,1,revived,7,4,The Power of Three,2012-09-22,tt2399633
+230,1,revived,7,5,The Angels Take Manhattan,2012-09-29,tt2378951
+232,1,revived,7,6,The Bells of Saint John,2013-03-30,tt2222152
+233,1,revived,7,7,The Rings of Akhaten,2013-04-06,tt2284610
+234,1,revived,7,8,Cold War,2013-04-13,tt2267312
+235,1,revived,7,9,Hide,2013-04-20,tt2267332
+236,1,revived,7,10,Journey to the Centre of the TARDIS,2013-04-27,tt2267326
+237,1,revived,7,11,The Crimson Horror,2013-05-04,tt2204480
+238,1,revived,7,12,Nightmare in Silver,2013-05-11,tt2267338
+239,1,revived,7,13,The Name of the Doctor,2013-05-18,tt2267346
+242,1,revived,8,1,Deep Breath,2014-08-23,tt3469416
+243,1,revived,8,2,Into the Dalek,2014-08-30,tt3737226
+244,1,revived,8,3,Robot of Sherwood,2014-09-06,tt3714112
+245,1,revived,8,4,Listen,2014-09-13,tt3745430
+246,1,revived,8,5,Time Heist,2014-09-20,tt3845940
+247,1,revived,8,6,The Caretaker,2014-09-27,tt3845938
+248,1,revived,8,7,Kill the Moon,2014-10-04,tt3787384
+249,1,revived,8,8,Mummy on the Orient Express,2014-10-11,tt3787400
+250,1,revived,8,9,Flatline,2014-10-18,tt3834038
+251,1,revived,8,10,In the Forest of the Night,2014-10-25,tt3834040
+252,1,revived,8,11,Dark Water,2014-11-01,tt3834042
+252,2,revived,8,12,Death in Heaven,2014-11-08,tt3834044
+254,1,revived,9,1,The Magician's Apprentice,2015-09-19,tt4289846
+254,2,revived,9,2,The Witch's Familiar,2015-09-26,tt4464958
+255,1,revived,9,3,Under the Lake,2015-10-03,tt4483506
+255,2,revived,9,4,Before the Flood,2015-10-10,tt4483520
+256,1,revived,9,5,The Girl Who Died,2015-10-17,tt4507160
+257,1,revived,9,6,The Woman Who Lived,2015-10-24,tt4545140
+258,1,revived,9,7,The Zygon Invasion,2015-10-31,tt4652840
+258,2,revived,9,8,The Zygon Inversion,2015-11-07,tt4652846
+259,1,revived,9,9,Sleep No More,2015-11-14,tt4787004
+260,1,revived,9,10,Face the Raven,2015-11-21,tt4701538
+261,1,revived,9,11,Heaven Sent,2015-11-28,tt4701542
+262,1,revived,9,12,Hell Bent,2015-12-05,tt4701544
+265,1,revived,10,1,The Pilot,2017-04-15,tt5848216
+266,1,revived,10,2,Smile,2017-04-22,tt5985750
+267,1,revived,10,3,Thin Ice,2017-04-29,tt5985752
+268,1,revived,10,4,Knock Knock,2017-05-06,tt5985754
+269,1,revived,10,5,Oxygen,2017-05-13,tt6250146
+270,1,revived,10,6,Extremis,2017-05-20,tt6340130
+271,1,revived,10,7,The Pyramid at the End of the World,2017-05-27,tt6336800
+272,1,revived,10,8,The Lie of the Land,2017-06-03,tt6333372
+273,1,revived,10,9,Empress of Mars,2017-06-10,tt6340134
+274,1,revived,10,10,The Eaters of Light,2017-06-17,tt6250158
+275,1,revived,10,11,World Enough and Time,2017-06-24,tt6340138
+275,2,revived,10,12,The Doctor Falls,2017-07-01,tt6340142
+277,1,revived,11,1,The Woman Who Fell to Earth,2018-10-07,tt7542168
+278,1,revived,11,2,The Ghost Monument,2018-10-14,tt7558994
+279,1,revived,11,3,Rosa,2018-10-21,tt7689190
+280,1,revived,11,4,Arachnids in the UK,2018-10-28,tt7689200
+281,1,revived,11,5,The Tsuranga Conundrum,2018-11-04,tt7693260
+282,1,revived,11,6,Demons of the Punjab,2018-11-11,tt7693262
+283,1,revived,11,7,Kerblam!,2018-11-18,tt7693268
+284,1,revived,11,8,The Witchfinders,2018-11-25,tt7693274
+285,1,revived,11,9,It Takes You Away,2018-12-02,tt7693276
+286,1,revived,11,10,The Battle of Ranskoor Av Kolos,2018-12-09,tt7693280
+288,1,revived,12,1,"Spyfall, Part 1",2020-01-01,tt9354122
+288,2,revived,12,2,"Spyfall, Part 2",2020-01-05,tt9354166
+289,1,revived,12,3,Orphan 55,2020-01-12,tt9354208
+290,1,revived,12,4,Nikola Tesla's Night of Terror,2020-01-19,tt9354212
+291,1,revived,12,5,Fugitive of the Judoon,2020-01-26,tt9354216
+292,1,revived,12,6,Praxeus,2020-02-02,tt9354222
+293,1,revived,12,7,Can You Hear Me?,2020-02-09,tt9361014
+294,1,revived,12,8,The Haunting of Villa Diodati,2020-02-16,tt9361038
+295,1,revived,12,9,Ascension of the Cybermen,2020-02-23,tt9361042
+295,2,revived,12,10,The Timeless Children,2020-03-01,tt9361046
+297,1,revived,13,1,The Halloween Apocalypse,2021-10-31,tt13456370
+297,2,revived,13,2,War of the Sontarans,2021-11-07,tt13464078
+297,3,revived,13,3,"Once, Upon Time",2021-11-14,tt13469788
+297,4,revived,13,4,Village of the Angels,2021-11-21,tt13469792
+297,5,revived,13,5,Survivors of the Flux,2021-11-28,tt13469800
+297,6,revived,13,6,The Vanquishers,2021-12-05,tt13469804
+305,1,revived,14,1,Space Babies,2024-05-11,tt28289436
+306,1,revived,14,2,The Devil's Chord,2024-05-11,tt28306434
+307,1,revived,14,3,Boom,2024-05-18,tt28764112
+308,1,revived,14,4,73 Yards,2024-05-25,tt28704625
+309,1,revived,14,5,Dot and Bubble,2024-06-01,tt28718575
+310,1,revived,14,6,Rogue,2024-06-08,tt28764089
+311,1,revived,14,7,The Legend of Ruby Sunday,2024-06-15,tt28306439
+311,2,revived,14,8,Empire of Death,2024-06-22,tt28306442
+313,1,revived,15,1,The Robot Revolution,2025-04-12,tt29517777
+314,1,revived,15,2,Lux,2025-04-19,tt32800925
+315,1,revived,15,3,The Well,2025-04-26,tt32800929
+316,1,revived,15,4,Lucky Day,2025-05-03,tt35930919
+317,1,revived,15,5,The Story & the Engine,2025-05-10,tt35930926
+318,1,revived,15,6,The Interstellar Song Contest,2025-05-17,tt35930933
+319,1,revived,15,7,Wish World,2025-05-24,tt35930944
+319,2,revived,15,8,The Reality War,2025-05-31,tt35930949

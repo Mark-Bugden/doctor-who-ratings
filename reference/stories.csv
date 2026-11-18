@@ -1,0 +1,292 @@
+story,era,season,doctor,title,writers,directors
+1,classic,1,William Hartnell,An Unearthly Child,Anthony Coburn; C. E. Webber,Waris Hussein
+2,classic,1,William Hartnell,The Daleks,Terry Nation,Christopher Barry; Richard Martin
+3,classic,1,William Hartnell,The Edge of Destruction,David Whitaker,Richard Martin; Frank Cox
+4,classic,1,William Hartnell,Marco Polo,John Lucarotti,Waris Hussein; John Crockett
+5,classic,1,William Hartnell,The Keys of Marinus,Terry Nation,John Gorrie
+6,classic,1,William Hartnell,The Aztecs,John Lucarotti,John Crockett
+7,classic,1,William Hartnell,The Sensorites,Peter R. Newman,Mervyn Pinfield; Frank Cox
+8,classic,1,William Hartnell,The Reign of Terror,Dennis Spooner,Henric Hirsch
+9,classic,2,William Hartnell,Planet of Giants,Louis Marks,Mervyn Pinfield; Douglas Camfield
+10,classic,2,William Hartnell,The Dalek Invasion of Earth,Terry Nation,Richard Martin
+11,classic,2,William Hartnell,The Rescue,David Whitaker,Christopher Barry
+12,classic,2,William Hartnell,The Romans,Dennis Spooner,Christopher Barry
+13,classic,2,William Hartnell,The Web Planet,Bill Strutton,Richard Martin
+14,classic,2,William Hartnell,The Crusade,David Whitaker,Douglas Camfield
+15,classic,2,William Hartnell,The Space Museum,Glyn Jones,Mervyn Pinfield
+16,classic,2,William Hartnell,The Chase,Terry Nation,Richard Martin
+17,classic,2,William Hartnell,The Time Meddler,Dennis Spooner,Douglas Camfield
+18,classic,3,William Hartnell,Galaxy 4,William Emms,Derek Martinus
+19,classic,3,William Hartnell,Mission to the Unknown,Terry Nation,Derek Martinus
+20,classic,3,William Hartnell,The Myth Makers,Donald Cotton,Michael Leeston-Smith
+21,classic,3,William Hartnell,The Daleks' Master Plan,Terry Nation; Dennis Spooner,Douglas Camfield
+22,classic,3,William Hartnell,The Massacre,John Lucarotti; Donald Tosh,Paddy Russell
+23,classic,3,William Hartnell,The Ark,Paul Erickson; Lesley Scott,Michael Imison
+24,classic,3,William Hartnell,The Celestial Toymaker,Brian Hayles,Bill Sellars
+25,classic,3,William Hartnell,The Gunfighters,Donald Cotton,Rex Tucker
+26,classic,3,William Hartnell,The Savages,Ian Stuart Black,Christopher Barry
+27,classic,3,William Hartnell,The War Machines,Ian Stuart Black,Michael Ferguson
+28,classic,4,William Hartnell,The Smugglers,Brian Hayles,Julia Smith
+29,classic,4,William Hartnell,The Tenth Planet,Kit Pedler; Gerry Davis,Derek Martinus
+30,classic,4,Patrick Troughton,The Power of the Daleks,David Whitaker; Dennis Spooner,Christopher Barry
+31,classic,4,Patrick Troughton,The Highlanders,Elwyn Jones; Gerry Davis,Hugh David
+32,classic,4,Patrick Troughton,The Underwater Menace,Geoffrey Orme,Julia Smith
+33,classic,4,Patrick Troughton,The Moonbase,Kit Pedler,Morris Barry
+34,classic,4,Patrick Troughton,The Macra Terror,Ian Stuart Black,John Davies
+35,classic,4,Patrick Troughton,The Faceless Ones,David Ellis; Malcolm Hulke,Gerry Mill
+36,classic,4,Patrick Troughton,The Evil of the Daleks,David Whitaker,Derek Martinus
+37,classic,5,Patrick Troughton,The Tomb of the Cybermen,Kit Pedler; Gerry Davis,Morris Barry
+38,classic,5,Patrick Troughton,The Abominable Snowmen,Mervyn Haisman; Henry Lincoln,Gerald Blake
+39,classic,5,Patrick Troughton,The Ice Warriors,Brian Hayles,Derek Martinus
+40,classic,5,Patrick Troughton,The Enemy of the World,David Whitaker,Barry Letts
+41,classic,5,Patrick Troughton,The Web of Fear,Mervyn Haisman; Henry Lincoln,Douglas Camfield
+42,classic,5,Patrick Troughton,Fury from the Deep,Victor Pemberton,Hugh David
+43,classic,5,Patrick Troughton,The Wheel in Space,David Whitaker; Kit Pedler,Tristan DeVere Cole
+44,classic,6,Patrick Troughton,The Dominators,Mervyn Haisman; Henry Lincoln,Morris Barry
+45,classic,6,Patrick Troughton,The Mind Robber,Derrick Sherwin; Peter Ling,David Maloney
+46,classic,6,Patrick Troughton,The Invasion,Derrick Sherwin; Kit Pedler,Douglas Camfield
+47,classic,6,Patrick Troughton,The Krotons,Robert Holmes,David Maloney
+48,classic,6,Patrick Troughton,The Seeds of Death,Brian Hayles; Terrance Dicks,Michael Ferguson
+49,classic,6,Patrick Troughton,The Space Pirates,Robert Holmes,Michael Hart
+50,classic,6,Patrick Troughton,The War Games,Terrance Dicks; Malcolm Hulke,David Maloney
+51,classic,7,Jon Pertwee,Spearhead from Space,Robert Holmes,Derek Martinus
+52,classic,7,Jon Pertwee,Doctor Who and the Silurians,Malcolm Hulke,Timothy Combe
+53,classic,7,Jon Pertwee,The Ambassadors of Death,David Whitaker; Trevor Ray; Malcolm Hulke,Michael Ferguson
+54,classic,7,Jon Pertwee,Inferno,Don Houghton,Douglas Camfield; Barry Letts
+55,classic,8,Jon Pertwee,Terror of the Autons,Robert Holmes,Barry Letts
+56,classic,8,Jon Pertwee,The Mind of Evil,Don Houghton,Timothy Combe
+57,classic,8,Jon Pertwee,The Claws of Axos,Bob Baker; Dave Martin,Michael Ferguson
+58,classic,8,Jon Pertwee,Colony in Space,Malcolm Hulke,Michael E. Briant
+59,classic,8,Jon Pertwee,The Dæmons,Robert Sloman; Barry Letts,Christopher Barry
+60,classic,9,Jon Pertwee,Day of the Daleks,Louis Marks,Paul Bernard
+61,classic,9,Jon Pertwee,The Curse of Peladon,Brian Hayles,Lennie Mayne
+62,classic,9,Jon Pertwee,The Sea Devils,Malcolm Hulke,Michael E. Briant
+63,classic,9,Jon Pertwee,The Mutants,Bob Baker; Dave Martin,Christopher Barry
+64,classic,9,Jon Pertwee,The Time Monster,Robert Sloman; Barry Letts,Paul Bernard
+65,classic,10,Jon Pertwee,The Three Doctors,Bob Baker; Dave Martin,Lennie Mayne
+66,classic,10,Jon Pertwee,Carnival of Monsters,Robert Holmes,Barry Letts
+67,classic,10,Jon Pertwee,Frontier in Space,Malcolm Hulke,Paul Bernard
+68,classic,10,Jon Pertwee,Planet of the Daleks,Terry Nation,David Maloney
+69,classic,10,Jon Pertwee,The Green Death,Robert Sloman; Barry Letts,Michael E. Briant
+70,classic,11,Jon Pertwee,The Time Warrior,Robert Holmes,Alan Bromly
+71,classic,11,Jon Pertwee,Invasion of the Dinosaurs,Malcolm Hulke,Paddy Russell
+72,classic,11,Jon Pertwee,Death to the Daleks,Terry Nation,Michael E. Briant
+73,classic,11,Jon Pertwee,The Monster of Peladon,Brian Hayles,Lennie Mayne
+74,classic,11,Jon Pertwee,Planet of the Spiders,Robert Sloman; Barry Letts,Barry Letts
+75,classic,12,Tom Baker,Robot,Terrance Dicks,Christopher Barry
+76,classic,12,Tom Baker,The Ark in Space,Robert Holmes,Rodney Bennett
+77,classic,12,Tom Baker,The Sontaran Experiment,Bob Baker; Dave Martin,Rodney Bennett
+78,classic,12,Tom Baker,Genesis of the Daleks,Terry Nation,David Maloney
+79,classic,12,Tom Baker,Revenge of the Cybermen,Gerry Davis,Michael E. Briant
+80,classic,13,Tom Baker,Terror of the Zygons,Robert Banks Stewart,Douglas Camfield
+81,classic,13,Tom Baker,Planet of Evil,Louis Marks,David Maloney
+82,classic,13,Tom Baker,Pyramids of Mars,Lewis Greifer; Robert Holmes,Paddy Russell
+83,classic,13,Tom Baker,The Android Invasion,Terry Nation,Barry Letts
+84,classic,13,Tom Baker,The Brain of Morbius,Terrance Dicks; Robert Holmes,Christopher Barry
+85,classic,13,Tom Baker,The Seeds of Doom,Robert Banks Stewart,Douglas Camfield
+86,classic,14,Tom Baker,The Masque of Mandragora,Louis Marks,Rodney Bennett
+87,classic,14,Tom Baker,The Hand of Fear,Bob Baker; Dave Martin,Lennie Mayne
+88,classic,14,Tom Baker,The Deadly Assassin,Robert Holmes,David Maloney
+89,classic,14,Tom Baker,The Face of Evil,Chris Boucher,Pennant Roberts
+90,classic,14,Tom Baker,The Robots of Death,Chris Boucher,Michael E. Briant
+91,classic,14,Tom Baker,The Talons of Weng-Chiang,Robert Holmes,David Maloney
+92,classic,15,Tom Baker,Horror of Fang Rock,Terrance Dicks,Paddy Russell
+93,classic,15,Tom Baker,The Invisible Enemy,Bob Baker; Dave Martin,Derrick Goodwin
+94,classic,15,Tom Baker,Image of the Fendahl,Chris Boucher,George Spenton-Foster
+95,classic,15,Tom Baker,The Sun Makers,Robert Holmes,Pennant Roberts
+96,classic,15,Tom Baker,Underworld,Bob Baker; Dave Martin,Norman Stewart
+97,classic,15,Tom Baker,The Invasion of Time,Graham Williams; Anthony Read,Gerald Blake
+98,classic,16,Tom Baker,The Ribos Operation,Robert Holmes,George Spenton-Foster
+99,classic,16,Tom Baker,The Pirate Planet,Douglas Adams,Pennant Roberts
+100,classic,16,Tom Baker,The Stones of Blood,David Fisher,Darrol Blake
+101,classic,16,Tom Baker,The Androids of Tara,David Fisher,Michael Hayes
+102,classic,16,Tom Baker,The Power of Kroll,Robert Holmes,Norman Stewart
+103,classic,16,Tom Baker,The Armageddon Factor,Bob Baker; Dave Martin,Michael Hayes
+104,classic,17,Tom Baker,Destiny of the Daleks,Terry Nation,Ken Grieve
+105,classic,17,Tom Baker,City of Death,Douglas Adams; Graham Williams; David Fisher,Michael Hayes
+106,classic,17,Tom Baker,The Creature from the Pit,David Fisher,Christopher Barry
+107,classic,17,Tom Baker,Nightmare of Eden,Bob Baker,Alan Bromly
+108,classic,17,Tom Baker,The Horns of Nimon,Anthony Read,Kenny McBain
+109,classic,18,Tom Baker,The Leisure Hive,David Fisher,Lovett Bickford
+110,classic,18,Tom Baker,Meglos,John Flanagan; Andrew McCulloch,Terence Dudley
+111,classic,18,Tom Baker,Full Circle,Andrew Smith,Peter Grimwade
+112,classic,18,Tom Baker,State of Decay,Terrance Dicks,Peter Moffatt
+113,classic,18,Tom Baker,Warriors' Gate,Stephen Gallagher,Paul Joyce; Graeme Harper
+114,classic,18,Tom Baker,The Keeper of Traken,Johnny Byrne,John Black
+115,classic,18,Tom Baker,Logopolis,Christopher H. Bidmead,Peter Grimwade
+116,classic,19,Peter Davison,Castrovalva,Christopher H. Bidmead,Fiona Cumming
+117,classic,19,Peter Davison,Four to Doomsday,Terence Dudley,John Black
+118,classic,19,Peter Davison,Kinda,Christopher Bailey,Peter Grimwade
+119,classic,19,Peter Davison,The Visitation,Eric Saward,Peter Moffatt
+120,classic,19,Peter Davison,Black Orchid,Terence Dudley,Ron Jones
+121,classic,19,Peter Davison,Earthshock,Eric Saward,Peter Grimwade
+122,classic,19,Peter Davison,Time-Flight,Peter Grimwade,Ron Jones
+123,classic,20,Peter Davison,Arc of Infinity,Johnny Byrne,Ron Jones
+124,classic,20,Peter Davison,Snakedance,Christopher Bailey,Fiona Cumming
+125,classic,20,Peter Davison,Mawdryn Undead,Peter Grimwade,Peter Moffatt
+126,classic,20,Peter Davison,Terminus,Stephen Gallagher,Mary Ridge
+127,classic,20,Peter Davison,Enlightenment,Barbara Clegg,Fiona Cumming
+128,classic,20,Peter Davison,The King's Demons,Terence Dudley,Tony Virgo
+130,classic,21,Peter Davison,Warriors of the Deep,Johnny Byrne,Pennant Roberts
+131,classic,21,Peter Davison,The Awakening,Eric Pringle,Michael Owen Morris
+132,classic,21,Peter Davison,Frontios,Christopher H. Bidmead,Ron Jones
+133,classic,21,Peter Davison,Resurrection of the Daleks,Eric Saward,Matthew Robinson
+134,classic,21,Peter Davison,Planet of Fire,Peter Grimwade,Fiona Cumming
+135,classic,21,Peter Davison,The Caves of Androzani,Robert Holmes,Graeme Harper
+136,classic,21,Colin Baker,The Twin Dilemma,Anthony Steven,Peter Moffatt
+137,classic,22,Colin Baker,Attack of the Cybermen,Paula Moore,Matthew Robinson
+138,classic,22,Colin Baker,Vengeance on Varos,Philip Martin,Ron Jones
+139,classic,22,Colin Baker,The Mark of the Rani,Pip Baker; Jane Baker,Sarah Hellings
+140,classic,22,Colin Baker,The Two Doctors,Robert Holmes,Peter Moffatt
+141,classic,22,Colin Baker,Timelash,Glen McCoy,Pennant Roberts
+142,classic,22,Colin Baker,Revelation of the Daleks,Eric Saward,Graeme Harper
+143,classic,23,Colin Baker,The Trial of a Time Lord,Robert Holmes; Philip Martin; Pip Baker; Jane Baker,Nicholas Mallett; Ron Jones; Chris Clough
+144,classic,24,Sylvester McCoy,Time and the Rani,Pip Baker; Jane Baker,Andrew Morgan
+145,classic,24,Sylvester McCoy,Paradise Towers,Stephen Wyatt,Nicholas Mallett
+146,classic,24,Sylvester McCoy,Delta and the Bannermen,Malcolm Kohll,Chris Clough
+147,classic,24,Sylvester McCoy,Dragonfire,Ian Briggs,Chris Clough
+148,classic,25,Sylvester McCoy,Remembrance of the Daleks,Ben Aaronovitch,Andrew Morgan
+149,classic,25,Sylvester McCoy,The Happiness Patrol,Graeme Curry,Chris Clough
+150,classic,25,Sylvester McCoy,Silver Nemesis,Kevin Clarke,Chris Clough
+151,classic,25,Sylvester McCoy,The Greatest Show in the Galaxy,Stephen Wyatt,Alan Wareing
+152,classic,26,Sylvester McCoy,Battlefield,Ben Aaronovitch,Michael Kerrigan
+153,classic,26,Sylvester McCoy,Ghost Light,Marc Platt,Alan Wareing
+154,classic,26,Sylvester McCoy,The Curse of Fenric,Ian Briggs,Nicholas Mallett
+155,classic,26,Sylvester McCoy,Survival,Rona Munro,Alan Wareing
+157,revived,1,Christopher Eccleston,Rose,Russell T Davies,Keith Boak
+158,revived,1,Christopher Eccleston,The End of the World,Russell T Davies,Euros Lyn
+159,revived,1,Christopher Eccleston,The Unquiet Dead,Mark Gatiss,Euros Lyn
+160,revived,1,Christopher Eccleston,Aliens of London / World War Three,Russell T Davies,Keith Boak
+161,revived,1,Christopher Eccleston,Dalek,Robert Shearman,Joe Ahearne
+162,revived,1,Christopher Eccleston,The Long Game,Russell T Davies,Brian Grant
+163,revived,1,Christopher Eccleston,Father's Day,Paul Cornell,Joe Ahearne
+164,revived,1,Christopher Eccleston,The Empty Child / The Doctor Dances,Steven Moffat,James Hawes
+165,revived,1,Christopher Eccleston,Boom Town,Russell T Davies,Joe Ahearne
+166,revived,1,Christopher Eccleston,Bad Wolf / The Parting of the Ways,Russell T Davies,Joe Ahearne
+168,revived,2,David Tennant,New Earth,Russell T Davies,James Hawes
+169,revived,2,David Tennant,Tooth and Claw,Russell T Davies,Euros Lyn
+170,revived,2,David Tennant,School Reunion,Toby Whithouse,James Hawes
+171,revived,2,David Tennant,The Girl in the Fireplace,Steven Moffat,Euros Lyn
+172,revived,2,David Tennant,Rise of the Cybermen / The Age of Steel,Tom MacRae,Graeme Harper
+173,revived,2,David Tennant,The Idiot's Lantern,Mark Gatiss,Euros Lyn
+174,revived,2,David Tennant,The Impossible Planet / The Satan Pit,Matt Jones,James Strong
+175,revived,2,David Tennant,Love & Monsters,Russell T Davies,Dan Zeff
+176,revived,2,David Tennant,Fear Her,Matthew Graham,Euros Lyn
+177,revived,2,David Tennant,Army of Ghosts / Doomsday,Russell T Davies,Graeme Harper
+179,revived,3,David Tennant,Smith and Jones,Russell T Davies,Charles Palmer
+180,revived,3,David Tennant,The Shakespeare Code,Gareth Roberts,Charles Palmer
+181,revived,3,David Tennant,Gridlock,Russell T Davies,Richard Clark
+182,revived,3,David Tennant,Daleks in Manhattan / Evolution of the Daleks,Helen Raynor,James Strong
+183,revived,3,David Tennant,The Lazarus Experiment,Stephen Greenhorn,Richard Clark
+184,revived,3,David Tennant,42,Chris Chibnall,Graeme Harper
+185,revived,3,David Tennant,Human Nature / The Family of Blood,Paul Cornell,Charles Palmer
+186,revived,3,David Tennant,Blink,Steven Moffat,Hettie MacDonald
+187,revived,3,David Tennant,Utopia / The Sound of Drums / Last of the Time Lords,Russell T Davies,Graeme Harper; Colin Teague
+189,revived,4,David Tennant,Partners in Crime,Russell T Davies,James Strong
+190,revived,4,David Tennant,The Fires of Pompeii,James Moran,Colin Teague
+191,revived,4,David Tennant,Planet of the Ood,Keith Temple,Graeme Harper
+192,revived,4,David Tennant,The Sontaran Stratagem / The Poison Sky,Helen Raynor,Douglas Mackinnon
+193,revived,4,David Tennant,The Doctor's Daughter,Stephen Greenhorn,Alice Troughton
+194,revived,4,David Tennant,The Unicorn and the Wasp,Gareth Roberts,Graeme Harper
+195,revived,4,David Tennant,Silence in the Library / Forest of the Dead,Steven Moffat,Euros Lyn
+196,revived,4,David Tennant,Midnight,Russell T Davies,Alice Troughton
+197,revived,4,David Tennant,Turn Left,Russell T Davies,Graeme Harper
+198,revived,4,David Tennant,The Stolen Earth / Journey's End,Russell T Davies,Graeme Harper
+203,revived,5,Matt Smith,The Eleventh Hour,Steven Moffat,Adam Smith
+204,revived,5,Matt Smith,The Beast Below,Steven Moffat,Andrew Gunn
+205,revived,5,Matt Smith,Victory of the Daleks,Mark Gatiss,Andrew Gunn
+206,revived,5,Matt Smith,The Time of Angels / Flesh and Stone,Steven Moffat,Adam Smith
+207,revived,5,Matt Smith,The Vampires of Venice,Toby Whithouse,Jonny Campbell
+208,revived,5,Matt Smith,Amy's Choice,Simon Nye,Catherine Morshead
+209,revived,5,Matt Smith,The Hungry Earth / Cold Blood,Chris Chibnall,Ashley Way
+210,revived,5,Matt Smith,Vincent and the Doctor,Richard Curtis,Jonny Campbell
+211,revived,5,Matt Smith,The Lodger,Gareth Roberts,Catherine Morshead
+212,revived,5,Matt Smith,The Pandorica Opens / The Big Bang,Steven Moffat,Toby Haynes
+214,revived,6,Matt Smith,The Impossible Astronaut / Day of the Moon,Steven Moffat,Toby Haynes
+215,revived,6,Matt Smith,The Curse of the Black Spot,Stephen Thompson,Jeremy Webb
+216,revived,6,Matt Smith,The Doctor's Wife,Neil Gaiman,Richard Clark
+217,revived,6,Matt Smith,The Rebel Flesh / The Almost People,Matthew Graham,Julian Simpson
+218,revived,6,Matt Smith,A Good Man Goes to War,Steven Moffat,Peter Hoar
+219,revived,6,Matt Smith,Let's Kill Hitler,Steven Moffat,Richard Senior
+220,revived,6,Matt Smith,Night Terrors,Mark Gatiss,Richard Clark
+221,revived,6,Matt Smith,The Girl Who Waited,Tom MacRae,Nick Hurran
+222,revived,6,Matt Smith,The God Complex,Toby Whithouse,Nick Hurran
+223,revived,6,Matt Smith,Closing Time,Gareth Roberts,Steve Hughes
+224,revived,6,Matt Smith,The Wedding of River Song,Steven Moffat,Jeremy Webb
+226,revived,7,Matt Smith,Asylum of the Daleks,Steven Moffat,Nick Hurran
+227,revived,7,Matt Smith,Dinosaurs on a Spaceship,Chris Chibnall,Saul Metzstein
+228,revived,7,Matt Smith,A Town Called Mercy,Toby Whithouse,Saul Metzstein
+229,revived,7,Matt Smith,The Power of Three,Chris Chibnall,Douglas Mackinnon
+230,revived,7,Matt Smith,The Angels Take Manhattan,Steven Moffat,Nick Hurran
+232,revived,7,Matt Smith,The Bells of Saint John,Steven Moffat,Colm McCarthy
+233,revived,7,Matt Smith,The Rings of Akhaten,Neil Cross,Farren Blackburn
+234,revived,7,Matt Smith,Cold War,Mark Gatiss,Douglas Mackinnon
+235,revived,7,Matt Smith,Hide,Neil Cross,Jamie Payne
+236,revived,7,Matt Smith,Journey to the Centre of the TARDIS,Stephen Thompson,Mat King
+237,revived,7,Matt Smith,The Crimson Horror,Mark Gatiss,Saul Metzstein
+238,revived,7,Matt Smith,Nightmare in Silver,Neil Gaiman,Stephen Woolfenden
+239,revived,7,Matt Smith,The Name of the Doctor,Steven Moffat,Saul Metzstein
+242,revived,8,Peter Capaldi,Deep Breath,Steven Moffat,Ben Wheatley
+243,revived,8,Peter Capaldi,Into the Dalek,Phil Ford; Steven Moffat,Ben Wheatley
+244,revived,8,Peter Capaldi,Robot of Sherwood,Mark Gatiss,Paul Murphy
+245,revived,8,Peter Capaldi,Listen,Steven Moffat,Douglas Mackinnon
+246,revived,8,Peter Capaldi,Time Heist,Stephen Thompson; Steven Moffat,Douglas Mackinnon
+247,revived,8,Peter Capaldi,The Caretaker,Gareth Roberts; Steven Moffat,Paul Murphy
+248,revived,8,Peter Capaldi,Kill the Moon,Peter Harness,Paul Wilmshurst
+249,revived,8,Peter Capaldi,Mummy on the Orient Express,Jamie Mathieson,Paul Wilmshurst
+250,revived,8,Peter Capaldi,Flatline,Jamie Mathieson,Douglas Mackinnon
+251,revived,8,Peter Capaldi,In the Forest of the Night,Frank Cottrell-Boyce,Sheree Folkson
+252,revived,8,Peter Capaldi,Dark Water / Death in Heaven,Steven Moffat,Rachel Talalay
+254,revived,9,Peter Capaldi,The Magician's Apprentice / The Witch's Familiar,Steven Moffat,Hettie MacDonald
+255,revived,9,Peter Capaldi,Under the Lake / Before the Flood,Toby Whithouse,Daniel O'Hara
+256,revived,9,Peter Capaldi,The Girl Who Died,Jamie Mathieson; Steven Moffat,Ed Bazalgette
+257,revived,9,Peter Capaldi,The Woman Who Lived,Catherine Tregenna,Ed Bazalgette
+258,revived,9,Peter Capaldi,The Zygon Invasion / The Zygon Inversion,Peter Harness; Steven Moffat,Daniel Nettheim
+259,revived,9,Peter Capaldi,Sleep No More,Mark Gatiss,Justin Molotnikov
+260,revived,9,Peter Capaldi,Face the Raven,Sarah Dollard,Justin Molotnikov
+261,revived,9,Peter Capaldi,Heaven Sent,Steven Moffat,Rachel Talalay
+262,revived,9,Peter Capaldi,Hell Bent,Steven Moffat,Rachel Talalay
+265,revived,10,Peter Capaldi,The Pilot,Steven Moffat,Lawrence Gough
+266,revived,10,Peter Capaldi,Smile,Frank Cottrell-Boyce,Lawrence Gough
+267,revived,10,Peter Capaldi,Thin Ice,Sarah Dollard,Bill Anderson
+268,revived,10,Peter Capaldi,Knock Knock,Mike Bartlett,Bill Anderson
+269,revived,10,Peter Capaldi,Oxygen,Jamie Mathieson,Charles Palmer
+270,revived,10,Peter Capaldi,Extremis,Steven Moffat,Daniel Nettheim
+271,revived,10,Peter Capaldi,The Pyramid at the End of the World,Peter Harness; Steven Moffat,Daniel Nettheim
+272,revived,10,Peter Capaldi,The Lie of the Land,Toby Whithouse,Wayne Yip
+273,revived,10,Peter Capaldi,Empress of Mars,Mark Gatiss,Wayne Yip
+274,revived,10,Peter Capaldi,The Eaters of Light,Rona Munro,Charles Palmer
+275,revived,10,Peter Capaldi,World Enough and Time / The Doctor Falls,Steven Moffat,Rachel Talalay
+277,revived,11,Jodie Whittaker,The Woman Who Fell to Earth,Chris Chibnall,Jamie Childs
+278,revived,11,Jodie Whittaker,The Ghost Monument,Chris Chibnall,Mark Tonderai
+279,revived,11,Jodie Whittaker,Rosa,Malorie Blackman; Chris Chibnall,Mark Tonderai
+280,revived,11,Jodie Whittaker,Arachnids in the UK,Chris Chibnall,Sallie Aprahamian
+281,revived,11,Jodie Whittaker,The Tsuranga Conundrum,Chris Chibnall,Jennifer Perrott
+282,revived,11,Jodie Whittaker,Demons of the Punjab,Vinay Patel,Jamie Childs
+283,revived,11,Jodie Whittaker,Kerblam!,Pete McTighe,Jennifer Perrott
+284,revived,11,Jodie Whittaker,The Witchfinders,Joy Wilkinson,Sallie Aprahamian
+285,revived,11,Jodie Whittaker,It Takes You Away,Ed Hime,Jamie Childs
+286,revived,11,Jodie Whittaker,The Battle of Ranskoor Av Kolos,Chris Chibnall,Jamie Childs
+288,revived,12,Jodie Whittaker,Spyfall,Chris Chibnall,Jamie Magnus Stone; Lee Haven Jones
+289,revived,12,Jodie Whittaker,Orphan 55,Ed Hime,Lee Haven Jones
+290,revived,12,Jodie Whittaker,Nikola Tesla's Night of Terror,Nina Metivier,Nida Manzoor
+291,revived,12,Jodie Whittaker,Fugitive of the Judoon,Vinay Patel; Chris Chibnall,Nida Manzoor
+292,revived,12,Jodie Whittaker,Praxeus,Pete McTighe; Chris Chibnall,Jamie Magnus Stone
+293,revived,12,Jodie Whittaker,Can You Hear Me?,Charlene James; Chris Chibnall,Emma Sullivan
+294,revived,12,Jodie Whittaker,The Haunting of Villa Diodati,Maxine Alderton,Emma Sullivan
+295,revived,12,Jodie Whittaker,Ascension of the Cybermen / The Timeless Children,Chris Chibnall,Jamie Magnus Stone
+297,revived,13,Jodie Whittaker,Flux,Chris Chibnall; Maxine Alderton,Jamie Magnus Stone; Azhur Saleem
+305,revived,14,Ncuti Gatwa,Space Babies,Russell T Davies,Julie Anne Robinson
+306,revived,14,Ncuti Gatwa,The Devil's Chord,Russell T Davies,Ben Chessell
+307,revived,14,Ncuti Gatwa,Boom,Steven Moffat,Julie Anne Robinson
+308,revived,14,Ncuti Gatwa,73 Yards,Russell T Davies,Dylan Holmes Williams
+309,revived,14,Ncuti Gatwa,Dot and Bubble,Russell T Davies,Dylan Holmes Williams
+310,revived,14,Ncuti Gatwa,Rogue,Kate Herron; Briony Redman,Ben Chessell
+311,revived,14,Ncuti Gatwa,The Legend of Ruby Sunday / Empire of Death,Russell T Davies,Jamie Donoughue
+313,revived,15,Ncuti Gatwa,The Robot Revolution,Russell T Davies,Peter Hoar
+314,revived,15,Ncuti Gatwa,Lux,Russell T Davies,Amanda Brotchie
+315,revived,15,Ncuti Gatwa,The Well,Russell T Davies; Sharma Angel-Walfall,Amanda Brotchie
+316,revived,15,Ncuti Gatwa,Lucky Day,Pete McTighe,Peter Hoar
+317,revived,15,Ncuti Gatwa,The Story & the Engine,Inua Ellams,Makalla McPherson
+318,revived,15,Ncuti Gatwa,The Interstellar Song Contest,Juno Dawson,Ben A. Williams
+319,revived,15,Ncuti Gatwa,Wish World / The Reality War,Russell T Davies,Alex Sanjiv Pillai
