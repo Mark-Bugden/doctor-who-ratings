@@ -135,9 +135,16 @@ LICENSE                      MIT
 - [x] Commit this plan.
 
 ### 2. Data pipeline (PR)
-- [ ] Fetch the IMDb dumps and the Wikipedia tables. Build `reference/stories.csv` and check it by hand, especially at the regenerations, the modern two-parters and the 2024 seasons onwards.
-- [ ] Confirm whether IMDb's writer list includes creator credits, and reconcile the credits with Wikipedia.
-- [ ] Join and check the data (pytest), and export `episodes.json`. Add the Python rankings reference and its fixtures.
+- [x] Fetch the IMDb dumps and the Wikipedia tables. Build `reference/stories.csv` and check it by hand, especially at the regenerations, the modern two-parters and the 2024 seasons onwards.
+  - The parts got a table of their own, `reference/parts.csv`, which holds each part's air date and IMDb id. `reference/sources.json` records the Wikipedia revisions used.
+  - Wikipedia's modern list is now titled "(2005–2025)", and no later list exists. The tables hold 291 stories and 863 parts: 694 classic and 169 revived, ending with *The Reality War*. Every season's count matches Wikipedia's overview table.
+  - Wikipedia numbers *The Trial of a Time Lord* (143a–d) and *Flux* (297a–f) like the modern two-parters, so each is one story.
+  - All 863 parts matched an IMDb episode, with no duplicates across IMDb's parents, and the 2024 and 2025 seasons are complete.
+- [x] Confirm whether IMDb's writer list includes creator credits, and reconcile the credits with Wikipedia.
+  - Confirmed: IMDb's writers include the show's creators on most classic stories, character creators (Terry Nation for the Daleks) and showrunners. They agree with Wikipedia on only 22 of 291 stories, so the credits come from Wikipedia. `reference/README.md` has the details.
+- [x] Join and check the data (pytest), and export `episodes.json`. Add the Python rankings reference and its fixtures.
+  - The snapshot is 2026-11-18. `episodes.json` is 134 KB, and the fixtures cover every subject and average, with k = 0, 5 and 20, and era adjustment on and off.
+  - The Python tests run in a new `tests.yml` workflow. The JS tests join it when the demo has some.
 
 ### 3. Timeline and heatmap: release this repo's `v0.2.0`, status `in-progress`
 - [ ] The frame, the View select, the Doctor selector, title search, the era toggle and the rating / votes switch.
@@ -162,4 +169,5 @@ LICENSE                      MIT
 - **Banner and Tennant photo.** Mark checks whether he may use them: the banner imitates the show's logo, and the photo looks like a BBC promotional still.
 - **The heatmap's light scale.** A pale low end disappears on the white surface. A scale from a 3:1 grey up to H-alpha red keeps both ends visible, but leaves little difference in lightness between them. Choose the light endpoints with a contrast and colour-vision check when building the heatmap.
 - **Season labels from 2024 onwards.** The BBC calls them Season 1 and Season 2, while Wikipedia numbers them Series 14 and 15. Choose the heatmap's labels when building it.
-- **New episodes.** Whatever regular episodes are on IMDb at snapshot time are included. Check that the seasons from 2024 onwards are complete and not duplicated across IMDb's parents.
+- **New episodes.** Whatever regular episodes are on IMDb at snapshot time are included. Check that the seasons from 2024 onwards are complete and not duplicated across IMDb's parents. (Checked for the 2026-11-18 snapshot: both are complete, with no duplicates.) Episodes after *The Reality War* would need adding to `reference/` by hand.
+- **The leader doesn't move.** In the 2026-11-18 snapshot, Tennant leads the Doctors and Moffat the writers under all 18 settings in the fixtures, and Whittaker is last. What moves is the middle: Tom Baker and Capaldi each range from 2nd to 5th. Only the directors' leader changes. The status line and copy should say what moves, rather than promise a new winner. Decide the framing before step 4.

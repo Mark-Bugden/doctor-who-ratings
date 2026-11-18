@@ -1,6 +1,6 @@
 # Rating the Regenerations
 
-An interactive look at the IMDb ratings of every regular *Doctor Who* episode since 1963. Visitors follow the ratings across the show's history, find any episode in a season-by-episode heatmap, and rank the Doctors, writers or directors. They can then change the assumptions behind the ranking and watch the order move: how stories are averaged, how far small samples are pulled towards the overall mean, and whether each era is judged against its own average. The answer to "Who is the best Doctor?" depends on how you count.
+An interactive look at the IMDb ratings of every regular *Doctor Who* episode since 1963. Visitors follow the ratings across the show's history, find any episode in a season-by-episode heatmap, and rank the Doctors, writers or directors. They can then change the assumptions behind the ranking and watch the order move: how stories are averaged, how far small samples are pulled towards the overall mean, and whether each era is judged against its own average.
 
 The project is descriptive: it shows how episodes were rated, not why.
 
@@ -13,7 +13,9 @@ The project is descriptive: it shows how episodes were rated, not why.
 | Path | What it is |
 | --- | --- |
 | [`demo/`](demo/) | The interactive demo for [mark-bugden.github.io](https://mark-bugden.github.io/), built with [demo-kit](https://github.com/Mark-Bugden/demo-kit). Its README explains how to run and build it. |
-| [`src/doctor_who_ratings/`](src/doctor_who_ratings/) | Python: the data pipeline and the leaderboard's reference maths, from step 2 of the plan. |
+| [`src/doctor_who_ratings/`](src/doctor_who_ratings/) | Python: the data pipeline and the leaderboard's reference maths. |
+| [`reference/`](reference/) | The hand-checked tables of stories and parts, from Wikipedia. Its README explains how they're made and checked. |
+| [`tests/`](tests/) | Python tests: the reference tables, the demo's data file and the rankings. |
 | [`docs/`](docs/) | The plan, and later the write-up. |
 | [`legacy/`](legacy/) | The original 2025 notebook, kept for reference. Its README explains why its variance analysis doesn't hold. |
 
@@ -25,9 +27,18 @@ npm install
 npm run dev
 ```
 
-## Python
+## Rebuilding the data
 
-The Python side is a [uv](https://docs.astral.sh/uv/) project. The data pipeline arrives with step 2 of the plan. For now, `uv sync` sets up the environment, and `uv run pre-commit install` installs the hook that strips notebook outputs before each commit.
+The demo's data, `demo/public/data/episodes.json`, is committed, so the demo builds without Python. To refresh it from IMDb's latest snapshot, use [uv](https://docs.astral.sh/uv/):
+
+```sh
+uv sync
+uv run python -m doctor_who_ratings.imdb --refresh   # downloads about 1.5 GB into data/raw/
+uv run python -m doctor_who_ratings.export           # writes episodes.json and the rankings fixtures
+uv run pytest
+```
+
+The export joins IMDb's ratings to the hand-checked tables in [`reference/`](reference/), which hold every regular story and part with its IMDb id. Rebuilding those tables from Wikipedia is a separate, rarer step that its README describes. `uv run pre-commit install` installs the hook that strips notebook outputs before each commit.
 
 ## Data
 
