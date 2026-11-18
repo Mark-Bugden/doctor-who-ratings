@@ -80,6 +80,9 @@ async function start(el) {
     manifest,
     controls: { view, doctor, finder, era, metric, subject, average, shrinkage, adjust },
     render({ stage, width, height, values, theme, token }) {
+      // A stage with no size, such as one hidden for a moment, has nothing to draw. The frame
+      // redraws when it has a size again.
+      if (width < 1 || height < 1) return;
       if (!host) {
         host = h('div', { class: 'dw-view' });
         stage.append(host);
