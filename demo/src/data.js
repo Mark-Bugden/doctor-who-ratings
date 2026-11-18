@@ -1,5 +1,8 @@
 // Indexes the demo's data file (public/data/episodes.json) for the views: each part with its story
-// and Doctor, each story with its parts, each Doctor's run, and the eras' seasons. No DOM access.
+// and Doctor, each story with its parts, each Doctor's run, the eras' seasons, and the rated stories
+// the leaderboard ranks. No DOM access.
+
+import { stories as rateStories } from './rankings.js';
 
 export const ERAS = {
   classic: { label: 'Classic', season: 'Season' },
@@ -59,6 +62,10 @@ export function prepare(data) {
   return {
     snapshot: data.snapshot,
     doctors: [...doctors.values()],
+    people: data.people,
+    rated: rateStories(data),
+    /** The name of a Doctor, writer or director, by the id the rankings use. */
+    subjectName: (subject, id) => (subject === 'doctor' ? doctors.get(id).name : data.people[id]),
     stories: [...stories.values()],
     parts,
     eras,

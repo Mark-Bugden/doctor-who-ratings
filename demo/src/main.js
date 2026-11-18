@@ -3,10 +3,11 @@
 // It loads the episodes, then mounts the frame with the controls. The views (views/) draw the
 // stage; this module keeps the state they share: the Doctor selected, the story or episode found
 // by search or by a click, and the episode under the pointer. A Doctor is lit when selected, or on
-// the timeline while one of their episodes is under the pointer.
+// the timeline while one of their episodes is under the pointer. For the leaderboard, it also ranks
+// the subjects under the assumptions chosen (rankings.js).
 
 import manifest from 'virtual:manifest';
-import { loadJSON, mount, select } from '@mark-bugden/demo-kit';
+import { loadJSON, mount, select, slider, toggle } from '@mark-bugden/demo-kit';
 import '@mark-bugden/demo-kit/tokens.scoped.css';
 import '@mark-bugden/demo-kit/frame.css';
 import './demo.css';
@@ -15,15 +16,18 @@ import { search } from './controls.js';
 import { prepare } from './data.js';
 import { h } from './dom.js';
 import * as describe from './format.js';
+import { DEFAULTS, overall, rank } from './rankings.js';
 import { find, searchIndex, suggestions } from './search.js';
 import { createTooltip } from './tooltip.js';
 import { createHeatmap } from './views/heatmap.js';
+import { createLeaderboard } from './views/leaderboard.js';
 import { createTimeline } from './views/timeline.js';
 
-const VIEWS = { timeline: createTimeline, heatmap: createHeatmap };
+const VIEWS = { timeline: createTimeline, heatmap: createHeatmap, leaderboard: createLeaderboard };
 const LABELS = {
   timeline: 'Timeline of IMDb ratings for every regular Doctor Who episode, one dot per episode, with each Doctor\'s run banded.',
   heatmap: 'Heatmap of IMDb ratings, one row per season and one cell per episode.',
+  leaderboard: 'Leaderboard of Doctors, writers or directors, ranked by their stories\' IMDb ratings.',
 };
 // How close the pointer must come to a dot, in px: closer with a mouse than with a finger.
 const REACH = { mouse: 10, touch: 22, pen: 14 };
@@ -32,7 +36,10 @@ async function start(el) {
   const data = prepare(await loadJSON('data/episodes.json'));
   const index = searchIndex(data.stories);
 
-  const view = select({ label: 'View', options: [{ label: 'Timeline', value: 'timeline' }, { label: 'Heatmap', value: 'heatmap' }] });
+  const view = select({
+    label: 'View',
+    options: [{ label: 'Timeline', value: 'timeline' }, { label: 'Heatmap', value: 'heatmap' }, { label: 'Leaderboard', value: 'leaderboard' }],
+  });
   const doctor = select({
     label: 'Doctor',
     options: [
@@ -46,6 +53,19 @@ async function start(el) {
     options: Object.values(data.eras).map((e) => ({ label: `${e.label} (${e.seasons[0].years.slice(0, 4)}–${e.seasons.at(-1).years.slice(-4)})`, value: e.id })),
   });
   const metric = select({ label: 'Show', options: [{ label: 'Rating', value: 'rating' }, { label: 'Votes', value: 'votes' }] });
+  // The leaderboard's subject and the assumptions behind its ranking.
+  const subject = select({
+    label: 'Rank',
+    options: [{ label: 'Doctors', value: 'doctor' }, { label: 'Writers', value: 'writer' }, { label: 'Directors', value: 'director' }],
+  });
+  const average = select({
+    label: 'Average',
+    options: [{ label: 'Vote-weighted mean', value: 'weighted' }, { label: 'Mean', value: 'mean' }, { label: 'Median', value: 'median' }],
+    value: DEFAULTS.average,
+  });
+  const shrinkage = slider({ label: 'Shrinkage', min: 0, max: 20, step: 1, value: DEFAULTS.k, format: describe.shrinkage });
+  const adjust = toggle({ label: 'Adjust for era', value: DEFAULTS.eraAdjusted });
+  const BOARD = [subject, average, shrinkage, adjust];
 
   const state = { found: null, missed: null, hovered: null, reveal: false };
   let current = null; // { name, view }
@@ -53,11 +73,12 @@ async function start(el) {
   let tip = null;
   let scale = null;
   let scaleTheme = null;
+  let board = null; // the leaderboard's rankings, while it's the view
 
   const app = mount({
     el,
     manifest,
-    controls: { view, doctor, finder, era, metric },
+    controls: { view, doctor, finder, era, metric, subject, average, shrinkage, adjust },
     render({ stage, width, height, values, theme, token }) {
       if (!host) {
         host = h('div', { class: 'dw-view' });
@@ -75,11 +96,15 @@ async function start(el) {
         followEra(state.found?.story.doctor ?? doctor.value);
       }
       era.disabled = values.view !== 'heatmap';
+      metric.disabled = values.view === 'leaderboard';
+      for (const control of BOARD) control.disabled = values.view !== 'leaderboard';
       if (theme !== scaleTheme) {
         scale = interpolate(token('--dw-heat-low'), token('--dw-heat-high'));
         scaleTheme = theme;
       }
-      current.view.render({ width, height, metric: values.metric, era: era.value, scale });
+      board = values.view === 'leaderboard' ? standings(values) : null;
+      current.view.render({ width, height, metric: values.metric, era: era.value, scale, board });
+      if (board) stage.setAttribute('aria-label', describe.boardLabel(board.ranking, board.name, board.subject, board.settings.eraAdjusted));
       if (state.reveal && state.found) current.view.reveal(state.found);
       state.reveal = false;
       refresh();
@@ -87,6 +112,20 @@ async function start(el) {
   });
   app.stage.setAttribute('role', 'img');
   el.querySelector('.dk-status')?.setAttribute('aria-live', 'polite');
+
+  /** The leaderboard's rankings: under the chosen assumptions, the default ones, and with no shrinkage (for the axis). */
+  function standings(values) {
+    const settings = { average: values.average, k: values.shrinkage, eraAdjusted: values.adjust };
+    return {
+      subject: values.subject,
+      settings,
+      ranking: rank(data.rated, values.subject, settings),
+      initial: rank(data.rated, values.subject),
+      spread: rank(data.rated, values.subject, { ...settings, k: 0 }),
+      overall: overall(data.rated, settings),
+      name: (id) => data.subjectName(values.subject, id),
+    };
+  }
 
   function lit() {
     return (current.name === 'timeline' && state.hovered?.story.doctor) || doctor.value;
@@ -110,6 +149,7 @@ async function start(el) {
 
   function statusText() {
     if (state.missed) return `No story or episode matches “${state.missed}”.`;
+    if (board) return describe.topThree(board.ranking, board.name, board.subject, board.settings.eraAdjusted);
     if (state.found) return describe.foundStatus(state.found);
     if (doctor.value) return describe.doctorStatus(doctor.value);
     if (current.name === 'heatmap') {

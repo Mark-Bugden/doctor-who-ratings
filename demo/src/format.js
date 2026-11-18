@@ -95,3 +95,43 @@ export function foundStatus({ story, part }) {
   }
   return `${story.title}: ${story.doctor.name}, ${plural(story.parts.length, 'episode')}, ${span(story)}. ${story.rating == null ? 'No rating.' : `Story rating ${rating(story.rating)}.`}`;
 }
+
+// The leaderboard.
+
+const SUBJECT_NAMES = { doctor: ['Doctor', 'Doctors'], writer: ['writer', 'writers'], director: ['director', 'directors'] };
+
+/** A score: a rating such as "8.06", or with era adjustment a difference such as "+0.40" or "−0.12". */
+export function score(value, eraAdjusted) {
+  const text = Math.abs(value).toFixed(2);
+  if (!eraAdjusted) return value.toFixed(2);
+  return text === '0.00' ? text : `${value > 0 ? '+' : '−'}${text}`;
+}
+
+/** A tick on the score axis: "7.5", or with era adjustment "+0.5", "0" or "−0.5". */
+export function scoreTick(value, eraAdjusted) {
+  if (!eraAdjusted || value === 0) return String(value);
+  return `${value > 0 ? '+' : '−'}${Math.abs(value)}`;
+}
+
+/** The shrinkage slider's value: "None", "1 story", "5 stories". */
+export const shrinkage = (k) => (k === 0 ? 'None' : plural(k, 'story', 'stories'));
+
+/** The note above the leaderboard: who is ranked. */
+export function boardNote(subject, minimum) {
+  if (subject === 'doctor') return 'Doctors, best first.';
+  if (subject === 'writer') return `Writers with ${minimum} or more stories, best first. A co-written story counts for each writer.`;
+  return `Directors with ${minimum} or more stories, best first.`;
+}
+
+/** The leaderboard's status line: the top three and their scores. */
+export function topThree(ranking, name, subject, eraAdjusted) {
+  const [one, many] = SUBJECT_NAMES[subject];
+  const top = ranking.slice(0, 3).map((row) => `${name(row.id)} ${score(row.score, eraAdjusted)}`);
+  return `Top three of ${plural(ranking.length, one, many)}${eraAdjusted ? ', compared with their era’s average' : ''}: ${list(top)}.`;
+}
+
+/** The leaderboard for screen readers: every row in order, with its score. */
+export function boardLabel(ranking, name, subject, eraAdjusted) {
+  const rows = ranking.map((row, i) => `${i + 1}. ${name(row.id)}, ${score(row.score, eraAdjusted)}`);
+  return `Leaderboard of ${SUBJECT_NAMES[subject][1]}, best first${eraAdjusted ? ', compared with their era’s average' : ''}: ${rows.join('; ')}.`;
+}

@@ -46,3 +46,28 @@ test('scales and ticks', () => {
   assert.deepEqual(logTicks(300, 30000), [500, 1000, 2000, 5000, 10000, 20000]);
   assert.deepEqual(yearTicks(1963, 2025, 620), [1970, 1980, 1990, 2000, 2010, 2020]);
 });
+
+test('formats leaderboard scores, as ratings or against the era', () => {
+  assert.equal(describe.score(8.0612, false), '8.06');
+  assert.equal(describe.score(0.4012, true), '+0.40');
+  assert.equal(describe.score(-0.1234, true), '−0.12');
+  assert.equal(describe.score(-0.001, true), '0.00');
+  assert.equal(describe.scoreTick(7.5, false), '7.5');
+  assert.equal(describe.scoreTick(-0.5, true), '−0.5');
+  assert.equal(describe.scoreTick(0, true), '0');
+  assert.equal(describe.shrinkage(0), 'None');
+  assert.equal(describe.shrinkage(1), '1 story');
+  assert.equal(describe.shrinkage(5), '5 stories');
+});
+
+test('the leaderboard\'s status line names the top three', () => {
+  const ranking = [{ id: 10, score: 8.06 }, { id: 11, score: 7.93 }, { id: 9, score: 7.77 }, { id: 12, score: 7.76 }];
+  const name = (id) => data.subjectName('doctor', id);
+  assert.equal(
+    describe.topThree(ranking, name, 'doctor', false),
+    'Top three of 4 Doctors: David Tennant 8.06, Matt Smith 7.93 and Christopher Eccleston 7.77.',
+  );
+  assert.match(describe.topThree(ranking, name, 'doctor', true), /^Top three of 4 Doctors, compared with their era’s average: David Tennant \+8\.06/);
+  assert.equal(describe.boardNote('director', 3), 'Directors with 3 or more stories, best first.');
+  assert.match(describe.boardNote('writer', 3), /co-written story counts for each writer/);
+});

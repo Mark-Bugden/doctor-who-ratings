@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 
-import { average, MIN_STORIES, rank, stories, sum } from '../src/rankings.js';
+import { average, MIN_STORIES, overall, rank, stories, sum } from '../src/rankings.js';
 
 const read = (path) => JSON.parse(readFileSync(new URL(path, import.meta.url), 'utf8'));
 const raw = read('../public/data/episodes.json');
@@ -58,6 +58,13 @@ test('shrinkage pulls small samples towards the overall average', () => {
   assert.deepEqual(plain.map((row) => [row.id, row.score]), [[1, 9], [2, 8.5], [3, 6]]);
   const shrunk = rank(stories(data), 'doctor', { average: 'mean', k: 5 });
   assert.deepEqual(shrunk.map((row) => row.id), [2, 1, 3]);
+});
+
+test('the overall average is what a score reaches as shrinkage grows', () => {
+  for (const settings of [{ average: 'weighted' }, { average: 'median', eraAdjusted: true }]) {
+    const m = overall(rated, settings);
+    for (const row of rank(rated, 'doctor', { ...settings, k: 1e9 })) assert.ok(Math.abs(row.score - m) < 1e-6);
+  }
 });
 
 test('every Doctor is ranked, and only writers and directors with 3 or more stories', () => {

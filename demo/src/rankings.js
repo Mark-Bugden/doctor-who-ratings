@@ -70,20 +70,29 @@ export function average(values, weights, method) {
   throw new Error(`unknown average: ${method}`);
 }
 
+/** Each story's value to average, its rating or with era adjustment its difference from its era's average, and its weight. */
+function adjust(stories, method, eraAdjusted) {
+  const weights = stories.map((story) => story.weight);
+  if (!eraAdjusted) return { values: stories.map((story) => story.rating), weights };
+  const eras = new Map();
+  for (const story of stories) {
+    if (!eras.has(story.era)) eras.set(story.era, [[], []]);
+    eras.get(story.era)[0].push(story.rating);
+    eras.get(story.era)[1].push(story.weight);
+  }
+  const baseline = new Map([...eras].map(([era, columns]) => [era, average(...columns, method)]));
+  return { values: stories.map((story) => story.rating - baseline.get(story.era)), weights };
+}
+
+/** m: the average over all stories, which shrinkage pulls every score towards. */
+export function overall(stories, { average: method = DEFAULTS.average, eraAdjusted = DEFAULTS.eraAdjusted } = {}) {
+  const { values, weights } = adjust(stories, method, eraAdjusted);
+  return average(values, weights, method);
+}
+
 /** The ranked subjects, best first, as { id, stories (n), average (x̄), score }. */
 export function rank(stories, subject, { average: method = DEFAULTS.average, k = DEFAULTS.k, eraAdjusted = DEFAULTS.eraAdjusted } = {}) {
-  const weights = stories.map((story) => story.weight);
-  let values = stories.map((story) => story.rating);
-  if (eraAdjusted) {
-    const eras = new Map();
-    for (const story of stories) {
-      if (!eras.has(story.era)) eras.set(story.era, [[], []]);
-      eras.get(story.era)[0].push(story.rating);
-      eras.get(story.era)[1].push(story.weight);
-    }
-    const baseline = new Map([...eras].map(([era, columns]) => [era, average(...columns, method)]));
-    values = stories.map((story) => story.rating - baseline.get(story.era));
-  }
+  const { values, weights } = adjust(stories, method, eraAdjusted);
   const overall = average(values, weights, method);
 
   const members = new Map(); // subject id -> indices of its stories
