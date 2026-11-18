@@ -158,7 +158,7 @@ LICENSE                      MIT
   - A JS test checks that `about` gives the data file's snapshot date, so a refresh can't leave it stale.
 - [x] Render the stills from the opening state.
   - `scripts/stills.py` renders them, so each release can redo them.
-- [ ] Tell Mark the tag and the new title, so he can update the site.
+- [x] Tell Mark the tag and the new title, so he can update the site.
 
 ### 4. Leaderboard and write-up: release `v1.0.0`, status `live`
 - [x] The leaderboard view: the subject switch, the three assumption controls, the faint default ranking and the status line. Test the JS against the Python fixtures.
@@ -173,16 +173,17 @@ LICENSE                      MIT
 - [x] Draft the write-up in `docs/writeup.md`, in the site's voice, for Mark to edit and move to the site.
 - [x] Refresh the data snapshot, rebuild, and update `built`.
   - IMDb's dumps on 2026-11-18 were still the ones step 2 used (the same Last-Modified date and size), so the export, the fixtures and the stills came out byte for byte the same. The snapshot and `built` stay 2026-11-18. A HEAD request shows a dump's Last-Modified date, so a refresh can check first instead of downloading 1.5 GB.
-- [ ] Mark bumps the tag in the site's `data/projects.yaml` and takes the write-up out of draft.
+- [x] Mark bumps the tag in the site's `data/projects.yaml` and takes the write-up out of draft.
+  - The tag and title went in with Mark-Bugden.github.io#4. Mark's edit of the write-up (#6 here) went live with Mark-Bugden.github.io#7 on 2026-11-19, and the old `/portfolio/doctorwho.html` redirects to it.
 
 ## For Mark, on the site
 
-- **The title.** Change it to "Rating the Regenerations" in `content/projects/doctor-who-ratings.md` and in the portfolio brief. The slug, and so the URL, stay the same.
-- **The write-up.** The site page's body is still the old post, which mentions the variance "deep-dive". The draft from step 4 replaces it.
+- ~~**The title.**~~ Done in Mark-Bugden.github.io#4.
+- ~~**The write-up.**~~ Done: Mark's edited version replaced the old post in Mark-Bugden.github.io#7.
 
 ## Open questions
 
-- **Banner and Tennant photo.** Mark checks whether he may use them: the banner imitates the show's logo, and the photo looks like a BBC promotional still.
+- **Banner and Tennant photo.** Mark checks whether he may use them: the banner imitates the show's logo, and the photo looks like a BBC promotional still. The site no longer uses either, since Mark-Bugden.github.io#5 removed them, but `Assets/banner.png` is still in this repo.
 - ~~**The heatmap's light scale.**~~ Settled in step 3: blue-slate `#7a8db0` (3.35:1 on white) to H-alpha. Every step clears 3:1, and lightness runs one way with and without simulated colour-vision deficiencies. The bluer low end separates the steps a little better under deuteranopia than a neutral grey. It's still the tighter of the two scales: six steps sit at least 0.037 apart in OKLab (deuteranopia), against 0.053 on dark.
 - ~~**Season labels from 2024 onwards.**~~ Settled in step 3: Wikipedia's Series 14 and 15, so the numbering runs on. "How this works" says the BBC calls them Season 1 and Season 2.
 - **New episodes.** Whatever regular episodes are on IMDb at snapshot time are included. Check that the seasons from 2024 onwards are complete and not duplicated across IMDb's parents. (Checked for the 2026-11-18 snapshot: both are complete, with no duplicates.) Episodes after *The Reality War* would need adding to `reference/` by hand.
