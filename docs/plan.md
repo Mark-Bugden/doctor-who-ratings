@@ -81,21 +81,21 @@ The project is descriptive. It makes no claims about what causes a rating.
 
 ## Look
 
-- **Kit.** The demo builds on demo-kit v0.2.0, whose tokens follow the site's design. The site contract's examples still show v0.1.0. The demo is dark whatever the OS prefers, standalone too, and light only under `<html data-theme="light">`.
+- **Kit.** The demo builds on demo-kit v0.4.0 (v0.2.0 until step 7), whose tokens follow the site's design. The site contract's examples still show v0.1.0. The demo is dark whatever the OS prefers, standalone too, and light only under `<html data-theme="light">`.
 - **Colours.** The views use the kit's tokens directly. Charts are drawn on the stage's `--color-surface`, as the kit's README asks. The contrast on that surface:
 
   | Token | Use | Dark | Light |
   | --- | --- | --- | --- |
   | `--color-muted` | every episode, while no Doctor is selected | 7.3:1 | 6.4:1 |
-  | `--color-accent` | the selected or hovered Doctor | 10.6:1 | 5.4:1 |
+  | `--color-accent` | the selected or hovered Doctor | 10.6:1 | 7.8:1 |
   | `--color-curve` | the other Doctors while one is selected; era bands and reference lines | 2.9:1 | 2.5:1 |
 
   `--color-curve` is below 3:1, so it only marks context, never anything that must be seen on its own.
 - **Doctors.** There's no colour per Doctor, and the kit's categorical slots aren't used.
 - **Heatmap scale.** A sequential scale through four stops, interpolated in OKLab between neighbours (changed in step 5).
   - Dark, "ember": deep red `#c13c36`, orange `#ea6a12`, sodium `#f6be55`, pale gold `#f9f0ba`. Light, "viridis": indigo `#35226a`, blue `#285388`, teal `#0f8080`, green `#5ca24c`. Higher ratings are lighter in both themes.
-  - The stops are the demo's only local colours. As the kit's changelog asks, the dark ones go on `[data-demo]` and the light ones under `:root[data-theme="light"] [data-demo]`, with no `prefers-color-scheme`.
-  - Every step clears 3:1 on the surface (dark 3.39:1 at worst, light 3.12:1), lightness runs one way with and without simulated colour-vision deficiencies, and six steps sit at least 0.05 apart in OKLab under all of them (dark 0.075, light 0.051). `demo/test/colour.test.js` checks all three.
+  - Since step 7, the stops are the kit's spectrum (`--chart-spectrum-1` to `-4`), and the demo has no local colours.
+  - Every step clears 3:1 on the surface (dark 3.39:1 at worst, light 3.12:1), lightness rises from low to high with and without simulated colour-vision deficiencies, and six steps sit at least 0.05 apart in OKLab under all of them (dark 0.075, light 0.051). demo-kit's `test/tokens.test.js` checks all three.
 - **Highlighting the heatmap.** The scale already spans several hues, so the Doctor highlight can't recolour cells. Instead it dims the other Doctors' cells, and a search hit gets an outline in `--color-text`.
 - **Stills.** Render them from the built demo's opening timeline, which is dark under v0.2.0. Don't reuse the stub's stills or the contract's image script, which both use the old paper colour.
 
@@ -194,7 +194,13 @@ Mark's notes on the live demo (2026-11-19): the heatmap looked bland, the rail h
 Asked for by Mark on 2026-11-19: each change should be one PR that goes live when it merges, and the demo should be fully visible when its project page opens.
 - [x] **Release on merge.** `demo/package.json`'s `version` is the release. A PR that changes the demo must bump it, or CI fails. When it merges, the Demo workflow builds the bundle, sets `built` to that day, releases `v<version>` and starts the site's build (with the `SITE_DEPLOY_TOKEN` secret). The site now takes each project's latest release ([Mark-Bugden.github.io#16](https://github.com/Mark-Bugden/Mark-Bugden.github.io/pull/16)), so there's no tag to push and no site PR.
 - [x] **Fits below the site's title.** On the project page, the title is now the only thing above the demo ([Mark-Bugden.github.io#17](https://github.com/Mark-Bugden/Mark-Bugden.github.io/pull/17)). On wide frames, the stage keeps 560 px but shrinks so that the frame fits in `--dk-fit-height`, which the site sets to the window's height less what sits above the demo. The stage stays at least 22rem tall, about the height of the controls. Measured with the site's branch: the timeline and heatmap fit at 1920×960, 1536×730 and 1440×790, and are 2 px short at 1366×650. On the leaderboard, the rail is taller than the stage, so "How this works" falls just below the window at 1440×790.
-- [ ] Merging releases `v1.2.0`.
+- [x] Merging released `v1.2.0` on 2026-11-19.
+
+### 7. The shared palette: release `v1.3.0`
+Agreed with Mark on 2026-11-19 (see "A shared palette" under "Open questions"): the site and the demos share three colour roles, which demo-kit v0.4.0 provides.
+- [x] **Kit v0.4.0** ([demo-kit#7](https://github.com/Mark-Bugden/demo-kit/pull/7)). The heatmap's scale became the kit's spectrum, and `src/colour.js` and the scale's tests moved to the kit, which now uses them for `plot()` too. The heatmap reads the spectrum's four tokens in place of `--dw-heat`, and draws through the kit's `ramp()`. The colours are the same.
+- [x] **The light accent is now viridis blue** (`#285388`, 7.8:1 on the surface), in place of H-alpha red. It marks the lit Doctor on the timeline and the leaderboard, and the selected view's icon. Dark doesn't change, so neither do the stills.
+- [ ] Merging releases `v1.3.0`.
 
 ## For Mark, on the site
 
@@ -207,11 +213,10 @@ Asked for by Mark on 2026-11-19: each change should be one PR that goes live whe
 - **Banner and Tennant photo.** Mark checks whether he may use them: the banner imitates the show's logo, and the photo looks like a BBC promotional still. The site no longer uses either, since Mark-Bugden.github.io#5 removed them, but `Assets/banner.png` is still in this repo.
 - ~~**The heatmap's light scale.**~~ Settled in step 3: blue-slate `#7a8db0` (3.35:1 on white) to H-alpha. Every step clears 3:1, and lightness runs one way with and without simulated colour-vision deficiencies. The bluer low end separates the steps a little better under deuteranopia than a neutral grey. It's still the tighter of the two scales: six steps sit at least 0.037 apart in OKLab (deuteranopia), against 0.053 on dark.
 - ~~**Season labels from 2024 onwards.**~~ Settled in step 3: Wikipedia's Series 14 and 15, so the numbering runs on. "How this works" says the BBC calls them Season 1 and Season 2.
-- **A shared palette across the site and demos (agreed 2026-11-19, not started).** Each theme gets three roles: a main highlight (links, focus, the lit Doctor), a contrasting highlight (a second group, such as the zombies beside the people in the zombie demo) and a spectrum for sequential data.
+- ~~**A shared palette across the site and demos.**~~ Agreed 2026-11-19, built in step 7 and in [demo-kit#7](https://github.com/Mark-Bugden/demo-kit/pull/7). Each theme has three roles: a main highlight (links, focus, the lit Doctor), a contrasting highlight (a second group, such as the zombies beside the people in the zombie demo) and a spectrum for sequential data.
   - Dark: sodium `#f6be55`, ember red `#c13c36` and the Ember scale. Light: viridis blue `#285388`, green `#5ca24c` and the Viridis scale.
-  - Only the main highlight may carry text: it clears 4.5:1 (10.6:1 dark, 7.8:1 light). The contrasting one clears 3:1 (3.4 dark, 3.1 light), so it's for marks only. The pair sits 0.28 apart in OKLab with colour-vision deficiencies on dark, and 0.21 on light.
-  - The heatmap keeps "lighter is better" in both themes, as it is now.
-  - The work lies outside this repo, in this order: demo-kit v0.4.0 (the tokens, the colour tests moved from here, the README), then this demo and the zombie demo move to it, then the site (`site.css`, the favicon, the accent presets). The chart slots must stay clear of both highlights; light slot 3 may need moving.
-  - Waiting for Mark's go-ahead, after another agent's zombie demo work (kit v0.3.0, zombie v1.1.0) has merged. Don't message that agent.
+  - Only the main highlight may carry text: it clears 4.5:1 (10.6:1 dark, 7.8:1 light). The contrasting one clears 3:1 (3.4 dark, 3.1 light), so it's for marks only. The pair sits at least 0.284 apart in OKLab with colour-vision deficiencies on dark, and 0.205 on light. The kit's test asks for 0.2.
+  - The heatmap keeps "lighter is better" in both themes, and the kit's test now requires it.
+  - Chart slots: Mark chose to keep them clear of the main highlight only. Light slot 7 moved. The kit's README lists the slots that sit near the contrasting highlight.
 - **New episodes.** Whatever regular episodes are on IMDb at snapshot time are included. Check that the seasons from 2024 onwards are complete and not duplicated across IMDb's parents. (Checked for the 2026-11-18 snapshot: both are complete, with no duplicates.) Episodes after *The Reality War* would need adding to `reference/` by hand.
 - ~~**The leader doesn't move.**~~ Settled in step 4. Over every setting of the controls (three averages, k from 0 to 20, era adjustment on or off: 126 in all), Tennant is first, Davison eighth and Whittaker last, and Moffat leads the writers. Tom Baker ranges from 2nd to 7th, Eccleston 3rd to 7th and Capaldi 2nd to 6th, and only the directors' leader changes. So the status line gives the top three rather than the leader. The write-up says what holds and what moves, while the demo's own copy stays general, so a refresh can't make it stale.
