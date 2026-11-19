@@ -1,17 +1,8 @@
 /*
- * The demo's styles. Colours are the kit's tokens, except the heatmap scale's stops, low to high:
- * on dark, deep red and orange to sodium amber and pale gold ("ember"); on light, indigo and blue to
- * teal and green ("viridis"). Higher ratings are lighter in both. Every step clears 3:1 on the
- * surface (test/colour.test.js checks them, and reads the stops from here). Dark is the default, as
- * in the kit: light applies only under <html data-theme="light">.
+ * The demo's styles. Every colour is one of the kit's tokens; the heatmap's scale is the kit's
+ * spectrum (--chart-spectrum-1 to -4), on which higher ratings are lighter in both themes. Dark is
+ * the default, as in the kit: light applies only under <html data-theme="light">.
  */
-[data-demo] {
-  --dw-heat: #c13c36 #ea6a12 #f6be55 #f9f0ba;
-}
-
-:root[data-theme="light"] [data-demo] {
-  --dw-heat: #35226a #285388 #0f8080 #5ca24c;
-}
 
 /*
  * Wide frames: the stage keeps the manifest's height, but shrinks so that the whole frame (the stage,

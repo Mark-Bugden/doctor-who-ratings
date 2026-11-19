@@ -8,11 +8,10 @@
 // For the leaderboard, it also ranks the subjects under the assumptions chosen (rankings.js).
 
 import manifest from 'virtual:manifest';
-import { loadJSON, mount, select, slider, toggle } from '@mark-bugden/demo-kit';
+import { loadJSON, mount, ramp, select, slider, toggle } from '@mark-bugden/demo-kit';
 import '@mark-bugden/demo-kit/tokens.scoped.css';
 import '@mark-bugden/demo-kit/frame.css';
 import './demo.css';
-import { ramp } from './colour.js';
 import { search, segmented } from './controls.js';
 import { prepare } from './data.js';
 import { h } from './dom.js';
@@ -144,7 +143,7 @@ async function start(el) {
       }
       showControls();
       if (theme !== scaleTheme) {
-        scale = ramp(token('--dw-heat').split(/\s+/));
+        scale = ramp([1, 2, 3, 4].map((i) => token(`--chart-spectrum-${i}`)));
         scaleTheme = theme;
       }
       board = values.view === 'leaderboard' ? standings(values) : null;
