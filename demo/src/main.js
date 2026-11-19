@@ -1,23 +1,24 @@
 // The demo's entry point. Vite bundles it with the kit and the CSS into demo.js and demo.css.
 //
-// It loads the episodes, then mounts the frame with the controls. The views (views/) draw the
-// stage; this module keeps the state they share: the Doctor selected, the story or episode found
-// by search or by a click, and the episode under the pointer. A Doctor is lit when selected, or on
-// the timeline while one of their episodes is under the pointer. For the leaderboard, it also ranks
-// the subjects under the assumptions chosen (rankings.js).
+// It loads the episodes, then mounts the frame with the controls, showing only those that apply to
+// the current view. The views (views/) draw the stage; this module keeps the state they share: the
+// Doctor selected, the story or episode found by search or by a click, and the episode under the
+// pointer. A Doctor is lit when selected, or on the timeline while one of their episodes is under
+// the pointer. The episode under the pointer gets its name beside it; a found one gets its details.
+// For the leaderboard, it also ranks the subjects under the assumptions chosen (rankings.js).
 
 import manifest from 'virtual:manifest';
 import { loadJSON, mount, select, slider, toggle } from '@mark-bugden/demo-kit';
 import '@mark-bugden/demo-kit/tokens.scoped.css';
 import '@mark-bugden/demo-kit/frame.css';
 import './demo.css';
-import { interpolate } from './colour.js';
-import { search } from './controls.js';
+import { ramp } from './colour.js';
+import { search, segmented } from './controls.js';
 import { prepare } from './data.js';
 import { h } from './dom.js';
 import * as describe from './format.js';
 import { DEFAULTS, overall, rank } from './rankings.js';
-import { find, searchIndex, suggestions } from './search.js';
+import { matches, searchIndex, target } from './search.js';
 import { createTooltip } from './tooltip.js';
 import { createHeatmap } from './views/heatmap.js';
 import { createLeaderboard } from './views/leaderboard.js';
@@ -29,16 +30,33 @@ const LABELS = {
   heatmap: 'Heatmap of IMDb ratings, one row per season and one cell per episode.',
   leaderboard: 'Leaderboard of Doctors, writers or directors, ranked by their stories\' IMDb ratings.',
 };
+// The views' icons, on a 24 × 24 grid: dots over time, a grid of cells, and ranked rows.
+const ICONS = {
+  timeline: '<path d="M3 20.5h18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>'
+    + '<g fill="currentColor"><circle cx="5" cy="14" r="1.8"/><circle cx="9" cy="9" r="1.8"/><circle cx="12.5" cy="12.5" r="1.8"/><circle cx="16" cy="6" r="1.8"/><circle cx="19.5" cy="10" r="1.8"/></g>',
+  heatmap: '<g fill="currentColor"><rect x="3" y="3" width="5" height="5" rx="1"/><rect x="9.5" y="3" width="5" height="5" rx="1" opacity=".55"/><rect x="16" y="3" width="5" height="5" rx="1" opacity=".3"/>'
+    + '<rect x="3" y="9.5" width="5" height="5" rx="1" opacity=".3"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><rect x="16" y="9.5" width="5" height="5" rx="1" opacity=".55"/>'
+    + '<rect x="3" y="16" width="5" height="5" rx="1" opacity=".55"/><rect x="9.5" y="16" width="5" height="5" rx="1" opacity=".3"/><rect x="16" y="16" width="5" height="5" rx="1"/></g>',
+  leaderboard: '<path d="M9 6h12M9 12h8.5M9 18h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>'
+    + '<g fill="currentColor"><circle cx="4.5" cy="6" r="1.6"/><circle cx="4.5" cy="12" r="1.6"/><circle cx="4.5" cy="18" r="1.6"/></g>',
+};
 // How close the pointer must come to a dot, in px: closer with a mouse than with a finger.
 const REACH = { mouse: 10, touch: 22, pen: 14 };
+// Suggestions shown at once as you type in the search box.
+const SUGGESTIONS = 8;
 
 async function start(el) {
   const data = prepare(await loadJSON('data/episodes.json'));
   const index = searchIndex(data.stories);
 
-  const view = select({
+  const view = segmented({
     label: 'View',
-    options: [{ label: 'Timeline', value: 'timeline' }, { label: 'Heatmap', value: 'heatmap' }, { label: 'Leaderboard', value: 'leaderboard' }],
+    showLabel: false,
+    options: [
+      { label: 'Timeline', value: 'timeline', icon: ICONS.timeline },
+      { label: 'Heatmap', value: 'heatmap', icon: ICONS.heatmap },
+      { label: 'Leaderboard', value: 'leaderboard', icon: ICONS.leaderboard },
+    ],
   });
   const doctor = select({
     label: 'Doctor',
@@ -47,27 +65,53 @@ async function start(el) {
       ...data.doctors.map((d) => ({ label: `${d.label.replace(' Doctor', '')}: ${d.name}`, value: d })),
     ],
   });
-  const finder = search({ label: 'Find a story or episode', placeholder: 'e.g. Blink', suggestions: suggestions(index) });
-  const era = select({
-    label: 'Era',
-    options: Object.values(data.eras).map((e) => ({ label: `${e.label} (${e.seasons[0].years.slice(0, 4)}–${e.seasons.at(-1).years.slice(-4)})`, value: e.id })),
+  const finder = search({
+    label: 'Find a story or episode',
+    placeholder: 'e.g. Blink',
+    suggest: (query) => matches(index, query, SUGGESTIONS).map((entry) => {
+      const found = target(entry);
+      return { label: entry.label, detail: describe.suggestionDetail(found), value: found };
+    }),
+    format: describe.foundName,
+    empty: 'No story or episode by that name',
   });
-  const metric = select({ label: 'Show', options: [{ label: 'Rating', value: 'rating' }, { label: 'Votes', value: 'votes' }] });
+  const era = segmented({
+    label: 'Era',
+    options: Object.values(data.eras).map((e) => ({
+      label: e.label,
+      value: e.id,
+      title: `${e.seasons[0].years.slice(0, 4)}–${e.seasons.at(-1).years.slice(-4)}`,
+    })),
+  });
+  const metric = segmented({ label: 'Show', options: [{ label: 'Rating', value: 'rating' }, { label: 'Votes', value: 'votes' }] });
   // The leaderboard's subject and the assumptions behind its ranking.
-  const subject = select({
+  const subject = segmented({
     label: 'Rank',
     options: [{ label: 'Doctors', value: 'doctor' }, { label: 'Writers', value: 'writer' }, { label: 'Directors', value: 'director' }],
   });
-  const average = select({
+  const average = segmented({
     label: 'Average',
-    options: [{ label: 'Vote-weighted mean', value: 'weighted' }, { label: 'Mean', value: 'mean' }, { label: 'Median', value: 'median' }],
+    options: [
+      { label: 'Weighted', value: 'weighted', title: 'Mean weighted by votes' },
+      { label: 'Mean', value: 'mean' },
+      { label: 'Median', value: 'median' },
+    ],
     value: DEFAULTS.average,
   });
   const shrinkage = slider({ label: 'Shrinkage', min: 0, max: 20, step: 1, value: DEFAULTS.k, format: describe.shrinkage });
   const adjust = toggle({ label: 'Adjust for era', value: DEFAULTS.eraAdjusted });
-  const BOARD = [subject, average, shrinkage, adjust];
+  // In the rail, the leaderboard's subject comes first, so that hiding the Doctor, for writers or
+  // directors, never moves the buttons just pressed.
+  const controls = { view, subject, doctor, finder, era, metric, average, shrinkage, adjust };
+  // The controls each view uses, besides the view switch. The Doctor applies to the leaderboard only
+  // while it ranks the Doctors.
+  const USED = {
+    timeline: [doctor, finder, metric],
+    heatmap: [doctor, finder, era, metric],
+    leaderboard: [doctor, finder, subject, average, shrinkage, adjust],
+  };
 
-  const state = { found: null, missed: null, hovered: null, reveal: false };
+  const state = { found: null, hovered: null, reveal: false };
   let current = null; // { name, view }
   let host = null;
   let tip = null;
@@ -78,7 +122,7 @@ async function start(el) {
   const app = mount({
     el,
     manifest,
-    controls: { view, doctor, finder, era, metric, subject, average, shrinkage, adjust },
+    controls,
     render({ stage, width, height, values, theme, token }) {
       // A stage with no size, such as one hidden for a moment, has nothing to draw. The frame
       // redraws when it has a size again.
@@ -98,11 +142,9 @@ async function start(el) {
         state.reveal = true;
         followEra(state.found?.story.doctor ?? doctor.value);
       }
-      era.disabled = values.view !== 'heatmap';
-      metric.disabled = values.view === 'leaderboard';
-      for (const control of BOARD) control.disabled = values.view !== 'leaderboard';
+      showControls();
       if (theme !== scaleTheme) {
-        scale = interpolate(token('--dw-heat-low'), token('--dw-heat-high'));
+        scale = ramp(token('--dw-heat').split(/\s+/));
         scaleTheme = theme;
       }
       board = values.view === 'leaderboard' ? standings(values) : null;
@@ -115,6 +157,15 @@ async function start(el) {
   });
   app.stage.setAttribute('role', 'img');
   el.querySelector('.dk-status')?.setAttribute('aria-live', 'polite');
+  // Before the first draw, so the controls the opening view doesn't use never show.
+  showControls();
+
+  /** Shows the controls the view uses, and hides the rest. */
+  function showControls() {
+    const used = new Set([view, ...USED[view.value]]);
+    if (view.value === 'leaderboard' && subject.value !== 'doctor') used.delete(doctor);
+    for (const control of Object.values(controls)) control.el.hidden = !used.has(control);
+  }
 
   /** The leaderboard's rankings: under the chosen assumptions, the default ones, and with no shrinkage (for the axis). */
   function standings(values) {
@@ -140,27 +191,33 @@ async function start(el) {
     app.status(statusText());
   }
 
+  /** The name of the episode under the pointer, or the details of the one found. */
   function showTip() {
-    const target = state.hovered ? { part: state.hovered } : state.found;
-    const at = target && current.view.anchor(target);
+    const { hovered, found } = state;
+    if (hovered && hovered !== found?.part) {
+      const at = current.view.anchor({ part: hovered });
+      if (at) tip.show([describe.episodeName(hovered)], at, { brief: true });
+      else tip.hide();
+      return;
+    }
+    const at = found && current.view.anchor(found);
     if (!at) {
       tip.hide();
       return;
     }
-    tip.show(target.part ? describe.partLines(target.part) : describe.storyLines(target.story), at);
+    tip.show(found.part ? describe.partLines(found.part) : describe.storyLines(found.story), at);
   }
 
   function statusText() {
-    if (state.missed) return `No story or episode matches “${state.missed}”.`;
     if (board) return describe.topThree(board.ranking, board.name, board.subject, board.settings.eraAdjusted);
     if (state.found) return describe.foundStatus(state.found);
     if (doctor.value) return describe.doctorStatus(doctor.value);
     if (current.name === 'heatmap') {
       const e = data.eras[era.value];
       const seasons = e.id === 'classic' ? 'seasons' : 'series';
-      return `The ${e.label.toLowerCase()} era: ${describe.count(e.parts.length)} episodes in ${e.seasons.length} ${seasons}, one cell per episode. Point at a cell for details, or pick a Doctor.`;
+      return `The ${e.label.toLowerCase()} era: ${describe.count(e.parts.length)} episodes in ${e.seasons.length} ${seasons}, one cell per episode. Click or tap a cell for details, or pick a Doctor.`;
     }
-    return `${describe.count(data.parts.length)} episodes from ${data.parts[0].airDate.slice(0, 4)} to ${data.parts.at(-1).airDate.slice(0, 4)}, one dot per episode. Point at one for details, pick a Doctor, or search for a story.`;
+    return `${describe.count(data.parts.length)} episodes from ${data.parts[0].airDate.slice(0, 4)} to ${data.parts.at(-1).airDate.slice(0, 4)}, one dot per episode. Click or tap one for details, pick a Doctor, or search for a story.`;
   }
 
   /** On the heatmap, switches to the era of the Doctor given, so their episodes are on screen. */
@@ -178,11 +235,7 @@ async function start(el) {
 
   doctor.onChange((d) => followEra(d));
 
-  finder.onChange((query) => {
-    const found = find(index, query);
-    state.missed = query.trim() && !found ? query.trim() : null;
-    setFound(found);
-  });
+  finder.onChange((found) => setFound(found));
 
   function partUnder(stage, event, reach) {
     if (current.name !== 'timeline') return current.view.partFrom(event.target);
@@ -202,10 +255,11 @@ async function start(el) {
     });
     stage.addEventListener('pointerleave', () => setHovered(null));
     stage.addEventListener('click', (event) => {
-      const part = partUnder(stage, event, REACH[event.pointerType] ?? REACH.pen);
-      finder.value = '';
-      state.missed = null;
-      setFound(part ? { story: part.story, part } : null);
+      // With a mouse, a click finds the episode named under the pointer, so the two agree where dots overlap.
+      const part = (event.pointerType === 'mouse' && state.hovered) || partUnder(stage, event, REACH[event.pointerType] ?? REACH.pen);
+      const found = part ? { story: part.story, part } : null;
+      finder.value = found;
+      setFound(found);
     });
   }
 }

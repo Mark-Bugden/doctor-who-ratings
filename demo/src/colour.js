@@ -1,5 +1,5 @@
-// Colour maths for the heatmap's scale: parsing, OKLab interpolation, WCAG contrast and a
-// colour-vision deficiency simulation for the tests. No DOM access.
+// Colour maths for the heatmap's scale: parsing, OKLab interpolation through several stops, WCAG
+// contrast and a colour-vision deficiency simulation for the tests. No DOM access.
 
 /** Parses a CSS hex colour, #rgb or #rrggbb, into [r, g, b] (0–255). */
 export function parseHex(color) {
@@ -52,6 +52,21 @@ export function interpolate(low, high) {
   return (t) => {
     const u = Math.min(1, Math.max(0, t));
     return toHex(fromOklab(a.map((x, i) => x + (b[i] - x) * u)));
+  };
+}
+
+/**
+ * A function from t in [0, 1] to a hex colour, through `stops` spaced evenly, interpolating in OKLab
+ * between neighbours. Stops of nearby hues keep the colour saturated all the way, where two ends of
+ * opposite hues would pass through grey.
+ */
+export function ramp(stops) {
+  if (stops.length < 2) throw new Error(`colour: a ramp needs two or more stops, got ${stops.length}`);
+  const pieces = stops.slice(1).map((stop, i) => interpolate(stops[i], stop));
+  return (t) => {
+    const u = Math.min(1, Math.max(0, t)) * pieces.length;
+    const i = Math.min(pieces.length - 1, Math.floor(u));
+    return pieces[i](u - i);
   };
 }
 
