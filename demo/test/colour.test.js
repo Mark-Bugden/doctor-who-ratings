@@ -2,21 +2,21 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 
-import { DEFICIENCIES, contrast, distance, interpolate, parseHex, simulate, toHex, toOklab } from '../src/colour.js';
+import { DEFICIENCIES, contrast, distance, interpolate, parseHex, ramp, simulate, toHex, toOklab } from '../src/colour.js';
 
-// The kit's tokens (demo-kit v0.2.0) that the heatmap scale sits on and ends at.
-const KIT = {
-  dark: { surface: '#111722', high: '#f6be55' }, // --color-surface, --color-sodium
-  light: { surface: '#ffffff', high: '#c2391b' }, // --color-surface, --color-halpha
-};
+// The kit's surface colours (demo-kit v0.2.0), which the heatmap is drawn on.
+const SURFACE = { dark: '#111722', light: '#ffffff' };
 
-// The scale's low ends, as demo.css sets them: on [data-demo], then under data-theme="light".
+// The scale's stops, as demo.css sets them: on [data-demo], then under data-theme="light".
 const css = readFileSync(new URL('../src/demo.css', import.meta.url), 'utf8');
-const [dark, light] = [...css.matchAll(/--dw-heat-low:\s*(#[0-9a-f]{6})/gi)].map((match) => match[1]);
+const [dark, light] = [...css.matchAll(/--dw-heat:\s*([^;]+);/g)].map((match) => match[1].trim().split(/\s+/));
 const SCALES = {
-  dark: { ...KIT.dark, low: dark },
-  light: { ...KIT.light, low: light },
+  dark: { surface: SURFACE.dark, stops: dark },
+  light: { surface: SURFACE.light, stops: light },
 };
+// Enough steps to land on every stop of a scale of four (0, 1/3, 2/3 and 1) and between them.
+const STEPS = 31;
+const steps = (scale, n) => Array.from({ length: n }, (_, i) => scale(i / (n - 1)));
 
 const lightness = (color) => toOklab(parseHex(color))[0];
 
@@ -35,22 +35,38 @@ test('interpolates from one end to the other', () => {
   assert.equal(scale(2), '#ffffff');
 });
 
+test('ramps through each stop in turn', () => {
+  const scale = ramp(['#000000', '#ff0000', '#ffffff']);
+  assert.equal(scale(0), '#000000');
+  assert.equal(scale(0.5), '#ff0000');
+  assert.equal(scale(1), '#ffffff');
+  assert.equal(scale(0.25), interpolate('#000000', '#ff0000')(0.5));
+  assert.equal(scale(-1), '#000000');
+  assert.equal(scale(2), '#ffffff');
+  assert.throws(() => ramp(['#000000']), /two or more/);
+});
+
 test('computes WCAG contrast', () => {
   assert.equal(contrast('#000000', '#ffffff').toFixed(2), '21.00');
   assert.equal(contrast('#c2391b', '#ffffff').toFixed(2), '5.39');
 });
 
-for (const [theme, { surface, low, high }] of Object.entries(SCALES)) {
+test('the stylesheet sets a scale of hex stops for each theme', () => {
+  for (const stops of [dark, light]) {
+    assert.ok(stops.length >= 2);
+    for (const stop of stops) assert.match(stop, /^#[0-9a-f]{6}$/i);
+  }
+});
+
+for (const [theme, { surface, stops }] of Object.entries(SCALES)) {
   test(`${theme}: every step of the heatmap scale clears 3:1 on the surface`, () => {
-    const scale = interpolate(low, high);
-    for (let i = 0; i <= 10; i++) assert.ok(contrast(scale(i / 10), surface) >= 3, `${scale(i / 10)} at ${i / 10}`);
+    for (const color of steps(ramp(stops), STEPS)) assert.ok(contrast(color, surface) >= 3, color);
   });
 
   test(`${theme}: the scale's lightness runs one way, with and without colour-vision deficiencies`, () => {
-    const scale = interpolate(low, high);
-    const steps = Array.from({ length: 11 }, (_, i) => scale(i / 10));
+    const all = steps(ramp(stops), STEPS);
     for (const vision of ['normal', ...DEFICIENCIES]) {
-      const seen = vision === 'normal' ? steps : steps.map((color) => simulate(color, vision));
+      const seen = vision === 'normal' ? all : all.map((color) => simulate(color, vision));
       const l = seen.map(lightness);
       const direction = Math.sign(l.at(-1) - l[0]);
       assert.ok(l.slice(1).every((value, i) => Math.sign(value - l[i]) === direction), `${vision}: ${l.map((v) => v.toFixed(3))}`);
@@ -58,15 +74,12 @@ for (const [theme, { surface, low, high }] of Object.entries(SCALES)) {
   });
 
   test(`${theme}: six steps of the scale stay apart with colour-vision deficiencies`, () => {
-    const scale = interpolate(low, high);
-    const steps = Array.from({ length: 6 }, (_, i) => scale(i / 5));
-    // OKLab distance; about 0.02 is a just-noticeable difference. Measured minimums: dark 0.053
-    // (tritanopia), light 0.037 (deuteranopia). The light scale is the tighter one, because its low
-    // end can be no lighter than 3:1 on white allows.
-    const minimum = theme === 'light' ? 0.035 : 0.05;
+    const six = steps(ramp(stops), 6);
+    // OKLab distance; about 0.02 is a just-noticeable difference. Measured minimums: dark 0.075,
+    // light 0.051, both under tritanopia.
     for (const vision of ['normal', ...DEFICIENCIES]) {
-      const seen = vision === 'normal' ? steps : steps.map((color) => simulate(color, vision));
-      for (let i = 1; i < seen.length; i++) assert.ok(distance(seen[i - 1], seen[i]) >= minimum, `${vision}, step ${i}`);
+      const seen = vision === 'normal' ? six : six.map((color) => simulate(color, vision));
+      for (let i = 1; i < seen.length; i++) assert.ok(distance(seen[i - 1], seen[i]) >= 0.05, `${vision}, step ${i}`);
     }
   });
 }

@@ -3,7 +3,8 @@ import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 
 import { prepare } from '../src/data.js';
-import { find, normalise, searchIndex, suggestions } from '../src/search.js';
+import { suggestionDetail } from '../src/format.js';
+import { find, matches, normalise, searchIndex, target } from '../src/search.js';
 
 const data = prepare(JSON.parse(readFileSync(new URL('../public/data/episodes.json', import.meta.url), 'utf8')));
 const index = searchIndex(data.stories);
@@ -39,10 +40,37 @@ test('falls back to a title that starts with, then contains, the query', () => {
   assert.equal(find(index, '  '), null);
 });
 
-test('suggests each title once, and no generic part titles', () => {
-  const labels = suggestions(index);
-  assert.equal(new Set(labels).size, labels.length);
+test('matches whole titles, then starts, then the start of a word, then anywhere', () => {
+  const labels = (query) => matches(index, query, 50).map((entry) => entry.label);
+  // "Heaven Sent" starts with the query; "Smile" has no word that does, so it isn't matched.
+  assert.equal(labels('heaven')[0], 'Heaven Sent');
+  const dalek = labels('dalek');
+  assert.ok(dalek.indexOf('Dalek') < dalek.indexOf('The Daleks'), 'a title starting with the query comes first');
+  assert.ok(dalek.indexOf('The Daleks') < dalek.indexOf('Remembrance of the Daleks'), 'stories in broadcast order');
+  const cyber = labels('man');
+  const word = cyber.findIndex((label) => / man/i.test(label));
+  const inside = cyber.findIndex((label) => /\Bman/i.test(label) && !/(^| )man/i.test(label));
+  assert.ok(word >= 0 && inside >= 0 && word < inside, 'the start of a word before the middle of one');
+});
+
+test('stops at the limit, and matches nothing for an empty query', () => {
+  assert.equal(matches(index, 'the', 8).length, 8);
+  assert.deepEqual(matches(index, '  '), []);
+  assert.deepEqual(matches(index, 'no such episode'), []);
+});
+
+test('indexes each named part, and no generic part titles', () => {
+  const labels = index.map((entry) => entry.label);
   assert.ok(!labels.includes('Part One'));
   assert.ok(!labels.includes('Episode 1'));
   assert.ok(labels.includes('The Cave of Skulls'));
+});
+
+test('describes each suggestion: where it sits, the Doctor, and when', () => {
+  const [skulls] = matches(index, 'The Cave of Skulls', 1);
+  assert.equal(suggestionDetail(target(skulls)), 'An Unearthly Child, part 2 · William Hartnell · 1963');
+  const [blink] = matches(index, 'Blink', 1);
+  assert.equal(suggestionDetail(target(blink)), 'David Tennant · 2007');
+  const [daleks] = matches(index, 'The Daleks', 1);
+  assert.equal(suggestionDetail(target(daleks)), '7 episodes · William Hartnell · 1963–64');
 });

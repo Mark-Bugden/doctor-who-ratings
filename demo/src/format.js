@@ -44,7 +44,7 @@ export function episodeName(part) {
   return isGeneric(part.title) ? `${part.story.title}, part ${part.number}` : part.title;
 }
 
-/** The lines of the tooltip for a part. A generic part title gives way to its story's. */
+/** The lines of the tooltip for a clicked or found part. A generic part title gives way to its story's. */
 export function partLines(part) {
   const { story } = part;
   const generic = isGeneric(part.title);
@@ -84,6 +84,23 @@ export function credits(story) {
 export function doctorStatus(doctor) {
   const best = doctor.parts.reduce((a, b) => ((b.rating ?? -1) > (a.rating ?? -1) ? b : a));
   return `${doctor.name}, the ${doctor.label}: ${plural(doctor.parts.length, 'episode')} in ${plural(doctor.stories.length, 'story', 'stories')}, ${doctor.years}. Highest rated: ${episodeName(best)}, ${rating(best.rating)}.`;
+}
+
+/** The name of a search result or a clicked episode, as the search box shows it. */
+export function foundName({ story, part }) {
+  return part ? episodeName(part) : story.title;
+}
+
+/** The second line of a search suggestion: where the title sits, the Doctor, and when, e.g. "An Unearthly Child, part 2 · William Hartnell · 1963". */
+export function suggestionDetail({ story, part }) {
+  if (part) {
+    const where = story.parts.length > 1 ? `${story.title}, part ${part.number}` : null;
+    return [where, story.doctor.name, part.airDate.slice(0, 4)].filter(Boolean).join(' · ');
+  }
+  const first = story.parts[0].airDate.slice(0, 4);
+  const last = story.parts.at(-1).airDate.slice(0, 4);
+  const when = first === last ? first : `${first}–${last.slice(first.slice(0, 2) === last.slice(0, 2) ? 2 : 0)}`;
+  return [plural(story.parts.length, 'episode'), story.doctor.name, when].join(' · ');
 }
 
 /** The status line for a search result or a clicked episode. */

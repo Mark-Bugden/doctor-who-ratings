@@ -68,13 +68,13 @@ The project is descriptive. It makes no claims about what causes a rating.
 
 | | |
 | --- | --- |
-| Views | Timeline (opening), Heatmap and Leaderboard, switched with a View `select()` in the controls rail. |
-| Timeline | One dot per episode or part at its air date, sized by votes. Each story's mean is a short bar across its parts. The Doctors' eras are alternating bands, labelled directly, and the 1989–2005 gap shows. Hover or tap for title, story, Doctor, rating, votes, writer and director. |
-| Heatmap | Season × episode, one era at a time. Uses the slate-to-amber scale. Cells keep a minimum size, and the grid scrolls sideways within the stage on narrow screens. |
+| Views | Timeline (opening), Heatmap and Leaderboard, switched with three icon buttons at the top of the controls rail. The rail shows only the controls the current view uses (see step 5). |
+| Timeline | One dot per episode or part at its air date, sized by votes. Each story's mean is a short bar across its parts. The Doctors' eras are alternating bands, labelled directly, and the 1989–2005 gap shows. Hovering gives the episode's name; a click or tap gives its title, story, Doctor, rating, votes, writer and director. |
+| Heatmap | Season × episode, one era at a time. Ratings from 5 to 9 span the colour scale (see "Look"). Cells keep a minimum size, and the grid scrolls sideways within the stage on narrow screens. Hover and click work as on the timeline. |
 | Doctor selector | With no Doctor selected, every episode is drawn in the muted text colour. Selecting a Doctor lights their run in the accent and drops everything else to the curve colour. On the heatmap, the other Doctors' cells dim instead (see "Look"). |
-| Title search | Finds an episode or story and jumps to it in the current view. This is also the keyboard path into the charts. |
-| Era toggle | Classic / revived, for the heatmap. |
-| Rating / votes | Recolours the heatmap and rescales the timeline by votes (log scale). Disabled on the leaderboard. |
+| Title search | Suggests stories and episodes as you type, each with its Doctor and year, and jumps to the one picked in the current view. The box then shows what's found, with a button to clear it. This is also the keyboard path into the charts. |
+| Era | Classic / revived buttons, for the heatmap. |
+| Rating / votes | Buttons that recolour the heatmap and rescale the timeline by votes (log scale). Hidden on the leaderboard. |
 | Status line | What's highlighted or found; on the leaderboard, the top three. |
 | How this works | Sources and snapshot date, IMDb's attribution, what a "story" is, why specials are left out, and what each assumption does. |
 | Copy | Plain, with no claims about why ratings differ. |
@@ -92,11 +92,11 @@ The project is descriptive. It makes no claims about what causes a rating.
 
   `--color-curve` is below 3:1, so it only marks context, never anything that must be seen on its own.
 - **Doctors.** There's no colour per Doctor, and the kit's categorical slots aren't used.
-- **Heatmap scale.** A sequential scale. In dark mode it runs from dim slate for low ratings to `--color-sodium` for high, and in light mode from pale to `--color-halpha`.
-  - The two ends are the demo's only local colours. As the kit's changelog asks, the dark values go on `[data-demo]` and the light ones under `:root[data-theme="light"] [data-demo]`, with no `prefers-color-scheme`.
-  - Both ends must clear 3:1 on the surface. `--color-curve` doesn't, so the dark low end sits a little lighter than it.
-  - The light scale needs more thought (see "Open questions").
-- **Highlighting the heatmap.** The scale's high end is the accent colour in both themes, so the Doctor highlight can't recolour cells there. Instead it dims the other Doctors' cells, and a search hit gets an outline in `--color-text`.
+- **Heatmap scale.** A sequential scale through four stops, interpolated in OKLab between neighbours (changed in step 5).
+  - Dark, "ember": deep red `#c13c36`, orange `#ea6a12`, sodium `#f6be55`, pale gold `#f9f0ba`. Light, "viridis": indigo `#35226a`, blue `#285388`, teal `#0f8080`, green `#5ca24c`. Higher ratings are lighter in both themes.
+  - The stops are the demo's only local colours. As the kit's changelog asks, the dark ones go on `[data-demo]` and the light ones under `:root[data-theme="light"] [data-demo]`, with no `prefers-color-scheme`.
+  - Every step clears 3:1 on the surface (dark 3.39:1 at worst, light 3.12:1), lightness runs one way with and without simulated colour-vision deficiencies, and six steps sit at least 0.05 apart in OKLab under all of them (dark 0.075, light 0.051). `demo/test/colour.test.js` checks all three.
+- **Highlighting the heatmap.** The scale already spans several hues, so the Doctor highlight can't recolour cells. Instead it dims the other Doctors' cells, and a search hit gets an outline in `--color-text`.
 - **Stills.** Render them from the built demo's opening timeline, which is dark under v0.2.0. Don't reuse the stub's stills or the contract's image script, which both use the old paper colour.
 
 ## Repo layout (target)
@@ -176,6 +176,18 @@ LICENSE                      MIT
 - [x] Mark bumps the tag in the site's `data/projects.yaml` and takes the write-up out of draft.
   - The tag and title went in with Mark-Bugden.github.io#4. Mark's edit of the write-up (#6 here) went live with Mark-Bugden.github.io#7 on 2026-11-19, and the old `/portfolio/doctorwho.html` redirects to it.
 
+### 5. Polish after launch (PR)
+Mark's notes on the live demo (2026-11-19): the heatmap looked bland, the rail had too many controls, the search box was clunky, and the timeline's hover box hid the timeline.
+- [x] **Heatmap colours.** Two things made it bland. The scale ran from 4 to 10, but the middle 80% of ratings sit between 6.3 and 8.4, so most cells used about a third of it. And two ends of opposite hues, slate and amber, pass through grey-beige in between.
+  - Ratings from 5 to 9 now span the scale. Only 19 of 863 episodes fall outside (3 below, 16 above), and they take its ends. The legend reads "≤5" and "≥9".
+  - The scale runs through four stops of neighbouring hues (see "Look"). A first version, indigo to magenta to amber in both themes, looked too pink. Mark chose from six options rendered on the real heatmap: Ember for dark, built on the site's sodium amber, and Viridis for light. Both pass the colour tests. The separation check is now 0.05 for both themes; light used to be allowed 0.035.
+- [x] **Fewer controls.** The rail shows only what the current view uses: timeline 4 (View, Doctor, Find, Show), heatmap 5 (plus Era), leaderboard 6 or 7 (Rank, Find, Average, Shrinkage, Adjust for era, and the Doctor while it ranks the Doctors).
+  - The view switch is three icon buttons with their names. Era, Show, Rank and Average are buttons rather than drop-downs, so each takes one click. They're radio buttons underneath, so the arrow keys move between them.
+  - Rank comes straight after the view switch, so that hiding the Doctor for writers or directors never moves the buttons just pressed.
+- [x] **Search.** A list of suggestions under the box replaces the browser's datalist. It ranks the whole title, then its start, then the start of a word in it, then anywhere in it, and shows each title's place, Doctor and year. The arrow keys, Enter and Escape work, and the box shows what's found, including an episode clicked in a chart, with a button to clear it.
+- [x] **Hover.** Hovering on the timeline or the heatmap gives just the episode's name; a click or tap gives the details. A mouse click opens the episode the hover named, because where dots overlap the two could pick different neighbours. That bug predates step 5.
+- The stills don't change: they show the timeline's stage without the rail.
+
 ## For Mark, on the site
 
 - ~~**The title.**~~ Done in Mark-Bugden.github.io#4.
@@ -186,5 +198,11 @@ LICENSE                      MIT
 - **Banner and Tennant photo.** Mark checks whether he may use them: the banner imitates the show's logo, and the photo looks like a BBC promotional still. The site no longer uses either, since Mark-Bugden.github.io#5 removed them, but `Assets/banner.png` is still in this repo.
 - ~~**The heatmap's light scale.**~~ Settled in step 3: blue-slate `#7a8db0` (3.35:1 on white) to H-alpha. Every step clears 3:1, and lightness runs one way with and without simulated colour-vision deficiencies. The bluer low end separates the steps a little better under deuteranopia than a neutral grey. It's still the tighter of the two scales: six steps sit at least 0.037 apart in OKLab (deuteranopia), against 0.053 on dark.
 - ~~**Season labels from 2024 onwards.**~~ Settled in step 3: Wikipedia's Series 14 and 15, so the numbering runs on. "How this works" says the BBC calls them Season 1 and Season 2.
+- **A shared palette across the site and demos (agreed 2026-11-19, not started).** Each theme gets three roles: a main highlight (links, focus, the lit Doctor), a contrasting highlight (a second group, such as the zombies beside the people in the zombie demo) and a spectrum for sequential data.
+  - Dark: sodium `#f6be55`, ember red `#c13c36` and the Ember scale. Light: viridis blue `#285388`, green `#5ca24c` and the Viridis scale.
+  - Only the main highlight may carry text: it clears 4.5:1 (10.6:1 dark, 7.8:1 light). The contrasting one clears 3:1 (3.4 dark, 3.1 light), so it's for marks only. The pair sits 0.28 apart in OKLab with colour-vision deficiencies on dark, and 0.21 on light.
+  - The heatmap keeps "lighter is better" in both themes, as it is now.
+  - The work lies outside this repo, in this order: demo-kit v0.4.0 (the tokens, the colour tests moved from here, the README), then this demo and the zombie demo move to it, then the site (`site.css`, the favicon, the accent presets). The chart slots must stay clear of both highlights; light slot 3 may need moving.
+  - Waiting for Mark's go-ahead, after another agent's zombie demo work (kit v0.3.0, zombie v1.1.0) has merged. Don't message that agent.
 - **New episodes.** Whatever regular episodes are on IMDb at snapshot time are included. Check that the seasons from 2024 onwards are complete and not duplicated across IMDb's parents. (Checked for the 2026-11-18 snapshot: both are complete, with no duplicates.) Episodes after *The Reality War* would need adding to `reference/` by hand.
 - ~~**The leader doesn't move.**~~ Settled in step 4. Over every setting of the controls (three averages, k from 0 to 20, era adjustment on or off: 126 in all), Tennant is first, Davison eighth and Whittaker last, and Moffat leads the writers. Tom Baker ranges from 2nd to 7th, Eccleston 3rd to 7th and Capaldi 2nd to 6th, and only the directors' leader changes. So the status line gives the top three rather than the leader. The write-up says what holds and what moves, while the demo's own copy stays general, so a refresh can't make it stale.

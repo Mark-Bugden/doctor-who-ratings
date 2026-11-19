@@ -1,17 +1,16 @@
 /*
- * The demo's styles. Colours are the kit's tokens, except the heatmap scale's two ends: dim slate
- * to sodium amber on dark, and blue-slate to H-alpha red on light. Both ends clear 3:1 on the
- * surface (test/colour.test.js checks them). Dark is the default, as in the kit: light applies only
- * under <html data-theme="light">.
+ * The demo's styles. Colours are the kit's tokens, except the heatmap scale's stops, low to high:
+ * on dark, deep red and orange to sodium amber and pale gold ("ember"); on light, indigo and blue to
+ * teal and green ("viridis"). Higher ratings are lighter in both. Every step clears 3:1 on the
+ * surface (test/colour.test.js checks them, and reads the stops from here). Dark is the default, as
+ * in the kit: light applies only under <html data-theme="light">.
  */
 [data-demo] {
-  --dw-heat-low: #5d6d86;
-  --dw-heat-high: var(--color-sodium);
+  --dw-heat: #c13c36 #ea6a12 #f6be55 #f9f0ba;
 }
 
 :root[data-theme="light"] [data-demo] {
-  --dw-heat-low: #7a8db0;
-  --dw-heat-high: var(--color-halpha);
+  --dw-heat: #35226a #285388 #0f8080 #5ca24c;
 }
 
 /* Phones: the kit's 16:9 stage is too short for the heatmap's seasons, so the stage is taller. */
@@ -31,13 +30,110 @@
   inset: 0;
 }
 
-/* The search box, styled like the kit's select. */
+/* Controls that don't apply to the current view are hidden. */
+[data-demo] .dk-control[hidden] {
+  display: none;
+}
+
+[data-demo] .dw-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* A row of buttons for a few choices: radio buttons underneath, on a track like the kit's select. */
+[data-demo] .dw-segments {
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+[data-demo] .dw-segment {
+  position: relative;
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: calc(2.75rem - 8px);
+  padding: 0 var(--space-2);
+  color: var(--color-muted);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-strong);
+  white-space: nowrap;
+  border-radius: calc(var(--radius-sm) - 2px);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
+}
+
+[data-demo] .dw-segment input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+[data-demo] .dw-segment:hover {
+  color: var(--color-text);
+}
+
+[data-demo] .dw-segment:has(input:checked) {
+  color: var(--color-text);
+  background: color-mix(in oklab, var(--color-text) 14%, var(--color-surface));
+}
+
+[data-demo] .dw-segment:has(input:focus-visible) {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 1px;
+}
+
+[data-demo] .dw-segment-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* The view switch: an icon over each name, the chosen icon in the accent. */
+[data-demo] .dw-segmented-icons .dw-segment {
+  flex-direction: column;
+  gap: 3px;
+  min-height: 3.5rem;
+}
+
+[data-demo] .dw-segment-icon,
+[data-demo] .dw-segment-icon svg {
+  display: block;
+}
+
+[data-demo] .dw-segment:has(input:checked) .dw-segment-icon {
+  color: var(--color-accent);
+}
+
+@media (forced-colors: active) {
+  [data-demo] .dw-segment:has(input:checked) {
+    outline: 2px solid CanvasText;
+  }
+}
+
+/* The search box, styled like the kit's select, with its suggestions in a list below. */
+[data-demo] .dw-search-box {
+  position: relative;
+}
+
 [data-demo] .dw-search input {
   width: 100%;
   min-height: 2.75rem;
-  padding: 0 var(--space-3);
+  padding: 0 2.5rem 0 var(--space-3);
   color: var(--color-text);
   font: inherit;
+  text-overflow: ellipsis;
   background: var(--color-bg);
   border: 1px solid var(--color-muted);
   border-radius: var(--radius-sm);
@@ -45,6 +141,81 @@
 
 [data-demo] .dw-search input::placeholder {
   color: var(--color-muted);
+}
+
+[data-demo] .dw-search-clear {
+  position: absolute;
+  top: 50%;
+  right: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  color: var(--color-muted);
+  background: none;
+  border: 0;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+[data-demo] .dw-search-clear:hover {
+  color: var(--color-text);
+}
+
+[data-demo] .dw-search-clear[hidden] {
+  display: none;
+}
+
+[data-demo] .dw-search-list {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  left: 0;
+  z-index: 10;
+  max-height: min(22rem, 60vh);
+  margin: 0;
+  padding: var(--space-1) 0;
+  overflow-y: auto;
+  list-style: none;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.3);
+}
+
+[data-demo] .dw-search-list[hidden] {
+  display: none;
+}
+
+[data-demo] .dw-search-option {
+  display: grid;
+  gap: 1px;
+  padding: var(--space-2) var(--space-3);
+  line-height: var(--leading-snug);
+  cursor: pointer;
+}
+
+[data-demo] .dw-search-option[aria-selected="true"] {
+  background: color-mix(in oklab, var(--color-text) 12%, var(--color-bg));
+}
+
+[data-demo] .dw-search-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+[data-demo] .dw-search-detail,
+[data-demo] .dw-search-empty {
+  color: var(--color-muted);
+  font-size: var(--text-xs);
+}
+
+[data-demo] .dw-search-empty {
+  padding: var(--space-2) var(--space-3);
 }
 
 /* Timeline */
@@ -405,6 +576,15 @@
 
 [data-demo] .dw-tip span {
   color: var(--color-muted);
+}
+
+/* On hover, just the episode's name. */
+[data-demo] .dw-tip-brief {
+  padding: var(--space-1) var(--space-2);
+}
+
+[data-demo] .dw-tip-brief strong {
+  font-size: var(--text-xs);
 }
 
 [data-demo] .dw-band-label.is-hidden {
