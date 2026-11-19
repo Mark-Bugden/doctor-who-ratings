@@ -13,6 +13,18 @@
   --dw-heat: #35226a #285388 #0f8080 #5ca24c;
 }
 
+/*
+ * Wide frames: the stage keeps the manifest's height, but shrinks so that the whole frame (the stage,
+ * then the status line and "How this works", 6.5rem) fits in the window. On the site, the window is
+ * what the page leaves below its title (--dk-fit-height, which the site sets); standalone, it is the
+ * whole window. The stage stays at least 22rem tall, about the height of the controls beside it.
+ */
+@container (min-width: 48rem) {
+  [data-demo] .dk-stage {
+    height: max(22rem, min(var(--dk-stage-height), var(--dk-fit-height, 100dvh) - 6.5rem));
+  }
+}
+
 /* Phones: the kit's 16:9 stage is too short for the heatmap's seasons, so the stage is taller. */
 @container (max-width: 47.99rem) {
   [data-demo] .dk-stage {
