@@ -190,11 +190,17 @@ Mark's notes on the live demo (2026-11-19): the heatmap looked bland, the rail h
 - [x] Release as `v1.1.0`, with `built` 2026-11-19, still on demo-kit v0.2.0. Kit v0.3.0 changes no runtime code, and its validator, which the site now runs, passes this bundle as it is.
   - The snapshot stays 2026-11-18. IMDb's dumps of 2026-11-19 differ by a day's votes, and the live write-up quotes the 2026-11-18 figures, so this release changes the interface only. A data refresh can be a release of its own.
 
+### 6. Release on merge, and fit below the site's title: release `v1.2.0`
+Asked for by Mark on 2026-11-19: each change should be one PR that goes live when it merges, and the demo should be fully visible when its project page opens.
+- [x] **Release on merge.** `demo/package.json`'s `version` is the release. A PR that changes the demo must bump it, or CI fails. When it merges, the Demo workflow builds the bundle, sets `built` to that day, releases `v<version>` and starts the site's build (with the `SITE_DEPLOY_TOKEN` secret). The site now takes each project's latest release ([Mark-Bugden.github.io#16](https://github.com/Mark-Bugden/Mark-Bugden.github.io/pull/16)), so there's no tag to push and no site PR.
+- [x] **Fits below the site's title.** On the project page, the title is now the only thing above the demo ([Mark-Bugden.github.io#17](https://github.com/Mark-Bugden/Mark-Bugden.github.io/pull/17)). On wide frames, the stage keeps 560 px but shrinks so that the frame fits in `--dk-fit-height`, which the site sets to the window's height less what sits above the demo. The stage stays at least 22rem tall, about the height of the controls. Measured with the site's branch: the timeline and heatmap fit at 1920×960, 1536×730 and 1440×790, and are 2 px short at 1366×650. On the leaderboard, the rail is taller than the stage, so "How this works" falls just below the window at 1440×790.
+- [ ] Merging releases `v1.2.0`.
+
 ## For Mark, on the site
 
 - ~~**The title.**~~ Done in Mark-Bugden.github.io#4.
 - ~~**The write-up.**~~ Done: Mark's edited version replaced the old post in Mark-Bugden.github.io#7.
-- **The v1.1.0 tag.** Once its GitHub release exists, bump `doctor-who-ratings` to `v1.1.0` in `data/projects.yaml`.
+- ~~**The v1.1.0 tag.**~~ Done in Mark-Bugden.github.io#15. From now on, releases reach the site without a tag bump.
 
 ## Open questions
 
