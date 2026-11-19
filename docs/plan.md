@@ -187,11 +187,14 @@ Mark's notes on the live demo (2026-11-19): the heatmap looked bland, the rail h
 - [x] **Search.** A list of suggestions under the box replaces the browser's datalist. It ranks the whole title, then its start, then the start of a word in it, then anywhere in it, and shows each title's place, Doctor and year. The arrow keys, Enter and Escape work, and the box shows what's found, including an episode clicked in a chart, with a button to clear it.
 - [x] **Hover.** Hovering on the timeline or the heatmap gives just the episode's name; a click or tap gives the details. A mouse click opens the episode the hover named, because where dots overlap the two could pick different neighbours. That bug predates step 5.
 - The stills don't change: they show the timeline's stage without the rail.
+- [x] Release as `v1.1.0`, with `built` 2026-11-19, still on demo-kit v0.2.0. Kit v0.3.0 changes no runtime code, and its validator, which the site now runs, passes this bundle as it is.
+  - The snapshot stays 2026-11-18. IMDb's dumps of 2026-11-19 differ by a day's votes, and the live write-up quotes the 2026-11-18 figures, so this release changes the interface only. A data refresh can be a release of its own.
 
 ## For Mark, on the site
 
 - ~~**The title.**~~ Done in Mark-Bugden.github.io#4.
 - ~~**The write-up.**~~ Done: Mark's edited version replaced the old post in Mark-Bugden.github.io#7.
+- **The v1.1.0 tag.** Once its GitHub release exists, bump `doctor-who-ratings` to `v1.1.0` in `data/projects.yaml`.
 
 ## Open questions
 
