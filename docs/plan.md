@@ -87,7 +87,7 @@ The project is descriptive. It makes no claims about what causes a rating.
   | Token | Use | Dark | Light |
   | --- | --- | --- | --- |
   | `--color-muted` | every episode, while no Doctor is selected | 7.3:1 | 6.4:1 |
-  | `--color-accent` | the selected or hovered Doctor | 10.6:1 | 7.8:1 |
+  | `--color-accent` | the selected or hovered Doctor | 10.6:1 | 6.3:1 |
   | `--color-curve` | the other Doctors while one is selected; era bands and reference lines | 2.9:1 | 2.5:1 |
 
   `--color-curve` is below 3:1, so it only marks context, never anything that must be seen on its own.
@@ -200,7 +200,12 @@ Asked for by Mark on 2026-11-19: each change should be one PR that goes live whe
 Agreed with Mark on 2026-11-19 (see "A shared palette" under "Open questions"): the site and the demos share three colour roles, which demo-kit v0.4.0 provides.
 - [x] **Kit v0.4.0** ([demo-kit#7](https://github.com/Mark-Bugden/demo-kit/pull/7)). The heatmap's scale became the kit's spectrum, and `src/colour.js` and the scale's tests moved to the kit, which now uses them for `plot()` too. The heatmap reads the spectrum's four tokens in place of `--dw-heat`, and draws through the kit's `ramp()`. The colours are the same.
 - [x] **The light accent is now viridis blue** (`#285388`, 7.8:1 on the surface), in place of H-alpha red. It marks the lit Doctor on the timeline and the leaderboard, and the selected view's icon. Dark doesn't change, so neither do the stills.
-- [ ] Merging releases `v1.3.0`.
+- [x] Merging released `v1.3.0` on 2026-11-20.
+
+### 8. A brighter light accent: release `v1.4.0`
+Mark found the light accent dull (2026-11-20): viridis blue read as dark grey beside the text, so the lit Doctor didn't stand out as sodium does on dark. He chose from three options rendered on the live site.
+- [x] **Kit v0.5.0** ([demo-kit#8](https://github.com/Mark-Bugden/demo-kit/pull/8)): the light accent is Cherenkov blue `#2456d3` (6.3:1 on the surface). The demo needs no code change. The heatmap's light scale is unchanged.
+- [ ] Merging releases `v1.4.0`.
 
 ## For Mark, on the site
 
@@ -215,7 +220,7 @@ Agreed with Mark on 2026-11-19 (see "A shared palette" under "Open questions"): 
 - ~~**Season labels from 2024 onwards.**~~ Settled in step 3: Wikipedia's Series 14 and 15, so the numbering runs on. "How this works" says the BBC calls them Season 1 and Season 2.
 - ~~**A shared palette across the site and demos.**~~ Agreed 2026-11-19, built in step 7 and in [demo-kit#7](https://github.com/Mark-Bugden/demo-kit/pull/7). Each theme has three roles: a main highlight (links, focus, the lit Doctor), a contrasting highlight (a second group, such as the zombies beside the people in the zombie demo) and a spectrum for sequential data.
   - Dark: sodium `#f6be55`, ember red `#c13c36` and the Ember scale. Light: viridis blue `#285388`, green `#5ca24c` and the Viridis scale.
-  - Only the main highlight may carry text: it clears 4.5:1 (10.6:1 dark, 7.8:1 light). The contrasting one clears 3:1 (3.4 dark, 3.1 light), so it's for marks only. The pair sits at least 0.284 apart in OKLab with colour-vision deficiencies on dark, and 0.205 on light. The kit's test asks for 0.2.
+  - Only the main highlight may carry text: it clears 4.5:1 (10.6:1 dark, 6.3:1 light since step 8). The contrasting one clears 3:1 (3.4 dark, 3.1 light), so it's for marks only. The pair sits at least 0.284 apart in OKLab with colour-vision deficiencies on dark, and 0.318 on light, except 0.136 with tritanopia. The kit's test asks for 0.2, and 0.13 with tritanopia.
   - The heatmap keeps "lighter is better" in both themes, and the kit's test now requires it.
   - Chart slots: Mark chose to keep them clear of the main highlight only. Light slot 7 moved. The kit's README lists the slots that sit near the contrasting highlight.
 - **New episodes.** Whatever regular episodes are on IMDb at snapshot time are included. Check that the seasons from 2024 onwards are complete and not duplicated across IMDb's parents. (Checked for the 2026-11-18 snapshot: both are complete, with no duplicates.) Episodes after *The Reality War* would need adding to `reference/` by hand.

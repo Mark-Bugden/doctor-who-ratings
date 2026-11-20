@@ -6,7 +6,7 @@
   "tags": ["data visualisation", "statistics", "Doctor Who"],
   "status": "live",
   "repo": "https://github.com/Mark-Bugden/doctor-who-ratings",
-  "kitVersion": "0.4.0",
+  "kitVersion": "0.5.0",
   "built": "2026-11-19",
   "demo": { "entry": "demo.js", "height": 560, "needsWebGL": false },
   "writeup": "/projects/doctor-who-ratings/",
