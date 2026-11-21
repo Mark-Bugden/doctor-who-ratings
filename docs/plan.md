@@ -70,7 +70,7 @@ The project is descriptive. It makes no claims about what causes a rating.
 | --- | --- |
 | Views | Timeline (opening), Heatmap and Leaderboard, switched with three icon buttons at the top of the controls rail. The rail shows only the controls the current view uses (see step 5). |
 | Timeline | One dot per episode or part at its air date, sized by votes. Each story's mean is a short bar across its parts. The Doctors' eras are alternating bands, labelled directly, and the 1989–2005 gap shows. Hovering gives the episode's name; a click or tap gives its title, story, Doctor, rating, votes, writer and director. |
-| Heatmap | Season × episode, one era at a time. Ratings from 5 to 9 span the colour scale (see "Look"). Cells keep a minimum size, and the grid scrolls sideways within the stage on narrow screens. Hover and click work as on the timeline. |
+| Heatmap | Season × episode, one era at a time. Ratings from 5 to 10 span the colour scale (see "Look"), and cells big enough to hold their rating show it (changed in step 9). Cells keep a minimum size, and the grid scrolls sideways within the stage on narrow screens. Hover and click work as on the timeline. |
 | Doctor selector | With no Doctor selected, every episode is drawn in the muted text colour. Selecting a Doctor lights their run in the accent and drops everything else to the curve colour. On the heatmap, the other Doctors' cells dim instead (see "Look"). |
 | Title search | Suggests stories and episodes as you type, each with its Doctor and year, and jumps to the one picked in the current view. The box then shows what's found, with a button to clear it. This is also the keyboard path into the charts. |
 | Era | Classic / revived buttons, for the heatmap. |
@@ -97,7 +97,7 @@ The project is descriptive. It makes no claims about what causes a rating.
   - Since step 7, the stops are the kit's spectrum (`--chart-spectrum-1` to `-4`), and the demo has no local colours.
   - Every step clears 3:1 on the surface (dark 3.39:1 at worst, light 3.12:1), lightness rises from low to high with and without simulated colour-vision deficiencies, and six steps sit at least 0.05 apart in OKLab under all of them (dark 0.075, light 0.051). demo-kit's `test/tokens.test.js` checks all three.
 - **Highlighting the heatmap.** The scale already spans several hues, so the Doctor highlight can't recolour cells. Instead it dims the other Doctors' cells, and a search hit gets an outline in `--color-text`.
-- **Stills.** Render them from the built demo's opening timeline, which is dark under v0.2.0. Don't reuse the stub's stills or the contract's image script, which both use the old paper colour.
+- **Stills.** `scripts/stills.py` renders them from the built demo, in both themes. The loading still is the opening timeline. Since step 9, the project card and link previews show the classic era's heatmap. Don't reuse the stub's stills or the contract's image script, which both use the old paper colour.
 
 ## Repo layout (target)
 
@@ -179,7 +179,7 @@ LICENSE                      MIT
 ### 5. Polish after launch (PR)
 Mark's notes on the live demo (2026-11-19): the heatmap looked bland, the rail had too many controls, the search box was clunky, and the timeline's hover box hid the timeline.
 - [x] **Heatmap colours.** Two things made it bland. The scale ran from 4 to 10, but the middle 80% of ratings sit between 6.3 and 8.4, so most cells used about a third of it. And two ends of opposite hues, slate and amber, pass through grey-beige in between.
-  - Ratings from 5 to 9 now span the scale. Only 19 of 863 episodes fall outside (3 below, 16 above), and they take its ends. The legend reads "≤5" and "≥9".
+  - Ratings from 5 to 9 now span the scale. Only 19 of 863 episodes fall outside (3 below, 16 above), and they take its ends. The legend reads "≤5" and "≥9". (Step 9 extends it to 10.)
   - The scale runs through four stops of neighbouring hues (see "Look"). A first version, indigo to magenta to amber in both themes, looked too pink. Mark chose from six options rendered on the real heatmap: Ember for dark, built on the site's sodium amber, and Viridis for light. Both pass the colour tests. The separation check is now 0.05 for both themes; light used to be allowed 0.035.
 - [x] **Fewer controls.** The rail shows only what the current view uses: timeline 4 (View, Doctor, Find, Show), heatmap 5 (plus Era), leaderboard 6 or 7 (Rank, Find, Average, Shrinkage, Adjust for era, and the Doctor while it ranks the Doctors).
   - The view switch is three icon buttons with their names. Era, Show, Rank and Average are buttons rather than drop-downs, so each takes one click. They're radio buttons underneath, so the arrow keys move between them.
@@ -205,7 +205,17 @@ Agreed with Mark on 2026-11-19 (see "A shared palette" under "Open questions"): 
 ### 8. A brighter light accent: release `v1.4.0`
 Mark found the light accent dull (2026-11-20): viridis blue read as dark grey beside the text, so the lit Doctor didn't stand out as sodium does on dark. He chose from three options rendered on the live site.
 - [x] **Kit v0.5.0** ([demo-kit#8](https://github.com/Mark-Bugden/demo-kit/pull/8)): the light accent is Cherenkov blue `#2456d3` (6.3:1 on the surface). The demo needs no code change. The heatmap's light scale is unchanged.
-- [ ] Merging releases `v1.4.0`.
+- [x] Merging released `v1.4.0` on 2026-11-20.
+
+### 9. A colourful card, and Blink stands out: release `v1.5.0`
+Mark found the project card dull (2026-11-21): it showed the opening timeline with no Doctor picked, so every dot was grey, and the same dark image under the site's light theme. The still was the stage at 1200 px wide, which the card shrinks to about 384 px, so the dots shrank to specks.
+- [x] **The card shows the classic era's heatmap.** Mark chose it from four options rendered at the card's size and crop (the two eras' heatmaps, the timeline and the leaderboard with Tennant lit). The stage is shot at 576 × 360 px, so the cells stay bold on the card, and at 16:10, the card's shape. The 1200 × 675 image centres it on the page colour, and the card trims those margins. Link previews (`og.jpg`) show the same heatmap, dark.
+- [x] **Light versions.** `thumb-light.webp` and `static-light.webp`, which the site shows under its light theme. The loading still stays the opening timeline.
+- [x] **The heatmap tells the best episodes apart.** Mark noticed (2026-11-21) that the old notebook's heatmap made Blink clearly the best, while the demo's top cells all looked alike. Step 5's scale stopped at 9, so all 22 episodes rated 9 or more (20 of them revived) took the same top colour.
+  - Running the scale to 10 alone wasn't enough: the spectrum's brightest shades sit close together, so Blink (9.8) and *Heaven Sent* (9.6) are only 0.017 apart in OKLab, and Blink and the 9.2s about 0.05.
+  - So the scale runs from 5 to 10, and each cell big enough (30 × 18 px or more) shows its rating, in white or black, whichever contrasts more. That's every cell of the revived era on a desktop; the classic era's cells and phones' are too small, and votes show no numbers. The legend reads "≤5" and "10". Mark chose this from four options rendered on the revived era (5–9 and 5–10, each with and without numbers).
+  - Black rather than a near-black, so every cell clears 4.5:1 in both themes (4.6:1 at worst). A JS test reads the spectrum from the kit's `tokens.css` and checks it, so a new kit can't quietly break it.
+- [ ] Merging releases `v1.5.0`.
 
 ## For Mark, on the site
 

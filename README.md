@@ -16,7 +16,7 @@ The project is descriptive: it shows how episodes were rated, not why.
 | [`src/doctor_who_ratings/`](src/doctor_who_ratings/) | Python: the data pipeline and the leaderboard's reference maths. |
 | [`reference/`](reference/) | The hand-checked tables of stories and parts, from Wikipedia. Its README explains how they're made and checked. |
 | [`tests/`](tests/) | Python tests: the reference tables, the demo's data file and the rankings. |
-| [`scripts/`](scripts/) | Renders the demo's stills from its opening state. |
+| [`scripts/`](scripts/) | Renders the demo's stills: the opening timeline, and the heatmap for the project card. |
 | [`docs/`](docs/) | The plan, and the draft write-up for the site. |
 | [`legacy/`](legacy/) | The original 2025 notebook, kept for reference. Its README explains why its variance analysis doesn't hold. |
 
@@ -42,7 +42,7 @@ uv run pytest
 
 The export joins IMDb's ratings to the hand-checked tables in [`reference/`](reference/), which hold every regular story and part with its IMDb id. Rebuilding those tables from Wikipedia is a separate, rarer step that its README describes. `uv run pre-commit install` installs the hook that strips notebook outputs before each commit.
 
-After a refresh, update the snapshot date in "How this works" (`about` in `demo/public/manifest.json`; the JS tests check it), rebuild the demo, and render the stills again from its opening state:
+After a refresh, update the snapshot date in "How this works" (`about` in `demo/public/manifest.json`; the JS tests check it), rebuild the demo, and render the stills again:
 
 ```sh
 cd demo && npm run build && cd ..

@@ -4,7 +4,8 @@ import { test } from 'node:test';
 
 import { prepare, years } from '../src/data.js';
 import { longDate } from '../src/format.js';
-import { position } from '../src/views/heatmap.js';
+import { contrast, ramp } from '@mark-bugden/demo-kit';
+import { ink, position } from '../src/views/heatmap.js';
 
 const read = (path) => JSON.parse(readFileSync(new URL(path, import.meta.url), 'utf8'));
 const raw = read('../public/data/episodes.json');
@@ -51,6 +52,19 @@ test('places ratings on one scale for both eras, and votes per era on a log scal
   assert.equal(position({ votes: low }, 'votes', null, [low, high]), 0);
   assert.equal(position({ votes: high }, 'votes', null, [low, high]), 1);
   assert.equal(position({ rating: null }, 'rating', [4, 10], null), null);
+});
+
+test('a rating printed in a heatmap cell clears 4.5:1 on every colour of the scale, in both themes', () => {
+  const tokens = readFileSync(new URL(import.meta.resolve('@mark-bugden/demo-kit/tokens.css')), 'utf8');
+  const spectra = [...tokens.matchAll(/--chart-spectrum-1: (#\w+);\s*--chart-spectrum-2: (#\w+);\s*--chart-spectrum-3: (#\w+);\s*--chart-spectrum-4: (#\w+);/g)];
+  assert.equal(spectra.length, 2); // dark, then light
+  for (const [, ...stops] of spectra) {
+    const scale = ramp(stops);
+    for (let i = 0; i <= 100; i++) {
+      const colour = scale(i / 100);
+      assert.ok(contrast(colour, ink(colour)) >= 4.5, `${ink(colour)} on ${colour}`);
+    }
+  }
 });
 
 test('"How this works" gives the data\'s snapshot date', () => {

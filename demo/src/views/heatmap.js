@@ -1,12 +1,13 @@
 // The heatmap: one era at a time, a row per season and a cell per episode, coloured by rating or by
-// votes. Ratings take the scale from 5 to 9, where all but about 2% of episodes fall, and the few
-// outside take its ends, so the scale's colours go on the ratings most episodes have. Cells keep a
-// minimum size, and the grid scrolls within the stage when it doesn't fit, with the season and
-// episode numbers kept in view. A lit Doctor's cells stay as they are and the others dim, because
-// the scale has no colour to spare for a highlight.
+// votes. Ratings take the scale from 5 to 10, and the few episodes below 5 take its low end. Its
+// brightest shades are hard to tell apart, so cells big enough to hold their rating show it, in black
+// or white, whichever contrasts more. Cells keep a minimum size, and the grid scrolls within the stage
+// when it doesn't fit, with the season and episode numbers kept in view. A lit Doctor's cells stay as
+// they are and the others dim, because the scale has no colour to spare for a highlight.
 
+import { contrast } from '@mark-bugden/demo-kit';
 import { h } from '../dom.js';
-import { count } from '../format.js';
+import { count, rating } from '../format.js';
 
 const LABEL = 58; // px: the season column
 const HEADER = 22; // px: the episode row
@@ -14,10 +15,15 @@ const LEGEND = 30; // px
 const MIN_CELL = 14;
 const MAX_WIDTH = 56;
 const MAX_HEIGHT = 36;
-const RATINGS = [5, 9]; // the ratings the colour scale spans
+const RATINGS = [5, 10]; // the ratings the colour scale spans
 const LEGEND_STOPS = 9;
+const NUMBER_CELL = [30, 18]; // px: the smallest cell that shows its rating
+const INKS = ['#ffffff', '#000000'];
 
 const clamp = (value, low, high) => Math.min(high, Math.max(low, value));
+
+/** The text colour for a cell's rating: white or black, whichever contrasts more with the cell. */
+export const ink = (colour) => (contrast(colour, INKS[0]) >= contrast(colour, INKS[1]) ? INKS[0] : INKS[1]);
 
 /**
  * Where a value sits on the colour scale, 0 at its low end and 1 at its high end: ratings on one
@@ -52,6 +58,7 @@ export function createHeatmap(container, data) {
 
     const votes = era.votes;
     const every = cellWidth >= 22 ? 1 : 5;
+    const numbers = metric === 'rating' && cellWidth >= NUMBER_CELL[0] && cellHeight >= NUMBER_CELL[1];
     const heads = [h('div', { class: 'dw-corner' }, era.season)];
     for (let episode = 1; episode <= columns; episode++) {
       const label = episode === 1 || episode % every === 0 ? String(episode) : '';
@@ -64,18 +71,20 @@ export function createHeatmap(container, data) {
       body.push(h('div', { class: 'dw-rowhead', style: `grid-row: ${row + 2}` }, String(season)));
       for (const part of parts) {
         const t = position(part, metric, RATINGS, votes);
+        const colour = t == null ? null : scale(t);
+        const number = numbers && colour && part.rating != null;
         const cell = h('div', {
           class: 'dw-cell',
           'data-part': part.index,
-          style: `grid-row: ${row + 2}; grid-column: ${part.episode + 1}; background: ${t == null ? 'transparent' : scale(t)}`,
-        });
+          style: `grid-row: ${row + 2}; grid-column: ${part.episode + 1}; background: ${colour ?? 'transparent'}${number ? `; color: ${ink(colour)}` : ''}`,
+        }, number ? rating(part.rating) : '');
         cells.set(part, cell);
         body.push(cell);
       }
     });
     grid.replaceChildren(...heads, ...body);
 
-    const [low, high] = metric === 'votes' ? votes.map(count) : [`≤${RATINGS[0]}`, `≥${RATINGS[1]}`];
+    const [low, high] = metric === 'votes' ? votes.map(count) : [`≤${RATINGS[0]}`, String(RATINGS[1])];
     const stops = Array.from({ length: LEGEND_STOPS }, (_, i) => scale(i / (LEGEND_STOPS - 1))).join(', ');
     legend.replaceChildren(
       h('span', {}, metric === 'votes' ? `Votes, ${era.label.toLowerCase()} era` : 'Rating'),
