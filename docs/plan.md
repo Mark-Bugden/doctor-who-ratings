@@ -68,7 +68,7 @@ The project is descriptive. It makes no claims about what causes a rating.
 
 | | |
 | --- | --- |
-| Views | Timeline (opening), Heatmap and Leaderboard, switched with three icon buttons at the top of the controls rail. The rail shows only the controls the current view uses (see step 5). |
+| Views | Timeline, Heatmap (opening, since step 10) and Leaderboard, switched with three icon buttons at the top of the controls rail. The rail shows only the controls the current view uses (see step 5). |
 | Timeline | One dot per episode or part at its air date, sized by votes. Each story's mean is a short bar across its parts. The Doctors' eras are alternating bands, labelled directly, and the 1989–2005 gap shows. Hovering gives the episode's name; a click or tap gives its title, story, Doctor, rating, votes, writer and director. |
 | Heatmap | Season × episode, one era at a time. Ratings from 5 to 10 span the colour scale (see "Look"), and cells big enough to hold their rating show it (changed in step 9). Cells keep a minimum size, and the grid scrolls sideways within the stage on narrow screens. Hover and click work as on the timeline. |
 | Doctor selector | With no Doctor selected, every episode is drawn in the muted text colour. Selecting a Doctor lights their run in the accent and drops everything else to the curve colour. On the heatmap, the other Doctors' cells dim instead (see "Look"). |
@@ -97,7 +97,7 @@ The project is descriptive. It makes no claims about what causes a rating.
   - Since step 7, the stops are the kit's spectrum (`--chart-spectrum-1` to `-4`), and the demo has no local colours.
   - Every step clears 3:1 on the surface (dark 3.39:1 at worst, light 3.12:1), lightness rises from low to high with and without simulated colour-vision deficiencies, and six steps sit at least 0.05 apart in OKLab under all of them (dark 0.075, light 0.051). demo-kit's `test/tokens.test.js` checks all three.
 - **Highlighting the heatmap.** The scale already spans several hues, so the Doctor highlight can't recolour cells. Instead it dims the other Doctors' cells, and a search hit gets an outline in `--color-text`.
-- **Stills.** `scripts/stills.py` renders them from the built demo, in both themes. The loading still is the opening timeline. Since step 9, the project card and link previews show the classic era's heatmap. Don't reuse the stub's stills or the contract's image script, which both use the old paper colour.
+- **Stills.** `scripts/stills.py` renders them from the built demo, in both themes. The loading still is the opening view, the classic era's heatmap since step 10. Since step 9, the project card and link previews show the same heatmap. Don't reuse the stub's stills or the contract's image script, which both use the old paper colour.
 
 ## Repo layout (target)
 
@@ -215,7 +215,13 @@ Mark found the project card dull (2026-11-21): it showed the opening timeline wi
   - Running the scale to 10 alone wasn't enough: the spectrum's brightest shades sit close together, so Blink (9.8) and *Heaven Sent* (9.6) are only 0.017 apart in OKLab, and Blink and the 9.2s about 0.05.
   - So the scale runs from 5 to 10, and each cell big enough (30 × 18 px or more) shows its rating, in white or black, whichever contrasts more. That's every cell of the revived era on a desktop; the classic era's cells and phones' are too small, and votes show no numbers. The legend reads "≤5" and "10". Mark chose this from four options rendered on the revived era (5–9 and 5–10, each with and without numbers).
   - Black rather than a near-black, so every cell clears 4.5:1 in both themes (4.6:1 at worst). A JS test reads the spectrum from the kit's `tokens.css` and checks it, so a new kit can't quietly break it.
-- [ ] Merging releases `v1.5.0`.
+- [x] Merging released `v1.5.0` on 2026-11-21.
+
+### 10. Open on the heatmap: release `v1.6.0`
+Asked for by Mark on 2026-11-21.
+- [x] **The demo opens on the heatmap**, in the classic era, rather than the timeline. The view buttons keep their order.
+- [x] **The loading still** is the opening heatmap at 1200 × 675, in both themes, so nothing jumps when the demo starts. Its alt text is the heatmap's stage label. The card and link previews don't change.
+- [ ] Merging releases `v1.6.0`.
 
 ## For Mark, on the site
 

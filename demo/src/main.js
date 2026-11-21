@@ -56,6 +56,7 @@ async function start(el) {
       { label: 'Heatmap', value: 'heatmap', icon: ICONS.heatmap },
       { label: 'Leaderboard', value: 'leaderboard', icon: ICONS.leaderboard },
     ],
+    value: 'heatmap',
   });
   const doctor = select({
     label: 'Doctor',
@@ -265,6 +266,6 @@ async function start(el) {
 
 const el = document.querySelector(`[data-demo="${manifest.slug}"]`);
 start(el).catch((error) => {
-  // The still image stays in place, so the page still shows the timeline.
+  // The still image stays in place, so the page still shows the heatmap.
   console.error('doctor-who-ratings: could not start the demo', error);
 });
