@@ -1,6 +1,6 @@
 {
   "name": "doctor-who-ratings-demo",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "private": true,
   "type": "module",
   "scripts": {

@@ -1,6 +1,6 @@
 """Render the demo's stills from the built demo into demo/public/, in the dark and light themes.
 
-- static.webp and static-light.webp: the opening timeline, shown while the demo loads.
+- static.webp and static-light.webp: the opening heatmap, shown while the demo loads.
 - thumb.webp and thumb-light.webp: the classic era's heatmap, for the project card. The stage is shot
   small, so its cells stay bold on the card, and at 16:10, the card's shape, then centred on the
   theme's page colour at 1200 x 675. The card trims those margins.
@@ -44,7 +44,7 @@ class QuietHandler(http.server.SimpleHTTPRequestHandler):
 def open_page(browser, url):
     page = browser.new_page(viewport={"width": 1400, "height": 900}, device_scale_factor=SCALE, reduced_motion="reduce")
     page.goto(url)
-    page.wait_for_selector(".dw-timeline circle")
+    page.wait_for_selector(".dw-cell")
     page.evaluate("document.head.append(Object.assign(document.createElement('style'), { id: 'still' }))")
     return page
 
