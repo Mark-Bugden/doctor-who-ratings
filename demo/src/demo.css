@@ -392,8 +392,12 @@
 }
 
 [data-demo] .dw-cell {
+  display: grid;
+  place-items: center;
   margin: 1px;
   border-radius: 2px;
+  overflow: hidden;
+  line-height: 1;
   cursor: pointer;
   transition: opacity var(--duration-fast) var(--ease-out);
 }
