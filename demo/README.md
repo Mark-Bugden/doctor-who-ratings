@@ -26,4 +26,4 @@ The files to edit:
 | `public/manifest.json` | The demo's metadata. |
 | `src/main.js` | Controls, drawing and the `mount()` call. |
 | `public/data/`, `public/model/` | Runtime files. |
-| `public/static.webp`, `thumb.webp`, `og.jpg` | Images. |
+| `public/static.webp`, `thumb.webp`, `og.jpg`, and `static-light.webp`, `thumb-light.webp` | Images, rendered by `scripts/stills.py`. |
