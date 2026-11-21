@@ -3,7 +3,7 @@
   "title": "Rating the Regenerations",
   "tagline": "Every regular Doctor Who episode since 1963, as rated on IMDb.",
   "summary": "IMDb ratings for every regular Doctor Who episode from 1963 to 2025, on a timeline, in a season-by-episode heatmap and on a leaderboard. Pick a Doctor to light up their run, or find any story or episode by name. Rank the Doctors, writers and directors, then change the assumptions behind the ranking and see what moves.",
-  "tags": ["data visualisation", "statistics", "Doctor Who"],
+  "tags": ["data analysis", "IMDb ratings", "Doctor Who"],
   "status": "live",
   "repo": "https://github.com/Mark-Bugden/doctor-who-ratings",
   "kitVersion": "0.5.0",
