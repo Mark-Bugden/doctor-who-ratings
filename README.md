@@ -42,7 +42,7 @@ uv run pytest
 
 The export joins IMDb's ratings to the hand-checked tables in [`reference/`](reference/), which hold every regular story and part with its IMDb id. Rebuilding those tables from Wikipedia is a separate, rarer step that its README describes. `uv run pre-commit install` installs the hook that strips notebook outputs before each commit.
 
-After a refresh, update the snapshot date in "How this works" (`about` in `demo/public/manifest.json`; the JS tests check it), rebuild the demo, and render the stills again:
+After a refresh, rebuild the demo and render the stills again:
 
 ```sh
 cd demo && npm run build && cd ..
