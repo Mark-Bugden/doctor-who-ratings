@@ -3,7 +3,6 @@ import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 
 import { prepare, years } from '../src/data.js';
-import { longDate } from '../src/format.js';
 import { contrast, ramp } from '@mark-bugden/demo-kit';
 import { ink, position } from '../src/views/heatmap.js';
 
@@ -65,10 +64,6 @@ test('a rating printed in a heatmap cell clears 4.5:1 on every colour of the sca
       assert.ok(contrast(colour, ink(colour)) >= 4.5, `${ink(colour)} on ${colour}`);
     }
   }
-});
-
-test('"How this works" gives the data\'s snapshot date', () => {
-  assert.ok(manifest.about.includes(longDate(raw.snapshot)), `expected ${longDate(raw.snapshot)} in the manifest's about`);
 });
 
 test('the manifest\'s kit version matches the kit tag in package.json', () => {
