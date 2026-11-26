@@ -16,7 +16,7 @@ The project is descriptive: it shows how episodes were rated, not why.
 | [`src/doctor_who_ratings/`](src/doctor_who_ratings/) | Python: the data pipeline and the leaderboard's reference maths. |
 | [`reference/`](reference/) | The hand-checked tables of stories and parts, from Wikipedia. Its README explains how they're made and checked. |
 | [`tests/`](tests/) | Python tests: the reference tables, the demo's data file and the rankings. |
-| [`scripts/`](scripts/) | Renders the demo's stills: the opening heatmap, and the same heatmap smaller for the project card. |
+| [`scripts/`](scripts/) | Renders the demo's stills: the opening heatmap, and the same heatmap smaller and without its text for the project card. |
 | [`docs/`](docs/) | The plan, and the draft write-up for the site. |
 | [`legacy/`](legacy/) | The original 2025 notebook, kept for reference. Its README explains why its variance analysis doesn't hold. |
 

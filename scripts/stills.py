@@ -1,10 +1,11 @@
 """Render the demo's stills from the built demo into demo/public/, in the dark and light themes.
 
 - static.webp and static-light.webp: the opening heatmap, shown while the demo loads.
-- thumb.webp and thumb-light.webp: the classic era's heatmap, for the project card. The stage is shot
-  small, so its cells stay bold on the card, and at 16:10, the card's shape, then centred on the
-  theme's page colour at 1200 x 675. The card trims those margins.
-- og.jpg: the same heatmap at 1200 x 630, dark only, for link previews.
+- thumb.webp and thumb-light.webp: the classic era's heatmap, for the project card, with no text: no
+  legend, and no season or episode numbers (Mark, 2026-11-26: a thumbnail shows only the demo's
+  visuals). The stage is shot small, so its cells stay bold on the card, and at 16:10, the card's
+  shape, then centred on the theme's page colour at 1200 x 675. The card trims those margins.
+- og.jpg: the same heatmap, with its legend and numbers, at 1200 x 630, dark only, for link previews.
 
 Serves the built demo (demo/dist/, from `npm run build`), opens it in a browser and screenshots the
 stage alone at 2x. Then rebuild, so the bundle carries the new stills.
@@ -35,6 +36,17 @@ CSS = """
 [data-demo] .dk-stage { width: %dpx; height: %dpx !important; aspect-ratio: auto !important; }
 """
 
+# For the thumbnails, the heatmap without its text. The numbers' row and column stay in the grid,
+# empty, so the grid is scrolled past them, to PAD CSS px short of the first cell.
+NO_TEXT = """
+[data-demo] .dw-legend, [data-demo] .dw-corner, [data-demo] .dw-colhead, [data-demo] .dw-rowhead { display: none !important; }
+"""
+PAD = 8
+SCROLL_TO_CELLS = """pad => {
+  const cell = document.querySelector('.dw-cell');
+  document.querySelector('.dw-scroller').scrollTo(cell.offsetLeft - pad, cell.offsetTop - pad);
+}"""
+
 
 class QuietHandler(http.server.SimpleHTTPRequestHandler):
     def log_message(self, *args):
@@ -49,11 +61,14 @@ def open_page(browser, url):
     return page
 
 
-def shoot(page, theme, width, height):
+def shoot(page, theme, width, height, text=True):
     """Screenshots the stage at width x height CSS px in the theme, and returns it with the page's colour as (r, g, b)."""
-    page.evaluate("([theme, css]) => { document.documentElement.dataset.theme = theme; document.getElementById('still').textContent = css; }", [theme, CSS % (width, height)])
+    css = CSS % (width, height) + ("" if text else NO_TEXT)
+    page.evaluate("([theme, css]) => { document.documentElement.dataset.theme = theme; document.getElementById('still').textContent = css; }", [theme, css])
     page.mouse.move(0, 0)
     page.wait_for_timeout(500)  # the frame redraws on the resize
+    if not text:
+        page.evaluate(SCROLL_TO_CELLS, PAD)
     png = page.locator(".dk-stage").screenshot()
     background = page.evaluate("getComputedStyle(document.body).backgroundColor")
     return Image.open(io.BytesIO(png)).convert("RGB"), tuple(int(c) for c in re.findall(r"\d+", background)[:3])
@@ -69,9 +84,9 @@ def render(browser, url):
     page = open_page(browser, url)
     for name in ("Heatmap", "Classic"):
         page.get_by_role("radio", name=name, exact=True).check(force=True)  # each radio sits under its label
+    stills["og", "dark"] = shoot(page, "dark", 640, 336)  # before the thumbnails scroll the grid
     for theme in THEMES:
-        stills["thumb", theme] = shoot(page, theme, 576, 360)
-    stills["og", "dark"] = shoot(page, "dark", 640, 336)
+        stills["thumb", theme] = shoot(page, theme, 576, 360, text=False)
     page.close()
     return stills
 
