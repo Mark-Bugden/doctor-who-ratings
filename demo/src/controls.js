@@ -17,13 +17,14 @@ function icon(markup) {
 /**
  * A row of buttons, one per option, of which one is chosen. They're radio buttons underneath, so
  * the arrow keys move between them. `options` are { label, value, icon?, title? }; an icon is SVG
- * markup on a 24 × 24 grid. `showLabel: false` leaves the label to screen readers.
+ * markup on a 24 × 24 grid. `showLabel: false` leaves the label to screen readers. `labelId(value)`
+ * gives the id of an option's visible name, for aria-labelledby elsewhere.
  */
 export function segmented({ label, options, value = options[0].value, showLabel = true }) {
   const id = `dw-segmented-${++lastId}`;
   const inputs = options.map((option, i) => h('input', { type: 'radio', name: id, value: i, checked: Object.is(option.value, value) }));
   const segments = options.map((option, i) => h('label', { class: 'dw-segment', title: option.title },
-    inputs[i], icon(option.icon), h('span', { class: 'dw-segment-label' }, option.label)));
+    inputs[i], icon(option.icon), h('span', { id: `${id}-${i}`, class: 'dw-segment-label' }, option.label)));
   const el = h('div', {
     class: `dk-control dw-segmented${options.some((o) => o.icon) ? ' dw-segmented-icons' : ''}`,
     role: 'radiogroup',
@@ -44,6 +45,10 @@ export function segmented({ label, options, value = options[0].value, showLabel 
     set value(next) {
       const i = options.findIndex((option) => Object.is(option.value, next));
       if (i >= 0) inputs[i].checked = true;
+    },
+    labelId(of) {
+      const i = options.findIndex((option) => Object.is(option.value, of));
+      return i >= 0 ? `${id}-${i}` : null;
     },
     get disabled() { return el.hasAttribute('data-disabled'); },
     set disabled(state) {

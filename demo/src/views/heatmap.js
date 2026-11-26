@@ -2,8 +2,10 @@
 // votes. Ratings take the scale from 5 to 10, and the few episodes below 5 take its low end. Its
 // brightest shades are hard to tell apart, so cells big enough to hold their rating show it, in black
 // or white, whichever contrasts more. Cells keep a minimum size, and the grid scrolls within the stage
-// when it doesn't fit, with the season and episode numbers kept in view. A lit Doctor's cells stay as
-// they are and the others dim, because the scale has no colour to spare for a highlight.
+// when it doesn't fit, with the season and episode numbers kept in view. The scroll area takes
+// keyboard focus, so the arrow keys scroll it too; it is named by `labelledBy`, the id of the view
+// switch's "Heatmap". A lit Doctor's cells stay as they are and the others dim, because the scale has
+// no colour to spare for a highlight.
 
 import { contrast } from '@mark-bugden/demo-kit';
 import { h } from '../dom.js';
@@ -38,10 +40,10 @@ export function position(part, metric, ratings, votes) {
   return part.rating == null ? null : (part.rating - ratings[0]) / (ratings[1] - ratings[0]);
 }
 
-export function createHeatmap(container, data) {
+export function createHeatmap(container, data, { labelledBy } = {}) {
   const legend = h('div', { class: 'dw-legend', 'aria-hidden': 'true' });
   const grid = h('div', { class: 'dw-grid', 'aria-hidden': 'true' });
-  const scroller = h('div', { class: 'dw-scroller' }, grid);
+  const scroller = h('div', { class: 'dw-scroller', tabindex: 0, role: 'region', 'aria-labelledby': labelledBy }, grid);
   const root = h('div', { class: 'dw-heatmap' }, legend, scroller);
   container.append(root);
 

@@ -135,7 +135,7 @@ async function start(el) {
       }
       if (current?.name !== values.view) {
         current?.view.destroy();
-        current = { name: values.view, view: VIEWS[values.view](host, data) };
+        current = { name: values.view, view: VIEWS[values.view](host, data, { labelledBy: view.labelId(values.view) }) };
         current.view.scroller?.addEventListener('scroll', showTip, { passive: true });
         stage.setAttribute('aria-label', LABELS[values.view]);
         state.hovered = null;
